@@ -1,0 +1,599 @@
+@import url("general.css");
+
+/* Base styles for navigation */
+.topnav {
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(0.5rem);
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.625rem 1.25rem;
+    box-sizing: border-box;
+}
+
+.topnav a {
+    float: left;
+    display: block;
+    color: #333;
+    text-align: center;
+    padding: 0.625rem 0.9375rem;
+    text-decoration: none;
+    font-size: 1.0625rem;
+    margin: 0 0.3125rem;
+    border-radius: 1.25rem;
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(0.3125rem);
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    /* Added transform */
+    display: flex;
+    /* For icons */
+    align-items: center;
+    /* For icons */
+    gap: 0.3125rem;
+    /* Space between text and icon */
+}
+
+.topnav a:hover {
+    background-color: #d6ad60;
+    color: white;
+    transform: translateY(-0.0625rem);
+    /* Subtle lift on hover */
+}
+
+.topnav .throneui {
+    color: #d6ad60;
+    font-weight: bold;
+    font-size: 1.25rem;
+    background-color: transparent;
+    backdrop-filter: none;
+    padding: 0.625rem 0;
+    cursor: pointer;
+    /* Indicate it's clickable */
+}
+
+.topnav .throneui:hover {
+    color: #b08d4b;
+    background-color: transparent;
+    animation: sparkle 0.5s infinite alternate;
+    /* Sparkle easter egg */
+}
+
+@keyframes sparkle {
+    from {
+        text-shadow: 0 0 0rem #d6ad60;
+    }
+
+    to {
+        text-shadow: 0 0 0.5rem #d6ad60, 0 0 1rem #d6ad60;
+    }
+}
+
+
+.topnav-right {
+    display: flex;
+    align-items: center;
+}
+
+.topnav .star-github {
+    background-color: #d6ad60;
+    color: white;
+    padding: 0.625rem 1.25rem;
+    border-radius: 1.5625rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.topnav .star-github:hover {
+    background-color: #b08d4b;
+    color: white;
+}
+
+/* Hamburger Menu Styles */
+.hamburger-menu {
+    display: none;
+    /* Hidden by default on desktop */
+    font-size: 2rem;
+    color: #d6ad60;
+    cursor: pointer;
+    z-index: 1001;
+    /* Ensure it's above other elements */
+}
+
+/* Mobile Navigation Overlay */
+.mobile-nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(1rem);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    /* Start off-screen to the right */
+    transition: transform 0.4s cubic-bezier(0.57, -0.01, 0.21, 0.89);
+    visibility: hidden;
+    /* Hidden by default */
+}
+
+.mobile-nav-overlay.open {
+    transform: translateX(0);
+    /* Slide in */
+    visibility: visible;
+}
+
+.mobile-nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.625rem 1.25rem;
+    border-bottom: 0.0625rem solid rgba(0, 0, 0, 0.1);
+}
+
+.throneui-mobile {
+    color: #d6ad60;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+.close-menu {
+    font-size: 2rem;
+    color: #333;
+    cursor: pointer;
+}
+
+.mobile-nav-links {
+    display: flex;
+    flex-direction: column;
+    padding: 1.25rem;
+}
+
+.mobile-nav-links a {
+    color: #333;
+    text-decoration: none;
+    font-size: 1.5rem;
+    padding: 0.9375rem 0;
+    border-bottom: 0.0625rem solid rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+}
+
+.mobile-nav-links a:last-child {
+    border-bottom: none;
+}
+
+.mobile-nav-links a:hover {
+    background-color: rgba(214, 173, 96, 0.1);
+    /* Lighter hover for mobile */
+}
+
+.star-github-mobile {
+    background-color: #d6ad60;
+    color: white !important;
+    /* Override default link color */
+    padding: 0.9375rem 1.25rem !important;
+    /* Override default padding */
+    border-radius: 1.5625rem;
+    font-weight: bold;
+    margin-top: 1.25rem;
+    text-align: center;
+    width: fit-content;
+    /* Adjust width to content */
+    align-self: center;
+    /* Center the button */
+}
+
+.star-github-mobile:hover {
+    background-color: #b08d4b;
+}
+
+
+/* Media Query for Mobile (showing hamburger) */
+@media screen and (max-width: 48rem) {
+
+    /* Adjusted breakpoint to 48rem for more universal mobile view */
+    .topnav-right {
+        display: none;
+        /* Hide regular nav links */
+    }
+
+    .hamburger-menu {
+        display: block;
+        /* Show hamburger */
+    }
+
+    .topnav {
+        justify-content: space-between;
+        /* Keep brand and hamburger separated */
+    }
+}
+
+/* Hero Section */
+.hero {
+    background-color: #e0e0e0;
+    color: #333;
+    text-align: center;
+    padding: 6.25rem 1.25rem;
+    margin-top: -0.0625rem;
+    position: relative;
+    /* For absolute positioning of fun-detail-icon */
+    overflow: hidden;
+    /* Hide anything outside */
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1.25rem;
+    color: #d6ad60;
+    position: relative;
+    display: inline-block;
+    /* To make sparkle absolute to text */
+}
+
+.magic-sparkle {
+    position: absolute;
+    top: -0.5rem;
+    right: -1rem;
+    font-size: 1.5rem;
+    animation: bounceScale 1.5s infinite ease-in-out;
+}
+
+@keyframes bounceScale {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.2);
+        opacity: 0.7;
+    }
+}
+
+.hero p {
+    font-size: 1.25rem;
+    max-width: 50rem;
+    margin: 0 auto 2.5rem auto;
+    line-height: 1.6;
+}
+
+.code-emoji {
+    animation: floatUpDown 3s infinite ease-in-out;
+    display: inline-block;
+    /* Needed for animation */
+}
+
+@keyframes floatUpDown {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-0.25rem);
+    }
+}
+
+.hero-buttons a {
+    display: inline-flex;
+    /* Use flex for button content and icon */
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    /* Space between text and icon */
+    background-color: #d6ad60;
+    color: white;
+    padding: 0.9375rem 1.875rem;
+    text-decoration: none;
+    border-radius: 0.3125rem;
+    font-size: 1.125rem;
+    margin: 0 0.625rem;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 0.25rem 0.625rem rgba(214, 173, 96, 0.3);
+    /* Subtle shadow */
+}
+
+.hero-buttons a:hover {
+    background-color: #b08d4b;
+    transform: translateY(-0.125rem);
+    box-shadow: 0 0.375rem 0.8rem rgba(214, 173, 96, 0.4);
+    /* Enhanced shadow */
+}
+
+.fun-detail-icon {
+    position: absolute;
+    bottom: 0.5rem;
+    left: 2rem;
+    font-size: 4rem;
+    color: rgba(214, 173, 96, 0.2);
+    /* Very subtle color */
+    transform: rotate(-15deg);
+    z-index: 0;
+    opacity: 0.7;
+}
+
+/* Testimonial Section */
+.testimonials {
+    padding: 5rem 1.25rem;
+    text-align: center;
+    background-color: #f0f0f0;
+}
+
+.testimonials h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #d6ad60;
+}
+
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
+    gap: 2.5rem;
+    max-width: 75rem;
+    margin: 0 auto;
+}
+
+.testimonial-card {
+    background-color: white;
+    padding: 1.875rem;
+    border-radius: 0.625rem;
+    box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.05);
+    text-align: left;
+    position: relative;
+    /* For emojis */
+    overflow: hidden;
+    /* Hide emojis when not hovered */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-0.25rem);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-card p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+    color: #555;
+}
+
+.testimonial-author {
+    font-weight: bold;
+    color: #333;
+}
+
+.testimonial-source {
+    font-size: 0.875rem;
+    color: #777;
+}
+
+/* Emojis for testimonials (easter eggs/fun details) */
+.smiley-face,
+.lightbulb,
+.rocket-ship {
+    position: absolute;
+    font-size: 2rem;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+    /* Ensure they don't block clicks */
+}
+
+.smiley-face {
+    bottom: 1rem;
+    right: 1rem;
+    color: #ffeb3b;
+}
+
+.lightbulb {
+    bottom: 1rem;
+    right: 1rem;
+    color: #ffc107;
+}
+
+.rocket-ship {
+    bottom: 1rem;
+    right: 1rem;
+    color: #f44336;
+}
+
+.testimonial-card:hover .smiley-face,
+.testimonial-card:hover .lightbulb,
+.testimonial-card:hover .rocket-ship {
+    opacity: 1;
+    transform: translateY(-0.5rem);
+    /* Pop up slightly */
+}
+
+
+/* Footer */
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 3.125rem 1.25rem;
+    font-size: 0.875rem;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 75rem;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.footer-left,
+.footer-right {
+    flex: 1;
+    min-width: 15rem;
+    padding: 0.625rem;
+    box-sizing: border-box;
+}
+
+.footer-left p {
+    margin: 0 0 0.625rem 0;
+}
+
+.footer-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #d6ad60;
+    margin-bottom: 1rem !important;
+}
+
+.footer-left a {
+    color: #d6ad60;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: inline-flex;
+    /* For love icon */
+    align-items: center;
+    gap: 0.3125rem;
+}
+
+.footer-left a:hover {
+    color: #b08d4b;
+}
+
+.footer-copy {
+    opacity: 0.8;
+}
+
+.secret-text {
+    cursor: pointer;
+    font-style: italic;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.secret-text:hover {
+    opacity: 1;
+}
+
+.footer-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.footer-right a {
+    color: white;
+    text-decoration: none;
+    margin-bottom: 0.625rem;
+    transition: color 0.3s ease;
+    display: flex;
+    /* For icons */
+    align-items: center;
+    gap: 0.3125rem;
+}
+
+.footer-right a:last-child {
+    margin-bottom: 0;
+}
+
+.footer-right a:hover {
+    color: #d6ad60;
+}
+
+/* Responsiveness for Footer */
+@media screen and (max-width: 48rem) {
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-left,
+    .footer-right {
+        min-width: unset;
+        width: 100%;
+        padding: 0.625rem 0;
+    }
+
+    .footer-right {
+        align-items: center;
+        margin-top: 1.25rem;
+    }
+}
+
+/* Easter egg message style */
+.secret-message-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    background-color: #333;
+    color: white;
+    padding: 2rem;
+    border-radius: 0.625rem;
+    box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.4);
+    z-index: 2000;
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+    border: 0.125rem solid #d6ad60;
+}
+
+.secret-message-box.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.secret-message-box p {
+    font-size: 1.125rem;
+    margin-bottom: 1.25rem;
+    color: white;
+    /* Ensure text color is white inside the box */
+}
+
+.secret-message-box button {
+    background-color: #d6ad60;
+    color: white;
+    border: none;
+    padding: 0.625rem 1.25rem;
+    border-radius: 0.3125rem;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.secret-message-box button:hover {
+    background-color: #b08d4b;
+}
+
+/* Background overlay for modal */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+}
+
+.overlay.show {
+    opacity: 1;
+    visibility: visible;
+}

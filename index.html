@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThroneUi || HTML Component Library</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="assets/css/index.css">
+</head>
+
+<body>
+    <nav class="topnav">
+        <a class="throneui" href="#home">ThroneUi</a>
+        <div class="topnav-right">
+            <a href="#about">Components</a>
+            <a href="#contact">Showcase</a>
+            <a class="star-github" href="#news">
+                <i class='bx bxl-github'></i> Star on Github
+            </a>
+        </div>
+        <div class="hamburger-menu" id="hamburgerMenu">
+            <i class='bx bx-menu'></i>
+        </div>
+    </nav>
+
+    <div class="mobile-nav-overlay" id="mobileNav">
+        <div class="mobile-nav-header">
+            <a class="throneui-mobile" href="#home">ThroneUi</a>
+            <div class="close-menu" id="closeMenu">
+                <i class='bx bx-x'></i>
+            </div>
+        </div>
+        <div class="mobile-nav-links">
+            <a href="#about">Components</a>
+            <a href="#contact">Showcase</a>
+            <a class="star-github-mobile" href="#news">
+                <i class='bx bxl-github'></i> Star on Github
+            </a>
+            <a href="#" class="easter-egg-trigger" id="secretButton">
+                <i class='bx bxs-crown'></i> Find the Crown!
+            </a>
+        </div>
+    </div>
+
+    <main>
+        <section class="hero">
+            <h1>Beautiful HTML Components, Ready to Use.<span class="magic-sparkle">✨</span></h1>
+            <p>
+                Discover a curated collection of accessible, responsive, and customizable HTML snippets for your next
+                project. Save time and build stunning web experiences with ease.<span class="code-emoji">💻</span>
+            </p>
+            <div class="hero-buttons">
+                <a href="#components">Browse Components <i class='bx bx-search'></i></a>
+                <a href="#showcase">View Showcase <i class='bx bx-show'></i></a>
+            </div>
+            <div class="fun-detail-icon">
+                <i class='bx bx-code-alt bx-tada'></i>
+            </div>
+        </section>
+
+        <section class="testimonials">
+            <h2>What Developers Are Saying <i class='bx bxs-quote-alt-left'></i><i class='bx bxs-quote-alt-right'></i>
+            </h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p>"ThroneUi has revolutionized my workflow. The components are clean, semantic, and
+                        incredibly easy to integrate. A true game-changer!"</p>
+                    <div class="testimonial-author">- Jane Doe</div>
+                    <div class="testimonial-source">Lead Developer at WebSolutions</div>
+                    <span class="smiley-face">😊</span>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Finally, a resource for well-crafted HTML. I used to spend hours on boilerplate, but now I can
+                        focus on what truly matters."</p>
+                    <div class="testimonial-author">- John Smith</div>
+                    <div class="testimonial-source">Frontend Engineer at CreativeLabs</div>
+                    <span class="lightbulb">💡</span>
+                </div>
+                <div class="testimonial-card">
+                    <p>"The blur effects and sticky navigation are seamless. This library proves that HTML can be both
+                        functional and visually stunning."</p>
+                    <div class="testimonial-author">- Emily White</div>
+                    <div class="testimonial-source">UI/UX Designer</div>
+                    <span class="rocket-ship">🚀</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <p class="footer-brand">ThroneUi</p>
+                <p>A library created with love by <a href="YOUR_GITHUB_PROFILE_URL" target="_blank"
+                        rel="noopener noreferrer">"this guy"</a> <i class='bx bxs-heart'></i></p>
+                <p class="footer-copy">&copy; 2025 ThroneUi. MIT Licensed. <span id="secretMessageTrigger"
+                        class="secret-text">Psst!</span></p>
+            </div>
+            <div class="footer-right">
+                <a href="YOUR_GITHUB_REPO_URL" target="_blank" rel="noopener noreferrer">GitHub <i
+                        class='bx bxl-github'></i></a>
+                <a href="#about">Components <i class='bx bx-cube'></i></a>
+                <a href="#contact">Showcase <i class='bx bx-collection'></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/index.js"></script>
+    <script src="assets/js/prism.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+@import url("prism.css");
+@import url("https: //fonts.cdnfonts.com/css/segoe-ui-variable");
+
+* {
+    font-family: "Segoe UI Variable Display", "Segoe UI", Inter,
+        sans-serif;
+    font-weight: 400;
+    box-sizing: border-box;
+    transition: all 0.5s cubic-bezier(0.57, -0.01, 0.21, 0.89);
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+}
