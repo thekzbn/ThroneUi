@@ -8,10 +8,15 @@
 </head>
 <body>
     <div class="spa-container">
-        <!-- floating theme toggle -->
-        <button class="theme-toggle" aria-label="toggle theme">
-            <span class="material-symbols-outlined">dark_mode</span>
-        </button>
+        <!-- floating controls -->
+        <div class="floating-controls">
+            <button class="control-btn" onclick="window.throneUI.navigateTo('/')" aria-label="go to home">
+                <span class="material-symbols-outlined">home</span>
+            </button>
+            <button class="theme-toggle" aria-label="toggle theme">
+                <span class="material-symbols-outlined">dark_mode</span>
+            </button>
+        </div>
 
         <!-- spa content wrapper -->
         <div class="spa-content">
@@ -289,7 +294,11 @@
                 <section class="section">
                     <div class="container">
                         <div class="mb-5">
-                            <a href="#" data-route="/components" class="text-accent text-sm">← back to components</a>
+                            <div class="flex gap-2 text-sm mb-2">
+                                <a href="#" data-route="/" class="text-secondary">home</a>
+                                <span class="text-secondary">/</span>
+                                <a href="#" data-route="/components" class="text-accent">components</a>
+                            </div>
                             <h1 class="mt-2">navbar</h1>
                             <p class="text-lg text-secondary">responsive navigation bars with mobile menu support</p>
                         </div>
@@ -389,7 +398,11 @@ function toggleMobileNav(btn) {
                 <section class="section">
                     <div class="container">
                         <div class="mb-5">
-                            <a href="#" data-route="/components" class="text-accent text-sm">← back to components</a>
+                            <div class="flex gap-2 text-sm mb-2">
+                                <a href="#" data-route="/" class="text-secondary">home</a>
+                                <span class="text-secondary">/</span>
+                                <a href="#" data-route="/components" class="text-accent">components</a>
+                            </div>
                             <h1 class="mt-2">buttons</h1>
                             <p class="text-lg text-secondary">all button variants following the 3-color design system</p>
                         </div>
@@ -489,7 +502,11 @@ function toggleMobileNav(btn) {
                 <section class="section">
                     <div class="container">
                         <div class="mb-5">
-                            <a href="#" data-route="/components" class="text-accent text-sm">← back to components</a>
+                            <div class="flex gap-2 text-sm mb-2">
+                                <a href="#" data-route="/" class="text-secondary">home</a>
+                                <span class="text-secondary">/</span>
+                                <a href="#" data-route="/components" class="text-accent">components</a>
+                            </div>
                             <h1 class="mt-2">cards</h1>
                             <p class="text-lg text-secondary">content containers and layout cards</p>
                         </div>
@@ -554,7 +571,11 @@ function toggleMobileNav(btn) {
                 <section class="section">
                     <div class="container">
                         <div class="mb-5">
-                            <a href="#" data-route="/components" class="text-accent text-sm">← back to components</a>
+                            <div class="flex gap-2 text-sm mb-2">
+                                <a href="#" data-route="/" class="text-secondary">home</a>
+                                <span class="text-secondary">/</span>
+                                <a href="#" data-route="/components" class="text-accent">components</a>
+                            </div>
                             <h1 class="mt-2">forms</h1>
                             <p class="text-lg text-secondary">form inputs and validation (borders allowed - exception)</p>
                         </div>
