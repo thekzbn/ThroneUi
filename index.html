@@ -14,6 +14,11 @@
     <link href="https://fonts.cdnfonts.com/css/cascadia-code" rel="stylesheet">
     
     <style>
+        /* Prevent horizontal overflow on the entire page */
+        html, body {
+            overflow-x: hidden !important;
+        }
+        
         /* Code block styling with Cascadia Code */
         code, pre, .component-code {
             font-family: 'Cascadia Code', 'SF Mono', Monaco, 'Roboto Mono', Consolas, monospace !important;
@@ -28,6 +33,7 @@
             line-height: 1.5;
             overflow-x: auto;
             white-space: pre;
+            max-width: 100%;
         }
         
         /* PrismJS customization */
@@ -38,6 +44,9 @@
             border-radius: 0.5rem !important;
             padding: 1rem !important;
             margin: 1rem 0 !important;
+            overflow-x: auto !important;
+            max-width: 100% !important;
+            white-space: pre !important;
         }
         
         .line-numbers .line-numbers-rows {
@@ -63,6 +72,11 @@
             .component-code {
                 font-size: 0.75rem !important;
             }
+            
+            pre[class*="language-"] {
+                font-size: 0.75rem !important;
+                padding: 0.75rem !important;
+            }
         }
         
         @media (max-width: 480px) {
@@ -72,6 +86,17 @@
             
             .docs-section {
                 margin-bottom: 2rem !important;
+            }
+            
+            pre[class*="language-"] {
+                font-size: 0.625rem !important;
+                padding: 0.5rem !important;
+                margin: 0.5rem 0 !important;
+            }
+            
+            .component-code {
+                font-size: 0.625rem !important;
+                padding: 0.5rem !important;
             }
         }
     </style>
@@ -110,9 +135,9 @@
                                 <span class="material-symbols-outlined">menu_book</span>
                                 documentation
                             </a>
-                            <a href="#" data-route="/about" class="btn btn-ghost">
-                                <span class="material-symbols-outlined">info</span>
-                                about thekzbn
+                            <a href="https://thekzbn.netlify.app" target="_blank" class="btn btn-ghost">
+                                <span class="material-symbols-outlined">person</span>
+                                thekzbn's portfolio
                             </a>
                         </div>
                     </div>
@@ -3013,76 +3038,7 @@ const badge = window.throneUI.createBadge('new', 'primary');</code></pre>
                 </section>
             </div>
 
-            <!-- about route -->
-            <div class="route" data-route-path="/about">
-                <section class="section">
-                    <div class="container">
-                        <div class="text-center mb-5">
-                            <div class="avatar avatar-xl mb-3">
-                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" alt="thekzbn">
-                            </div>
-                            <h1>thekzbn</h1>
-                            <p class="text-xl text-accent mb-2">15 years old developer</p>
-                            <p class="text-lg text-secondary mb-4">passionate about minimalist design and clean code</p>
-                            
-                            <div class="flex gap-3 justify-center">
-                                <a href="https://thekzbn.netlify.app" target="_blank" class="btn btn-primary">
-                                    <span class="material-symbols-outlined">person</span>
-                                    my portfolio
-                                </a>
-                                <a href="https://github.com/thekzbn" target="_blank" class="btn btn-outline">
-                                    <span class="material-symbols-outlined">code</span>
-                                    github
-                                </a>
-                            </div>
-                        </div>
 
-                        <div class="grid grid-2 gap-5 mb-5">
-                            <div class="card">
-                                <h3 class="card-title">about me</h3>
-                                <p class="card-text">
-                                    i'm a 15-year-old developer who believes in the power of constraints and minimalism. 
-                                    i started coding at 13 and have been fascinated by how much you can achieve with 
-                                    simple, well-crafted code.
-                                </p>
-                                <p class="card-text">
-                                    throne ui represents my philosophy that great design comes from what you leave out, 
-                                    not what you add. every component is intentionally constrained to prove that 
-                                    limitations breed creativity.
-                                </p>
-                            </div>
-                            <div class="card">
-                                <h3 class="card-title">my approach</h3>
-                                <p class="card-text">
-                                    i focus on vanilla technologies because they're timeless. frameworks come and go, 
-                                    but html, css, and javascript are the foundation of the web.
-                                </p>
-                                <p class="card-text">
-                                    this entire library was built without any external dependencies, 
-                                    proving that you don't need complex tooling to create something beautiful and functional.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="text-center">
-                            <h2 class="mb-3">get in touch</h2>
-                            <p class="text-lg text-secondary mb-4">
-                                interested in collaborating or just want to chat about web development?
-                            </p>
-                            <div class="flex gap-3 justify-center flex-wrap">
-                                <button class="btn btn-primary">
-                                    <span class="material-symbols-outlined">email</span>
-                                    email me
-                                </button>
-                                <button class="btn btn-outline">
-                                    <span class="material-symbols-outlined">code</span>
-                                    github
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
         </div>
     </div>
 
