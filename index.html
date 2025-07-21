@@ -36,7 +36,11 @@
                                 <span class="material-symbols-outlined">widgets</span>
                                 browse components
                             </a>
-                            <a href="#" data-route="/about" class="btn btn-outline">
+                            <a href="#" data-route="/docs" class="btn btn-outline">
+                                <span class="material-symbols-outlined">menu_book</span>
+                                documentation
+                            </a>
+                            <a href="#" data-route="/about" class="btn btn-ghost">
                                 <span class="material-symbols-outlined">info</span>
                                 about thekzbn
                             </a>
@@ -48,6 +52,13 @@
                 <section class="section">
                     <div class="container">
                         <h2 class="text-center mb-4">ready-to-use components</h2>
+                        <div class="text-center mb-6">
+                            <p class="text-secondary mb-3">need help getting started?</p>
+                            <a href="#" data-route="/docs" class="btn btn-outline btn-sm">
+                                <span class="material-symbols-outlined">menu_book</span>
+                                read documentation
+                            </a>
+                        </div>
                         <div class="grid grid-auto gap-3">
                             <div class="card cursor-pointer" onclick="window.throneUI.navigateTo('/navbar')">
                                 <h4 class="card-title">navbar</h4>
@@ -109,6 +120,12 @@
                         <div class="text-center mb-5">
                             <h1>all components</h1>
                             <p class="text-lg text-secondary">copy-paste ready components</p>
+                            <div class="mt-4">
+                                <a href="#" data-route="/docs" class="btn btn-outline btn-sm">
+                                    <span class="material-symbols-outlined">menu_book</span>
+                                    need help? read docs
+                                </a>
+                            </div>
                         </div>
 
                         <div class="grid grid-auto gap-4">
@@ -2413,6 +2430,295 @@ function toggleMobileNav(btn) {
                 </section>
             </div>
 
+            <!-- documentation route -->
+            <div class="route" data-route-path="/docs">
+                <section class="section">
+                    <div class="container">
+                        <div class="mb-5">
+                            <div class="flex gap-2 text-sm mb-2">
+                                <a href="#" data-route="/" class="text-secondary">home</a>
+                                <span class="text-secondary">/</span>
+                                <span class="text-accent">documentation</span>
+                            </div>
+                            <h1 class="mt-2">documentation</h1>
+                            <p class="text-lg text-secondary">everything you need to know about using throne ui</p>
+                        </div>
+
+                        <!-- quick start section -->
+                        <div class="mb-12">
+                            <h2 class="mb-6">🚀 quick start</h2>
+                            <div class="grid grid-2 gap-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <span class="material-symbols-outlined text-accent">content_copy</span>
+                                        <h3>copy & paste (easiest)</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <p class="mb-4">perfect for beginners - just copy components and paste into your project</p>
+                                        <ol class="text-sm text-secondary mb-4">
+                                            <li>browse <a href="#" data-route="/components" class="text-accent">components</a></li>
+                                            <li>click on any component</li>
+                                            <li>hit the copy button</li>
+                                            <li>paste into your html</li>
+                                        </ol>
+                                        <a href="#" data-route="/components" class="btn btn-primary btn-sm">browse components</a>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        <span class="material-symbols-outlined text-accent">cloud</span>
+                                        <h3>cdn setup (recommended)</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <p class="mb-4">full project setup with professional styling</p>
+                                        <div class="component-code text-xs mb-4">
+&lt;!-- foundation css (makes it look amazing) --&gt;
+&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/thekzbn/throne-ui@main/src/throne-foundation.css"&gt;
+
+&lt;!-- throne ui css --&gt;
+&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/thekzbn/throne-ui@main/dist/throne-ui.min.css"&gt;
+
+&lt;!-- throne ui javascript --&gt;
+&lt;script src="https://cdn.jsdelivr.net/gh/thekzbn/throne-ui@main/dist/throne-ui.min.js"&gt;&lt;/script&gt;</div>
+                                        <button class="btn btn-outline btn-sm" onclick="copyCode(this)" data-code="cdn-setup">copy cdn links</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- foundation css section -->
+                        <div class="mb-12">
+                            <h2 class="mb-6">🎨 foundation css (essential)</h2>
+                            <div class="alert">
+                                <span class="material-symbols-outlined">lightbulb</span>
+                                <div>
+                                    <strong>pro tip:</strong> foundation css is the secret to making components look absolutely stunning. 
+                                    it provides perfect typography, spacing, and responsive design.
+                                </div>
+                            </div>
+                            <div class="mt-6">
+                                <h3 class="mb-3">what you get with foundation css:</h3>
+                                <div class="grid grid-2 gap-4 mb-6">
+                                    <div class="flex gap-3">
+                                        <span class="material-symbols-outlined text-accent">font_download</span>
+                                        <div>
+                                            <strong>perfect typography</strong>
+                                            <p class="text-sm text-secondary">inter fonts, responsive sizing, optimal line heights</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-3">
+                                        <span class="material-symbols-outlined text-accent">straighten</span>
+                                        <div>
+                                            <strong>visual rhythm</strong>
+                                            <p class="text-sm text-secondary">consistent spacing and professional appearance</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-3">
+                                        <span class="material-symbols-outlined text-accent">phone_android</span>
+                                        <div>
+                                            <strong>responsive design</strong>
+                                            <p class="text-sm text-secondary">automatic mobile optimization</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-3">
+                                        <span class="material-symbols-outlined text-accent">accessibility</span>
+                                        <div>
+                                            <strong>accessibility</strong>
+                                            <p class="text-sm text-secondary">focus styles, contrast, reduced motion support</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex gap-3">
+                                    <a href="examples/foundation-demo.html" target="_blank" class="btn btn-primary">
+                                        see before/after demo
+                                    </a>
+                                    <a href="docs/foundation-guide.md" target="_blank" class="btn btn-outline">
+                                        complete guide
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- design system section -->
+                        <div class="mb-12">
+                            <h2 class="mb-6">🎨 design system</h2>
+                            <div class="grid grid-2 gap-6">
+                                <div>
+                                    <h3 class="mb-3">3-color system</h3>
+                                    <div class="flex gap-3 mb-4">
+                                        <div class="w-12 h-12 rounded" style="background-color: #d6ad60;"></div>
+                                        <div>
+                                            <strong>gold (#d6ad60)</strong>
+                                            <p class="text-sm text-secondary">accent color for highlights</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-3 mb-4">
+                                        <div class="w-12 h-12 rounded" style="background-color: #000; border: 1px solid #ccc;"></div>
+                                        <div>
+                                            <strong>black (#000)</strong>
+                                            <p class="text-sm text-secondary">primary text and elements</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-3 mb-4">
+                                        <div class="w-12 h-12 rounded" style="background-color: #fff; border: 1px solid #ccc;"></div>
+                                        <div>
+                                            <strong>white (#fff)</strong>
+                                            <p class="text-sm text-secondary">backgrounds and contrast</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 class="mb-3">design rules</h3>
+                                    <div class="mb-4">
+                                        <h4 class="text-sm font-semibold text-accent mb-2">✅ allowed</h4>
+                                        <ul class="text-sm text-secondary">
+                                            <li>3 colors only (gold, black, white)</li>
+                                            <li>borders on forms, profile images, cert cards</li>
+                                            <li>hover effects: color changes, subtle transforms</li>
+                                            <li>typography hierarchy</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm font-semibold text-accent mb-2">❌ forbidden</h4>
+                                        <ul class="text-sm text-secondary">
+                                            <li>shadows of any kind</li>
+                                            <li>extra colors beyond the 3-color system</li>
+                                            <li>borders on buttons, cards, navigation</li>
+                                            <li>complex animations</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- examples section -->
+                        <div class="mb-12">
+                            <h2 class="mb-6">📖 examples & guides</h2>
+                            <div class="grid grid-3 gap-4">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <span class="material-symbols-outlined text-accent">play_arrow</span>
+                                        <h3>getting started</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <p class="text-sm text-secondary mb-3">complete working example showing how to structure your first throne ui project</p>
+                                        <a href="examples/getting-started.html" target="_blank" class="btn btn-outline btn-sm">
+                                            view example
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        <span class="material-symbols-outlined text-accent">person</span>
+                                        <h3>portfolio site</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <p class="text-sm text-secondary mb-3">real-world example of a minimalist portfolio built with throne ui components</p>
+                                        <a href="examples/portfolio.html" target="_blank" class="btn btn-outline btn-sm">
+                                            view example
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        <span class="material-symbols-outlined text-accent">compare</span>
+                                        <h3>foundation demo</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <p class="text-sm text-secondary mb-3">before/after comparison showing the dramatic difference foundation css makes</p>
+                                        <a href="examples/foundation-demo.html" target="_blank" class="btn btn-outline btn-sm">
+                                            view demo
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- javascript api section -->
+                        <div class="mb-12">
+                            <h2 class="mb-6">⚡ javascript api</h2>
+                            <div class="mb-6">
+                                <h3 class="mb-3">theme management</h3>
+                                <div class="component-code text-sm mb-4">
+// toggle between light and dark themes
+window.throneUI.toggleTheme();
+
+// set specific theme
+window.throneUI.setTheme('dark');
+window.throneUI.setTheme('light');</div>
+                            </div>
+                            
+                            <div class="mb-6">
+                                <h3 class="mb-3">interactive components</h3>
+                                <div class="component-code text-sm mb-4">
+// modals
+window.throneUI.showModal('my-modal');
+window.throneUI.hideModal('my-modal');
+
+// alerts
+window.throneUI.showAlert('success', 'operation completed!');
+
+// spa navigation
+window.throneUI.navigateTo('/about');</div>
+                            </div>
+
+                            <div class="mb-6">
+                                <h3 class="mb-3">programmatic component creation</h3>
+                                <div class="component-code text-sm mb-4">
+// create components with javascript
+const button = window.throneUI.createButton('click me', 'primary', () => {
+    alert('button clicked!');
+});
+document.body.appendChild(button);
+
+// create other components
+const card = window.throneUI.createCard('title', 'content');
+const badge = window.throneUI.createBadge('new', 'primary');</div>
+                            </div>
+                        </div>
+
+                        <!-- resources section -->
+                        <div class="mb-12">
+                            <h2 class="mb-6">📚 additional resources</h2>
+                            <div class="grid grid-2 gap-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h3 class="mb-2">📖 foundation guide</h3>
+                                        <p class="text-sm text-secondary mb-3">complete documentation for foundation css with examples and best practices</p>
+                                        <a href="docs/foundation-guide.md" target="_blank" class="btn btn-outline btn-sm">read guide</a>
+                                    </div>
+                                </div>
+                                
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h3 class="mb-2">📋 readme</h3>
+                                        <p class="text-sm text-secondary mb-3">comprehensive readme with setup instructions, usage examples, and api reference</p>
+                                        <a href="README.md" target="_blank" class="btn btn-outline btn-sm">view readme</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- call to action -->
+                        <div class="text-center">
+                            <h2 class="mb-4">ready to start building?</h2>
+                            <p class="text-lg text-secondary mb-6">choose your preferred method and start creating amazing interfaces</p>
+                            <div class="flex gap-3 justify-center">
+                                <a href="#" data-route="/components" class="btn btn-primary">
+                                    browse components
+                                </a>
+                                <a href="examples/getting-started.html" target="_blank" class="btn btn-outline">
+                                    see examples
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
             <!-- about route -->
             <div class="route" data-route-path="/about">
                 <section class="section">
@@ -2480,8 +2786,22 @@ function toggleMobileNav(btn) {
         // copy to clipboard functionality
         function copyCode(btn) {
             const codeId = btn.getAttribute('data-code');
-            const codeElement = document.getElementById(codeId);
-            const text = codeElement.textContent;
+            let text;
+            
+            if (codeId === 'cdn-setup') {
+                // Special case for CDN setup
+                text = `<!-- foundation css (makes it look amazing) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/thekzbn/throne-ui@main/src/throne-foundation.css">
+
+<!-- throne ui css -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/thekzbn/throne-ui@main/dist/throne-ui.min.css">
+
+<!-- throne ui javascript -->
+<script src="https://cdn.jsdelivr.net/gh/thekzbn/throne-ui@main/dist/throne-ui.min.js"></script>`;
+            } else {
+                const codeElement = document.getElementById(codeId);
+                text = codeElement.textContent;
+            }
             
             navigator.clipboard.writeText(text).then(() => {
                 const originalIcon = btn.querySelector('.material-symbols-outlined');
