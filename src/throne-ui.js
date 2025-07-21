@@ -1,0 +1,265 @@
+/**
+ * ThroneUi JavaScript
+ * Ultra-minimalist interactions and theme management
+ */
+
+class ThroneUI {
+  constructor() {
+    this.currentTheme = localStorage.getItem('throne-theme') || 'light';
+    this.init();
+  }
+
+  init() {
+    this.setTheme(this.currentTheme);
+    this.initThemeToggle();
+    this.initNavigation();
+    this.initForms();
+    this.initCards();
+  }
+
+  // Theme Management
+  setTheme(theme) {
+    this.currentTheme = theme;
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('throne-theme', theme);
+    
+    // Update theme toggle icons
+    const toggles = document.querySelectorAll('.theme-toggle');
+    toggles.forEach(toggle => {
+      toggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+      toggle.setAttribute('aria-label', `Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`);
+    });
+  }
+
+  toggleTheme() {
+    const newTheme = this.currentTheme === 'light' ? 'dark' : 'light';
+    this.setTheme(newTheme);
+  }
+
+  initThemeToggle() {
+    const toggles = document.querySelectorAll('.theme-toggle');
+    toggles.forEach(toggle => {
+      toggle.addEventListener('click', () => this.toggleTheme());
+    });
+  }
+
+  // Navigation
+  initNavigation() {
+    const navLinks = document.querySelectorAll('.nav-link');
+    const currentPath = window.location.pathname;
+    
+    navLinks.forEach(link => {
+      if (link.getAttribute('href') === currentPath) {
+        link.classList.add('active');
+      }
+      
+      link.addEventListener('click', (e) => {
+        // Remove active from all links
+        navLinks.forEach(l => l.classList.remove('active'));
+        // Add active to clicked link
+        link.classList.add('active');
+      });
+    });
+  }
+
+  // Form Enhancements
+  initForms() {
+    const forms = document.querySelectorAll('form');
+    
+    forms.forEach(form => {
+      // Add form validation styling
+      const inputs = form.querySelectorAll('.form-input, .form-textarea, .form-select');
+      
+      inputs.forEach(input => {
+        input.addEventListener('invalid', (e) => {
+          input.style.borderColor = 'var(--accent-color)';
+        });
+        
+        input.addEventListener('input', (e) => {
+          if (input.checkValidity()) {
+            input.style.borderColor = 'var(--text-secondary)';
+          }
+        });
+      });
+      
+      // Smooth form submission
+      form.addEventListener('submit', (e) => {
+        const submitBtn = form.querySelector('[type="submit"]');
+        if (submitBtn) {
+          const originalText = submitBtn.textContent;
+          submitBtn.textContent = 'Submitting...';
+          submitBtn.disabled = true;
+          
+          // Re-enable after 2 seconds (adjust based on your needs)
+          setTimeout(() => {
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+          }, 2000);
+        }
+      });
+    });
+  }
+
+  // Card Interactions
+  initCards() {
+    const cards = document.querySelectorAll('.card');
+    
+    cards.forEach(card => {
+      // Add subtle interaction feedback
+      card.addEventListener('mouseenter', () => {
+        card.style.transform = 'translateY(-2px)';
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'translateY(0)';
+      });
+    });
+  }
+
+  // Utility Methods
+  static createElement(tag, className = '', content = '') {
+    const element = document.createElement(tag);
+    if (className) element.className = className;
+    if (content) element.textContent = content;
+    return element;
+  }
+
+  static createButton(text, type = 'btn-primary', onClick = null) {
+    const button = this.createElement('button', `btn ${type}`, text);
+    if (onClick) button.addEventListener('click', onClick);
+    return button;
+  }
+
+  static createCard(title, subtitle = '', description = '', type = 'card') {
+    const card = this.createElement('div', `card ${type}`);
+    
+    if (title) {
+      const titleEl = this.createElement('h3', 'card-title', title);
+      card.appendChild(titleEl);
+    }
+    
+    if (subtitle) {
+      const subtitleEl = this.createElement('div', 'card-subtitle', subtitle);
+      card.appendChild(subtitleEl);
+    }
+    
+    if (description) {
+      const descEl = this.createElement('p', 'card-description', description);
+      card.appendChild(descEl);
+    }
+    
+    return card;
+  }
+
+  static createFormGroup(label, inputType = 'text', placeholder = '', required = false) {
+    const group = this.createElement('div', 'form-group');
+    
+    const labelEl = this.createElement('label', 'form-label', label);
+    group.appendChild(labelEl);
+    
+    let input;
+    if (inputType === 'textarea') {
+      input = this.createElement('textarea', 'form-textarea');
+    } else if (inputType === 'select') {
+      input = this.createElement('select', 'form-select');
+    } else {
+      input = this.createElement('input', 'form-input');
+      input.type = inputType;
+    }
+    
+    if (placeholder) input.placeholder = placeholder;
+    if (required) input.required = true;
+    
+    group.appendChild(input);
+    return group;
+  }
+
+  static createTimeline(items = []) {
+    const timeline = this.createElement('div', 'timeline');
+    
+    items.forEach(item => {
+      const timelineItem = this.createElement('div', 'timeline-item');
+      
+      if (item.date) {
+        const date = this.createElement('div', 'timeline-date', item.date);
+        timelineItem.appendChild(date);
+      }
+      
+      if (item.title) {
+        const title = this.createElement('h3', 'timeline-title', item.title);
+        timelineItem.appendChild(title);
+      }
+      
+      if (item.company) {
+        const company = this.createElement('div', 'timeline-company', item.company);
+        timelineItem.appendChild(company);
+      }
+      
+      if (item.description) {
+        const description = this.createElement('p', 'timeline-description', item.description);
+        timelineItem.appendChild(description);
+      }
+      
+      timeline.appendChild(timelineItem);
+    });
+    
+    return timeline;
+  }
+
+  static createGrid(items = [], columns = 3) {
+    const grid = this.createElement('div', `grid grid-${columns}`);
+    
+    items.forEach(item => {
+      if (typeof item === 'string') {
+        const div = this.createElement('div', '', item);
+        grid.appendChild(div);
+      } else {
+        grid.appendChild(item);
+      }
+    });
+    
+    return grid;
+  }
+
+  // Animation utilities
+  static fadeIn(element, duration = 300) {
+    element.style.opacity = '0';
+    element.style.transition = `opacity ${duration}ms ease`;
+    
+    requestAnimationFrame(() => {
+      element.style.opacity = '1';
+    });
+  }
+
+  static slideUp(element, duration = 300) {
+    element.style.transform = 'translateY(20px)';
+    element.style.opacity = '0';
+    element.style.transition = `transform ${duration}ms ease, opacity ${duration}ms ease`;
+    
+    requestAnimationFrame(() => {
+      element.style.transform = 'translateY(0)';
+      element.style.opacity = '1';
+    });
+  }
+
+  // Scroll utilities
+  static smoothScrollTo(targetId) {
+    const target = document.getElementById(targetId);
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  }
+}
+
+// Initialize ThroneUI when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  window.throneUI = new ThroneUI();
+});
+
+// Export for module use
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = ThroneUI;
+}

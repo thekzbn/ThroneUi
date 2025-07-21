@@ -1,113 +1,378 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ThroneUi || HTML Component Library</title>
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="assets/css/index.css">
+    <title>ThroneUi - Ultra-Minimalist UI Library</title>
+    <link rel="stylesheet" href="src/throne-ui.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
-
 <body>
-    <nav class="topnav">
-        <a class="throneui" href="#home">ThroneUi</a>
-        <div class="topnav-right">
-            <a href="#about">Components</a>
-            <a href="#contact">Showcase</a>
-            <a class="star-github" href="#news">
-                <i class='bx bxl-github'></i> Star on Github
-            </a>
-        </div>
-        <div class="hamburger-menu" id="hamburgerMenu">
-            <i class='bx bx-menu'></i>
-        </div>
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="#" class="nav-brand">ThroneUi</a>
+        <ul class="nav-links">
+            <li><a href="#hero" class="nav-link active">Home</a></li>
+            <li><a href="#components" class="nav-link">Components</a></li>
+            <li><a href="#examples" class="nav-link">Examples</a></li>
+            <li><a href="#docs" class="nav-link">Docs</a></li>
+        </ul>
+        <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
     </nav>
 
-    <div class="mobile-nav-overlay" id="mobileNav">
-        <div class="mobile-nav-header">
-            <a class="throneui-mobile" href="#home">ThroneUi</a>
-            <div class="close-menu" id="closeMenu">
-                <i class='bx bx-x'></i>
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <h1 class="hero-title">ThroneUi</h1>
+        <p class="hero-subtitle">Ultra-Minimalist Design System</p>
+        <p class="hero-description">
+            A vanilla HTML/CSS/JavaScript UI library built on strict constraints: 
+            3 colors maximum, no shadows, minimal borders, typography-first design.
+        </p>
+        <div class="flex gap-2 justify-center">
+            <a href="#components" class="btn btn-primary">View Components</a>
+            <a href="#docs" class="btn btn-link">Documentation</a>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Design Philosophy -->
+        <section id="philosophy" class="mt-4 mb-4">
+            <h2 class="text-center mb-3">Design Philosophy</h2>
+            <div class="grid grid-3">
+                <div class="card card-about text-center">
+                    <h3 class="card-title">3 Colors Only</h3>
+                    <p class="card-description">
+                        Gold (#d6ad60), Black (#000), White (#fff). 
+                        No exceptions, no gradients, no additional colors.
+                    </p>
+                </div>
+                <div class="card card-about text-center">
+                    <h3 class="card-title">No Shadows</h3>
+                    <p class="card-description">
+                        Clean, flat design aesthetic. Visual hierarchy through 
+                        typography, spacing, and color contrast only.
+                    </p>
+                </div>
+                <div class="card card-about text-center">
+                    <h3 class="card-title">Minimal Borders</h3>
+                    <p class="card-description">
+                        Borders only where absolutely necessary: forms, 
+                        profile images, and certification cards.
+                    </p>
+                </div>
             </div>
-        </div>
-        <div class="mobile-nav-links">
-            <a href="#about">Components</a>
-            <a href="#contact">Showcase</a>
-            <a class="star-github-mobile" href="#news">
-                <i class='bx bxl-github'></i> Star on Github
-            </a>
-            <a href="#" class="easter-egg-trigger" id="secretButton">
-                <i class='bx bxs-crown'></i> Find the Crown!
-            </a>
-        </div>
+        </section>
+
+        <!-- Color System -->
+        <section id="colors" class="mb-4">
+            <h2 class="mb-3">Color System</h2>
+            <div class="grid grid-3">
+                <div class="card text-center">
+                    <div style="width: 100px; height: 100px; background: #d6ad60; margin: 0 auto 1rem; border-radius: 50%;"></div>
+                    <h4 class="card-title">Gold</h4>
+                    <p class="card-description">#d6ad60<br>Accent & Interactive</p>
+                </div>
+                <div class="card text-center">
+                    <div style="width: 100px; height: 100px; background: #000; margin: 0 auto 1rem; border-radius: 50%;"></div>
+                    <h4 class="card-title">Black</h4>
+                    <p class="card-description">#000<br>Primary Text & Backgrounds</p>
+                </div>
+                <div class="card text-center">
+                    <div style="width: 100px; height: 100px; background: #fff; border: 1px solid #666; margin: 0 auto 1rem; border-radius: 50%;"></div>
+                    <h4 class="card-title">White</h4>
+                    <p class="card-description">#fff<br>Backgrounds & Contrast</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Typography -->
+        <section id="typography" class="mb-4">
+            <h2 class="mb-3">Typography Hierarchy</h2>
+            <div class="card">
+                <h1>Heading 1 - Hero Title</h1>
+                <h2>Heading 2 - Section Title</h2>
+                <h3>Heading 3 - Card Title</h3>
+                <h4>Heading 4 - Subsection</h4>
+                <h5>Heading 5 - Component Title</h5>
+                <h6>Heading 6 - Small Title</h6>
+                <p>Regular paragraph text with comfortable line height for readability.</p>
+                <p class="text-large">Large text for emphasis and important content.</p>
+                <p class="text-small">Small text for secondary information and captions.</p>
+                <p class="text-xs">Extra small text for fine print and metadata.</p>
+                <p class="text-secondary">Secondary text in muted color for less important content.</p>
+                <p class="text-accent">Accent text in gold for highlights and interactive elements.</p>
+            </div>
+        </section>
+
+        <!-- Buttons -->
+        <section id="buttons" class="mb-4">
+            <h2 class="mb-3">Buttons</h2>
+            <div class="card">
+                <h3 class="card-title">Button Variants</h3>
+                <div class="flex gap-2 mb-3">
+                    <button class="btn btn-primary">Primary Button</button>
+                    <button class="btn btn-link">Link Button</button>
+                    <button class="btn btn-icon">
+                        <span class="material-icons">favorite</span>
+                        Icon Button
+                    </button>
+                </div>
+                <p class="card-description">
+                    Primary buttons use gold background with black text. 
+                    Hover state inverts colors for clear feedback.
+                </p>
+            </div>
+        </section>
+
+        <!-- Cards -->
+        <section id="cards" class="mb-4">
+            <h2 class="mb-3">Cards</h2>
+            
+            <h3 class="mb-2">Project Cards (No Borders)</h3>
+            <div class="grid grid-2 mb-3">
+                <div class="card card-project">
+                    <h3 class="card-title">Project Alpha</h3>
+                    <div class="card-subtitle">Web Application</div>
+                    <p class="card-description">
+                        Clean project card with no borders, relying on spacing 
+                        and hover effects for visual separation.
+                    </p>
+                </div>
+                <div class="card card-project">
+                    <h3 class="card-title">Project Beta</h3>
+                    <div class="card-subtitle">Mobile App</div>
+                    <p class="card-description">
+                        Demonstrates the power of minimal design through 
+                        typography and spacing hierarchy.
+                    </p>
+                </div>
+            </div>
+
+            <h3 class="mb-2">Certification Cards (With Borders - Exception)</h3>
+            <div class="grid grid-2 mb-3">
+                <div class="card card-cert">
+                    <h3 class="card-title">AWS Certified</h3>
+                    <div class="card-subtitle">Cloud Architect</div>
+                    <p class="card-description">
+                        Certification cards are one of the few components 
+                        allowed to have borders in the design system.
+                    </p>
+                </div>
+                <div class="card card-cert">
+                    <h3 class="card-title">Google Cloud</h3>
+                    <div class="card-subtitle">Professional Developer</div>
+                    <p class="card-description">
+                        Border changes to gold on hover, maintaining 
+                        the strict color palette.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Forms -->
+        <section id="forms" class="mb-4">
+            <h2 class="mb-3">Forms (Borders Allowed - Exception)</h2>
+            <div class="card">
+                <h3 class="card-title">Contact Form</h3>
+                <form>
+                    <div class="form-group">
+                        <label class="form-label" for="name">Name</label>
+                        <input type="text" id="name" class="form-input" placeholder="Your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email</label>
+                        <input type="email" id="email" class="form-input" placeholder="your@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="subject">Subject</label>
+                        <select id="subject" class="form-select" required>
+                            <option value="">Select a subject</option>
+                            <option value="general">General Inquiry</option>
+                            <option value="support">Support</option>
+                            <option value="feedback">Feedback</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="message">Message</label>
+                        <textarea id="message" class="form-textarea" placeholder="Your message..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Timeline -->
+        <section id="timeline" class="mb-4">
+            <h2 class="mb-3">Experience Timeline</h2>
+            <div class="card">
+                <h3 class="card-title">Work Experience</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">2023 - Present</div>
+                        <h3 class="timeline-title">Senior Frontend Developer</h3>
+                        <div class="timeline-company">TechCorp Inc.</div>
+                        <p class="timeline-description">
+                            Leading frontend development initiatives with focus on 
+                            minimalist design systems and performance optimization.
+                        </p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2021 - 2023</div>
+                        <h3 class="timeline-title">UI/UX Designer</h3>
+                        <div class="timeline-company">Design Studio</div>
+                        <p class="timeline-description">
+                            Specialized in creating clean, purposeful interfaces 
+                            with strict design constraints and minimal aesthetics.
+                        </p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2019 - 2021</div>
+                        <h3 class="timeline-title">Frontend Developer</h3>
+                        <div class="timeline-company">StartupXYZ</div>
+                        <p class="timeline-description">
+                            Built responsive web applications with vanilla JavaScript 
+                            and modern CSS techniques.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile Images -->
+        <section id="profile" class="mb-4">
+            <h2 class="mb-3">Profile Images (Borders Allowed - Exception)</h2>
+            <div class="card text-center">
+                <h3 class="card-title">Team Members</h3>
+                <div class="flex gap-3 justify-center">
+                    <div class="profile-image">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face" 
+                             alt="Team member 1" width="80" height="80">
+                    </div>
+                    <div class="profile-image">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face" 
+                             alt="Team member 2" width="80" height="80">
+                    </div>
+                    <div class="profile-image">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" 
+                             alt="Team member 3" width="80" height="80">
+                    </div>
+                </div>
+                <p class="card-description mt-2">
+                    Profile images have gold borders as one of the design system exceptions.
+                </p>
+            </div>
+        </section>
+
+        <!-- Grid Systems -->
+        <section id="grids" class="mb-4">
+            <h2 class="mb-3">Grid Systems</h2>
+            
+            <h3 class="mb-2">2-Column Grid</h3>
+            <div class="grid grid-2 mb-3">
+                <div class="card">
+                    <h4 class="card-title">Grid Item 1</h4>
+                    <p class="card-description">Clean grid layout with gap spacing.</p>
+                </div>
+                <div class="card">
+                    <h4 class="card-title">Grid Item 2</h4>
+                    <p class="card-description">No border separators between items.</p>
+                </div>
+            </div>
+
+            <h3 class="mb-2">3-Column Grid</h3>
+            <div class="grid grid-3 mb-3">
+                <div class="card">
+                    <h4 class="card-title">Item A</h4>
+                    <p class="card-description">Visual separation through spacing.</p>
+                </div>
+                <div class="card">
+                    <h4 class="card-title">Item B</h4>
+                    <p class="card-description">Responsive grid system.</p>
+                </div>
+                <div class="card">
+                    <h4 class="card-title">Item C</h4>
+                    <p class="card-description">Pure CSS Grid implementation.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Utility Classes -->
+        <section id="utilities" class="mb-4">
+            <h2 class="mb-3">Utility Classes</h2>
+            <div class="card">
+                <h3 class="card-title">Spacing & Layout</h3>
+                <div class="mb-3">
+                    <div class="flex gap-2 mb-2">
+                        <div class="p-2" style="background: var(--accent-color); color: var(--black);">p-2</div>
+                        <div class="p-3" style="background: var(--accent-color); color: var(--black);">p-3</div>
+                        <div class="p-4" style="background: var(--accent-color); color: var(--black);">p-4</div>
+                    </div>
+                    <div class="flex gap-2">
+                        <div class="mb-2" style="background: var(--text-secondary); color: var(--bg-color); padding: 0.5rem;">mb-2</div>
+                        <div class="mt-2" style="background: var(--text-secondary); color: var(--bg-color); padding: 0.5rem;">mt-2</div>
+                    </div>
+                </div>
+                
+                <h4 class="mb-2">Text Alignment</h4>
+                <div class="mb-3">
+                    <p class="text-left">Left aligned text</p>
+                    <p class="text-center">Center aligned text</p>
+                    <p class="text-right">Right aligned text</p>
+                </div>
+
+                <h4 class="mb-2">Flexbox Utilities</h4>
+                <div class="flex justify-between items-center p-2" style="background: var(--text-secondary); color: var(--bg-color);">
+                    <span>Left</span>
+                    <span>Center</span>
+                    <span>Right</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Design Constraints -->
+        <section id="constraints" class="mb-4">
+            <h2 class="mb-3">Design Constraints</h2>
+            <div class="grid grid-2">
+                <div class="card">
+                    <h3 class="card-title text-accent">✓ Allowed</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li class="mb-1">• 3 colors: Gold, Black, White</li>
+                        <li class="mb-1">• Form input borders</li>
+                        <li class="mb-1">• Profile image borders</li>
+                        <li class="mb-1">• Certification card borders</li>
+                        <li class="mb-1">• Color transitions</li>
+                        <li class="mb-1">• translateY(-2px) hover</li>
+                        <li class="mb-1">• Typography hierarchy</li>
+                        <li class="mb-1">• Generous spacing</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3 class="card-title text-secondary">✗ Forbidden</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li class="mb-1">• Any shadows (box, text, drop)</li>
+                        <li class="mb-1">• Additional colors</li>
+                        <li class="mb-1">• Borders on most elements</li>
+                        <li class="mb-1">• Gradients</li>
+                        <li class="mb-1">• Complex animations</li>
+                        <li class="mb-1">• Decorative elements</li>
+                        <li class="mb-1">• Border separators</li>
+                        <li class="mb-1">• Visual noise</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
     </div>
 
-    <main>
-        <section class="hero">
-            <h1>Beautiful HTML Components, Ready to Use.<span class="magic-sparkle">✨</span></h1>
-            <p>
-                Discover a curated collection of accessible, responsive, and customizable HTML snippets for your next
-                project. Save time and build stunning web experiences with ease.<span class="code-emoji">💻</span>
-            </p>
-            <div class="hero-buttons">
-                <a href="#components">Browse Components <i class='bx bx-search'></i></a>
-                <a href="#showcase">View Showcase <i class='bx bx-show'></i></a>
-            </div>
-            <div class="fun-detail-icon">
-                <i class='bx bx-code-alt bx-tada'></i>
-            </div>
-        </section>
-
-        <section class="testimonials">
-            <h2>What Developers Are Saying <i class='bx bxs-quote-alt-left'></i><i class='bx bxs-quote-alt-right'></i>
-            </h2>
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <p>"ThroneUi has revolutionized my workflow. The components are clean, semantic, and
-                        incredibly easy to integrate. A true game-changer!"</p>
-                    <div class="testimonial-author">- Jane Doe</div>
-                    <div class="testimonial-source">Lead Developer at WebSolutions</div>
-                    <span class="smiley-face">😊</span>
-                </div>
-                <div class="testimonial-card">
-                    <p>"Finally, a resource for well-crafted HTML. I used to spend hours on boilerplate, but now I can
-                        focus on what truly matters."</p>
-                    <div class="testimonial-author">- John Smith</div>
-                    <div class="testimonial-source">Frontend Engineer at CreativeLabs</div>
-                    <span class="lightbulb">💡</span>
-                </div>
-                <div class="testimonial-card">
-                    <p>"The blur effects and sticky navigation are seamless. This library proves that HTML can be both
-                        functional and visually stunning."</p>
-                    <div class="testimonial-author">- Emily White</div>
-                    <div class="testimonial-source">UI/UX Designer</div>
-                    <span class="rocket-ship">🚀</span>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-left">
-                <p class="footer-brand">ThroneUi</p>
-                <p>A library created with love by <a href="YOUR_GITHUB_PROFILE_URL" target="_blank"
-                        rel="noopener noreferrer">"this guy"</a> <i class='bx bxs-heart'></i></p>
-                <p class="footer-copy">&copy; 2025 ThroneUi. MIT Licensed. <span id="secretMessageTrigger"
-                        class="secret-text">Psst!</span></p>
-            </div>
-            <div class="footer-right">
-                <a href="YOUR_GITHUB_REPO_URL" target="_blank" rel="noopener noreferrer">GitHub <i
-                        class='bx bxl-github'></i></a>
-                <a href="#about">Components <i class='bx bx-cube'></i></a>
-                <a href="#contact">Showcase <i class='bx bx-collection'></i></a>
-            </div>
-        </div>
+    <!-- Footer -->
+    <footer class="text-center p-4 mt-4" style="border-top: 1px solid var(--text-secondary);">
+        <p class="text-secondary">
+            ThroneUi - Ultra-minimalist design system. Built with vanilla HTML, CSS, and JavaScript.
+        </p>
+        <p class="text-xs text-secondary mt-1">
+            Demonstrating the power of constraints in design.
+        </p>
     </footer>
 
-    <script src="assets/js/index.js"></script>
-    <script src="assets/js/prism.js"></script>
+    <script src="src/throne-ui.js"></script>
 </body>
-
 </html>

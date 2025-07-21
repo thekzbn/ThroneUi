@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Doe - Portfolio | ThroneUi Example</title>
+    <link rel="stylesheet" href="../src/throne-ui.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="#" class="nav-brand">John Doe</a>
+        <ul class="nav-links">
+            <li><a href="#home" class="nav-link active">Home</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#experience" class="nav-link">Experience</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="profile-image mb-3">
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face" 
+                 alt="John Doe" width="120" height="120">
+        </div>
+        <h1 class="hero-title">John Doe</h1>
+        <p class="hero-subtitle">Senior Full Stack Developer</p>
+        <p class="hero-description">
+            Passionate about creating clean, efficient code and beautiful user experiences. 
+            Specializing in modern web technologies and minimalist design principles.
+        </p>
+        <div class="flex gap-2 justify-center">
+            <a href="#projects" class="btn btn-primary">View My Work</a>
+            <a href="#contact" class="btn btn-link">Get In Touch</a>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- About Section -->
+        <section id="about" class="mb-4">
+            <h2 class="text-center mb-3">About Me</h2>
+            <div class="grid grid-3">
+                <div class="card card-about text-center">
+                    <span class="material-icons" style="font-size: 3rem; color: var(--accent-color); margin-bottom: 1rem;">code</span>
+                    <h3 class="card-title">Clean Code</h3>
+                    <p class="card-description">
+                        I believe in writing code that is not only functional but also 
+                        readable, maintainable, and elegant.
+                    </p>
+                </div>
+                <div class="card card-about text-center">
+                    <span class="material-icons" style="font-size: 3rem; color: var(--accent-color); margin-bottom: 1rem;">palette</span>
+                    <h3 class="card-title">Design Focus</h3>
+                    <p class="card-description">
+                        Passionate about minimalist design and the power of constraints 
+                        to create beautiful, purposeful interfaces.
+                    </p>
+                </div>
+                <div class="card card-about text-center">
+                    <span class="material-icons" style="font-size: 3rem; color: var(--accent-color); margin-bottom: 1rem;">speed</span>
+                    <h3 class="card-title">Performance</h3>
+                    <p class="card-description">
+                        Committed to building fast, efficient applications that provide 
+                        excellent user experiences across all devices.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="mb-4">
+            <h2 class="text-center mb-3">Technical Skills</h2>
+            <div class="card">
+                <div class="grid grid-2">
+                    <div>
+                        <h4 class="text-accent mb-2">Frontend</h4>
+                        <ul style="list-style: none; padding: 0;">
+                            <li class="mb-1">• JavaScript (ES6+)</li>
+                            <li class="mb-1">• TypeScript</li>
+                            <li class="mb-1">• React / Vue.js</li>
+                            <li class="mb-1">• HTML5 / CSS3</li>
+                            <li class="mb-1">• Vanilla JavaScript</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-accent mb-2">Backend & Tools</h4>
+                        <ul style="list-style: none; padding: 0;">
+                            <li class="mb-1">• Node.js / Python</li>
+                            <li class="mb-1">• PostgreSQL / MongoDB</li>
+                            <li class="mb-1">• Git / GitHub</li>
+                            <li class="mb-1">• Docker</li>
+                            <li class="mb-1">• AWS / Cloud Services</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Timeline -->
+        <section id="experience" class="mb-4">
+            <h2 class="text-center mb-3">Work Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2023 - Present</div>
+                    <h3 class="timeline-title">Senior Full Stack Developer</h3>
+                    <div class="timeline-company">TechCorp Solutions</div>
+                    <p class="timeline-description">
+                        Leading development of scalable web applications using modern JavaScript frameworks. 
+                        Mentoring junior developers and implementing best practices for code quality and performance.
+                        Reduced application load times by 40% through optimization techniques.
+                    </p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2021 - 2023</div>
+                    <h3 class="timeline-title">Frontend Developer</h3>
+                    <div class="timeline-company">Digital Agency Pro</div>
+                    <p class="timeline-description">
+                        Developed responsive web applications for clients across various industries. 
+                        Specialized in creating clean, minimalist interfaces with focus on user experience.
+                        Successfully delivered 25+ projects on time and within budget.
+                    </p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2019 - 2021</div>
+                    <h3 class="timeline-title">Junior Web Developer</h3>
+                    <div class="timeline-company">StartupXYZ</div>
+                    <p class="timeline-description">
+                        Built and maintained company website and internal tools. 
+                        Gained experience with full-stack development and agile methodologies.
+                        Contributed to a 30% increase in website conversion rates.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="mb-4">
+            <h2 class="text-center mb-3">Featured Projects</h2>
+            <div class="grid grid-2">
+                <div class="card card-project">
+                    <h3 class="card-title">ThroneUi</h3>
+                    <div class="card-subtitle">UI Component Library</div>
+                    <p class="card-description">
+                        Ultra-minimalist HTML/CSS/JavaScript UI library with strict 3-color design system. 
+                        Demonstrates the power of constraints in creating beautiful, purposeful interfaces.
+                    </p>
+                    <div class="flex gap-2 mt-2">
+                        <a href="#" class="btn btn-link">View Demo</a>
+                        <a href="#" class="btn btn-link">GitHub</a>
+                    </div>
+                </div>
+                <div class="card card-project">
+                    <h3 class="card-title">E-Commerce Platform</h3>
+                    <div class="card-subtitle">Full Stack Application</div>
+                    <p class="card-description">
+                        Modern e-commerce solution built with React and Node.js. Features include 
+                        user authentication, payment processing, and real-time inventory management.
+                    </p>
+                    <div class="flex gap-2 mt-2">
+                        <a href="#" class="btn btn-link">View Demo</a>
+                        <a href="#" class="btn btn-link">GitHub</a>
+                    </div>
+                </div>
+                <div class="card card-project">
+                    <h3 class="card-title">Task Management App</h3>
+                    <div class="card-subtitle">Progressive Web App</div>
+                    <p class="card-description">
+                        Clean, efficient task management application with offline capabilities. 
+                        Built with vanilla JavaScript and modern CSS, focusing on performance and usability.
+                    </p>
+                    <div class="flex gap-2 mt-2">
+                        <a href="#" class="btn btn-link">View Demo</a>
+                        <a href="#" class="btn btn-link">GitHub</a>
+                    </div>
+                </div>
+                <div class="card card-project">
+                    <h3 class="card-title">Weather Dashboard</h3>
+                    <div class="card-subtitle">Data Visualization</div>
+                    <p class="card-description">
+                        Interactive weather dashboard with real-time data visualization. 
+                        Features clean charts, location-based forecasts, and responsive design.
+                    </p>
+                    <div class="flex gap-2 mt-2">
+                        <a href="#" class="btn btn-link">View Demo</a>
+                        <a href="#" class="btn btn-link">GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications -->
+        <section id="certifications" class="mb-4">
+            <h2 class="text-center mb-3">Certifications</h2>
+            <div class="grid grid-3">
+                <div class="card card-cert">
+                    <h3 class="card-title">AWS Certified</h3>
+                    <div class="card-subtitle">Solutions Architect</div>
+                    <p class="card-description">
+                        Professional certification demonstrating expertise in designing 
+                        and deploying scalable systems on AWS.
+                    </p>
+                </div>
+                <div class="card card-cert">
+                    <h3 class="card-title">Google Cloud</h3>
+                    <div class="card-subtitle">Professional Developer</div>
+                    <p class="card-description">
+                        Certified in building scalable and reliable applications 
+                        using Google Cloud Platform services.
+                    </p>
+                </div>
+                <div class="card card-cert">
+                    <h3 class="card-title">MongoDB</h3>
+                    <div class="card-subtitle">Certified Developer</div>
+                    <p class="card-description">
+                        Expertise in designing, building, and deploying applications 
+                        using MongoDB database technology.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="mb-4">
+            <h2 class="text-center mb-3">Get In Touch</h2>
+            <div class="grid grid-2">
+                <div class="card">
+                    <h3 class="card-title">Let's Connect</h3>
+                    <p class="card-description mb-3">
+                        I'm always interested in new opportunities and collaborations. 
+                        Whether you have a project in mind or just want to chat about technology, 
+                        feel free to reach out!
+                    </p>
+                    <div class="flex gap-3">
+                        <a href="mailto:john@example.com" class="btn btn-icon">
+                            <span class="material-icons">email</span>
+                            Email
+                        </a>
+                        <a href="https://linkedin.com/in/johndoe" class="btn btn-icon">
+                            <span class="material-icons">person</span>
+                            LinkedIn
+                        </a>
+                        <a href="https://github.com/johndoe" class="btn btn-icon">
+                            <span class="material-icons">code</span>
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">Send a Message</h3>
+                    <form>
+                        <div class="form-group">
+                            <label class="form-label" for="contact-name">Name</label>
+                            <input type="text" id="contact-name" class="form-input" placeholder="Your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="contact-email">Email</label>
+                            <input type="email" id="contact-email" class="form-input" placeholder="your@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="contact-message">Message</label>
+                            <textarea id="contact-message" class="form-textarea" placeholder="Your message..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center p-4 mt-4" style="border-top: 1px solid var(--text-secondary);">
+        <p class="text-secondary">
+            Built with ThroneUi - Ultra-minimalist design system
+        </p>
+        <p class="text-xs text-secondary mt-1">
+            © 2025 John Doe. All rights reserved.
+        </p>
+    </footer>
+
+    <script src="../src/throne-ui.js"></script>
+</body>
+</html>
