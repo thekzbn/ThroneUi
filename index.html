@@ -3,375 +3,1334 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ThroneUi - Ultra-Minimalist UI Library</title>
+    <title>throne ui - ultra-minimalist component library</title>
     <link rel="stylesheet" href="src/throne-ui.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="nav">
-        <a href="#" class="nav-brand">ThroneUi</a>
-        <ul class="nav-links">
-            <li><a href="#hero" class="nav-link active">Home</a></li>
-            <li><a href="#components" class="nav-link">Components</a></li>
-            <li><a href="#examples" class="nav-link">Examples</a></li>
-            <li><a href="#docs" class="nav-link">Docs</a></li>
-        </ul>
-        <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
-    </nav>
+    <div class="spa-container">
+        <!-- floating theme toggle -->
+        <button class="theme-toggle" aria-label="toggle theme">
+            <span class="material-symbols-outlined">dark_mode</span>
+        </button>
 
-    <!-- Hero Section -->
-    <section id="hero" class="hero">
-        <h1 class="hero-title">ThroneUi</h1>
-        <p class="hero-subtitle">Ultra-Minimalist Design System</p>
-        <p class="hero-description">
-            A vanilla HTML/CSS/JavaScript UI library built on strict constraints: 
-            3 colors maximum, no shadows, minimal borders, typography-first design.
-        </p>
-        <div class="flex gap-2 justify-center">
-            <a href="#components" class="btn btn-primary">View Components</a>
-            <a href="#docs" class="btn btn-link">Documentation</a>
+        <!-- spa content wrapper -->
+        <div class="spa-content">
+            <!-- home route -->
+            <div class="route active" data-route-path="/">
+                <!-- hero section -->
+                <section class="section">
+                    <div class="container text-center">
+                        <h1 class="mb-2">throne ui</h1>
+                        <p class="text-xl text-accent mb-2">ultra-minimalist component library</p>
+                        <p class="text-lg text-secondary mb-4 mx-auto" style="max-width: 600px;">
+                            75+ components built with vanilla html, css, and javascript. 
+                            strict 3-color design system. no shadows, minimal borders, typography-first.
+                        </p>
+                        <div class="flex gap-2 justify-center flex-wrap">
+                            <a href="#" data-route="/components" class="btn btn-primary">
+                                <span class="material-symbols-outlined">widgets</span>
+                                explore components
+                            </a>
+                            <a href="#" data-route="/spa" class="btn btn-outline">
+                                <span class="material-symbols-outlined">web</span>
+                                spa features
+                            </a>
+                            <a href="#" data-route="/about" class="btn btn-ghost">
+                                <span class="material-symbols-outlined">info</span>
+                                about thekzbn
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- philosophy cards -->
+                <section class="section bg-subtle">
+                    <div class="container">
+                        <h2 class="text-center mb-4">design philosophy</h2>
+                        <div class="grid grid-3">
+                            <div class="card text-center">
+                                <span class="material-symbols-outlined text-5xl text-accent mb-2">palette</span>
+                                <h3 class="card-title">3 colors only</h3>
+                                <p class="card-text">gold (#d6ad60), black (#000), white (#fff). no exceptions, no gradients.</p>
+                            </div>
+                            <div class="card text-center">
+                                <span class="material-symbols-outlined text-5xl text-accent mb-2">visibility_off</span>
+                                <h3 class="card-title">no shadows</h3>
+                                <p class="card-text">clean, flat design. visual hierarchy through typography and spacing only.</p>
+                            </div>
+                            <div class="card text-center">
+                                <span class="material-symbols-outlined text-5xl text-accent mb-2">border_style</span>
+                                <h3 class="card-title">minimal borders</h3>
+                                <p class="card-text">borders only where necessary: forms, avatars, and certification cards.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- quick navigation -->
+                <section class="section">
+                    <div class="container">
+                        <h2 class="text-center mb-4">component categories</h2>
+                        <div class="grid grid-auto">
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/components#layout')">
+                                <h4 class="card-title">layout & grid</h4>
+                                <p class="card-text text-sm">containers, grids, flexbox utilities</p>
+                                <div class="card-actions">
+                                    <span class="badge">12 components</span>
+                                </div>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/components#buttons')">
+                                <h4 class="card-title">buttons & actions</h4>
+                                <p class="card-text text-sm">buttons, links, icon buttons</p>
+                                <div class="card-actions">
+                                    <span class="badge">8 components</span>
+                                </div>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/components#forms')">
+                                <h4 class="card-title">forms & inputs</h4>
+                                <p class="card-text text-sm">inputs, selects, validation</p>
+                                <div class="card-actions">
+                                    <span class="badge">10 components</span>
+                                </div>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/components#cards')">
+                                <h4 class="card-title">cards & content</h4>
+                                <p class="card-text text-sm">cards, timelines, profiles</p>
+                                <div class="card-actions">
+                                    <span class="badge">9 components</span>
+                                </div>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/components#navigation')">
+                                <h4 class="card-title">navigation</h4>
+                                <p class="card-text text-sm">tabs, breadcrumbs, pagination</p>
+                                <div class="card-actions">
+                                    <span class="badge">7 components</span>
+                                </div>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/components#feedback')">
+                                <h4 class="card-title">feedback & overlays</h4>
+                                <p class="card-text text-sm">modals, alerts, tooltips</p>
+                                <div class="card-actions">
+                                    <span class="badge">11 components</span>
+                                </div>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/components#data')">
+                                <h4 class="card-title">data display</h4>
+                                <p class="card-text text-sm">tables, progress, badges</p>
+                                <div class="card-actions">
+                                    <span class="badge">9 components</span>
+                                </div>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/components#utilities')">
+                                <h4 class="card-title">utilities</h4>
+                                <p class="card-text text-sm">spacing, typography, animations</p>
+                                <div class="card-actions">
+                                    <span class="badge">15+ utilities</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- components route -->
+            <div class="route" data-route-path="/components">
+                <section class="section">
+                    <div class="container">
+                        <div class="text-center mb-5">
+                            <h1>all components</h1>
+                            <p class="text-lg text-secondary">comprehensive showcase of all 75+ components</p>
+                        </div>
+
+                        <!-- layout & grid -->
+                        <div id="layout" class="mb-5">
+                            <h2 class="mb-3">layout & grid system</h2>
+                            
+                            <!-- containers -->
+                            <div class="mb-4">
+                                <h3 class="mb-2">containers</h3>
+                                <div class="grid grid-3 mb-3">
+                                    <div class="container-sm p-2 text-center" style="background: var(--border-color);">container-sm</div>
+                                    <div class="container p-2 text-center" style="background: var(--border-color);">container</div>
+                                    <div class="container-fluid p-2 text-center" style="background: var(--border-color);">container-fluid</div>
+                                </div>
+                            </div>
+
+                            <!-- grid systems -->
+                            <div class="mb-4">
+                                <h3 class="mb-2">grid systems</h3>
+                                <div class="mb-3">
+                                    <h4 class="text-sm mb-2">2-column grid</h4>
+                                    <div class="grid grid-2 gap-2">
+                                        <div class="p-2 text-center" style="background: var(--accent-color); color: var(--black);">item 1</div>
+                                        <div class="p-2 text-center" style="background: var(--accent-color); color: var(--black);">item 2</div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <h4 class="text-sm mb-2">3-column grid</h4>
+                                    <div class="grid grid-3 gap-2">
+                                        <div class="p-2 text-center" style="background: var(--text-secondary); color: var(--bg-color);">item 1</div>
+                                        <div class="p-2 text-center" style="background: var(--text-secondary); color: var(--bg-color);">item 2</div>
+                                        <div class="p-2 text-center" style="background: var(--text-secondary); color: var(--bg-color);">item 3</div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <h4 class="text-sm mb-2">auto-fit grid</h4>
+                                    <div class="grid grid-auto gap-2">
+                                        <div class="p-2 text-center" style="background: var(--border-color);">responsive</div>
+                                        <div class="p-2 text-center" style="background: var(--border-color);">auto-sizing</div>
+                                        <div class="p-2 text-center" style="background: var(--border-color);">grid items</div>
+                                        <div class="p-2 text-center" style="background: var(--border-color);">that adapt</div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <h4 class="text-sm mb-2">masonry grid</h4>
+                                    <div class="grid-masonry">
+                                        <div class="card card-bordered">
+                                            <h5>masonry item 1</h5>
+                                            <p>shorter content here</p>
+                                        </div>
+                                        <div class="card card-bordered">
+                                            <h5>masonry item 2</h5>
+                                            <p>this has more content to demonstrate how masonry layout works with different heights and creates a pinterest-like layout</p>
+                                        </div>
+                                        <div class="card card-bordered">
+                                            <h5>masonry item 3</h5>
+                                            <p>medium length content</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- flexbox utilities -->
+                            <div class="mb-4">
+                                <h3 class="mb-2">flexbox utilities</h3>
+                                <div class="grid grid-2 gap-3">
+                                    <div>
+                                        <h4 class="text-sm mb-2">flex directions</h4>
+                                        <div class="flex gap-2 mb-2 p-2" style="background: var(--border-color);">
+                                            <div class="p-1" style="background: var(--accent-color); color: var(--black);">flex</div>
+                                            <div class="p-1" style="background: var(--accent-color); color: var(--black);">row</div>
+                                        </div>
+                                        <div class="flex flex-col gap-2 p-2" style="background: var(--border-color);">
+                                            <div class="p-1" style="background: var(--accent-color); color: var(--black);">flex</div>
+                                            <div class="p-1" style="background: var(--accent-color); color: var(--black);">column</div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm mb-2">justify content</h4>
+                                        <div class="flex justify-between gap-2 mb-2 p-2" style="background: var(--border-color);">
+                                            <div class="p-1" style="background: var(--text-secondary); color: var(--bg-color);">space</div>
+                                            <div class="p-1" style="background: var(--text-secondary); color: var(--bg-color);">between</div>
+                                        </div>
+                                        <div class="flex justify-center gap-2 p-2" style="background: var(--border-color);">
+                                            <div class="p-1" style="background: var(--text-secondary); color: var(--bg-color);">centered</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- buttons & actions -->
+                        <div id="buttons" class="mb-5">
+                            <h2 class="mb-3">buttons & actions</h2>
+                            
+                            <div class="mb-4">
+                                <h3 class="mb-2">button variants</h3>
+                                <div class="flex gap-2 flex-wrap mb-3">
+                                    <button class="btn btn-primary">primary</button>
+                                    <button class="btn btn-secondary">secondary</button>
+                                    <button class="btn btn-outline">outline</button>
+                                    <button class="btn btn-ghost">ghost</button>
+                                    <button class="btn btn-link">link</button>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="mb-2">button sizes</h3>
+                                <div class="flex gap-2 items-center flex-wrap mb-3">
+                                    <button class="btn btn-primary btn-sm">small</button>
+                                    <button class="btn btn-primary">normal</button>
+                                    <button class="btn btn-primary btn-lg">large</button>
+                                    <button class="btn btn-primary btn-xl">extra large</button>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="mb-2">special buttons</h3>
+                                <div class="flex gap-2 flex-wrap mb-3">
+                                    <button class="btn btn-primary btn-circle">
+                                        <span class="material-symbols-outlined">add</span>
+                                    </button>
+                                    <button class="btn btn-outline btn-square">
+                                        <span class="material-symbols-outlined">edit</span>
+                                    </button>
+                                    <button class="btn btn-primary btn-wide">wide button</button>
+                                </div>
+                                <button class="btn btn-primary btn-block mb-2">block button</button>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="mb-2">icon buttons</h3>
+                                <div class="flex gap-2 flex-wrap mb-3">
+                                    <button class="btn btn-primary">
+                                        <span class="material-symbols-outlined">download</span>
+                                        download
+                                    </button>
+                                    <button class="btn btn-outline">
+                                        <span class="material-symbols-outlined">share</span>
+                                        share
+                                    </button>
+                                    <button class="btn btn-ghost">
+                                        <span class="material-symbols-outlined">favorite</span>
+                                        like
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="mb-2">button groups</h3>
+                                <div class="btn-group mb-3">
+                                    <button class="btn btn-outline">left</button>
+                                    <button class="btn btn-outline">middle</button>
+                                    <button class="btn btn-outline">right</button>
+                                </div>
+                                <div class="btn-group-vertical">
+                                    <button class="btn btn-outline">top</button>
+                                    <button class="btn btn-outline">middle</button>
+                                    <button class="btn btn-outline">bottom</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- forms & inputs -->
+                        <div id="forms" class="mb-5">
+                            <h2 class="mb-3">forms & inputs</h2>
+                            
+                            <div class="grid grid-2 gap-4">
+                                <div>
+                                    <h3 class="mb-2">basic inputs</h3>
+                                    <div class="form-control">
+                                        <label class="form-label" for="text-input">text input</label>
+                                        <input type="text" id="text-input" class="form-input" placeholder="enter text">
+                                    </div>
+                                    <div class="form-control">
+                                        <label class="form-label" for="email-input">email input</label>
+                                        <input type="email" id="email-input" class="form-input" placeholder="your@email.com">
+                                    </div>
+                                    <div class="form-control">
+                                        <label class="form-label" for="password-input">password input</label>
+                                        <input type="password" id="password-input" class="form-input" placeholder="password">
+                                    </div>
+                                    <div class="form-control">
+                                        <label class="form-label" for="textarea-input">textarea</label>
+                                        <textarea id="textarea-input" class="form-textarea" placeholder="your message"></textarea>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 class="mb-2">select & options</h3>
+                                    <div class="form-control">
+                                        <label class="form-label" for="select-input">select dropdown</label>
+                                        <select id="select-input" class="form-select">
+                                            <option value="">choose option</option>
+                                            <option value="1">option 1</option>
+                                            <option value="2">option 2</option>
+                                            <option value="3">option 3</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-control">
+                                        <label class="form-label">checkboxes</label>
+                                        <div class="checkbox">
+                                            <input type="checkbox" id="check1">
+                                            <label for="check1">option 1</label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <input type="checkbox" id="check2">
+                                            <label for="check2">option 2</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-control">
+                                        <label class="form-label">radio buttons</label>
+                                        <div class="radio">
+                                            <input type="radio" id="radio1" name="radio-group">
+                                            <label for="radio1">choice 1</label>
+                                        </div>
+                                        <div class="radio">
+                                            <input type="radio" id="radio2" name="radio-group">
+                                            <label for="radio2">choice 2</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-4">
+                                <h3 class="mb-2">input sizes</h3>
+                                <div class="form-control">
+                                    <label class="form-label" for="small-input">small input</label>
+                                    <input type="text" id="small-input" class="form-input form-input-sm" placeholder="small">
+                                </div>
+                                <div class="form-control">
+                                    <label class="form-label" for="large-input">large input</label>
+                                    <input type="text" id="large-input" class="form-input form-input-lg" placeholder="large">
+                                </div>
+                            </div>
+
+                            <div class="mt-4">
+                                <h3 class="mb-2">form layouts</h3>
+                                <div class="form-group">
+                                    <div class="form-control">
+                                        <label class="form-label" for="first-name">first name</label>
+                                        <input type="text" id="first-name" class="form-input">
+                                    </div>
+                                    <div class="form-control">
+                                        <label class="form-label" for="last-name">last name</label>
+                                        <input type="text" id="last-name" class="form-input">
+                                    </div>
+                                </div>
+                                <div class="form-inline">
+                                    <div class="form-control">
+                                        <label class="form-label" for="inline-input">inline form</label>
+                                        <input type="text" id="inline-input" class="form-input">
+                                    </div>
+                                    <button class="btn btn-primary">submit</button>
+                                </div>
+                            </div>
+
+                            <div class="mt-4">
+                                <h3 class="mb-2">validation states</h3>
+                                <div class="form-control">
+                                    <label class="form-label" for="valid-input">valid input</label>
+                                    <input type="text" id="valid-input" class="form-input" value="valid input" style="border-color: var(--text-secondary);">
+                                    <div class="form-help">this field is valid</div>
+                                </div>
+                                <div class="form-control">
+                                    <label class="form-label" for="error-input">error input</label>
+                                    <input type="text" id="error-input" class="form-input" style="border-color: var(--accent-color);">
+                                    <div class="form-error">this field is required</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- cards & content -->
+                        <div id="cards" class="mb-5">
+                            <h2 class="mb-3">cards & content</h2>
+                            
+                            <div class="mb-4">
+                                <h3 class="mb-2">card variants</h3>
+                                <div class="grid grid-3 mb-3">
+                                    <div class="card">
+                                        <h4 class="card-title">basic card</h4>
+                                        <p class="card-text">simple card with no borders</p>
+                                    </div>
+                                    <div class="card card-bordered">
+                                        <h4 class="card-title">bordered card</h4>
+                                        <p class="card-text">card with subtle border</p>
+                                    </div>
+                                    <div class="card card-compact">
+                                        <h4 class="card-title">compact card</h4>
+                                        <p class="card-text">less padding</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="mb-2">card with image</h3>
+                                <div class="grid grid-2">
+                                    <div class="card card-bordered card-image-top">
+                                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=200&fit=crop" alt="code">
+                                        <h4 class="card-title">image card</h4>
+                                        <div class="card-subtitle">development</div>
+                                        <p class="card-text">card with image at the top</p>
+                                        <div class="card-actions">
+                                            <button class="btn btn-primary btn-sm">read more</button>
+                                        </div>
+                                    </div>
+                                    <div class="card card-bordered card-side">
+                                        <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=100&h=100&fit=crop" alt="code" style="width: 100px; height: 100px; object-fit: cover;">
+                                        <div>
+                                            <h4 class="card-title">side image card</h4>
+                                            <div class="card-subtitle">horizontal layout</div>
+                                            <p class="card-text">image on the side</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="mb-2">certification cards (exception: borders allowed)</h3>
+                                <div class="grid grid-3">
+                                    <div class="card card-cert">
+                                        <h4 class="card-title">aws certified</h4>
+                                        <div class="card-subtitle">solutions architect</div>
+                                        <p class="card-text">professional cloud certification</p>
+                                    </div>
+                                    <div class="card card-cert">
+                                        <h4 class="card-title">google cloud</h4>
+                                        <div class="card-subtitle">professional developer</div>
+                                        <p class="card-text">gcp development expertise</p>
+                                    </div>
+                                    <div class="card card-cert">
+                                        <h4 class="card-title">mongodb</h4>
+                                        <div class="card-subtitle">certified developer</div>
+                                        <p class="card-text">database design and development</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="mb-2">timeline</h3>
+                                <div class="timeline">
+                                    <div class="timeline-item">
+                                        <div class="timeline-date">2024 - present</div>
+                                        <h4 class="timeline-title">building throne ui</h4>
+                                        <div class="timeline-subtitle">personal project</div>
+                                        <p class="timeline-content">creating an ultra-minimalist component library with strict design constraints</p>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-date">2023 - 2024</div>
+                                        <h4 class="timeline-title">learning web development</h4>
+                                        <div class="timeline-subtitle">self-taught journey</div>
+                                        <p class="timeline-content">mastering html, css, javascript, and modern web technologies</p>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-date">2022</div>
+                                        <h4 class="timeline-title">started coding</h4>
+                                        <div class="timeline-subtitle">first steps</div>
+                                        <p class="timeline-content">began learning programming at age 13</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="mb-2">horizontal timeline</h3>
+                                <div class="timeline timeline-horizontal">
+                                    <div class="timeline-item">
+                                        <div class="timeline-date">q1 2024</div>
+                                        <h5 class="timeline-title">planning</h5>
+                                        <p class="timeline-content">research and design</p>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-date">q2 2024</div>
+                                        <h5 class="timeline-title">development</h5>
+                                        <p class="timeline-content">building components</p>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-date">q3 2024</div>
+                                        <h5 class="timeline-title">testing</h5>
+                                        <p class="timeline-content">refinement and optimization</p>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-date">q4 2024</div>
+                                        <h5 class="timeline-title">launch</h5>
+                                        <p class="timeline-content">public release</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="mb-2">avatars (exception: borders allowed)</h3>
+                                <div class="flex gap-3 items-center mb-3">
+                                    <div class="avatar avatar-xs">
+                                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop&crop=face" alt="user">
+                                    </div>
+                                    <div class="avatar avatar-sm">
+                                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face" alt="user">
+                                    </div>
+                                    <div class="avatar avatar-md">
+                                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face" alt="user">
+                                    </div>
+                                    <div class="avatar avatar-lg">
+                                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="user">
+                                    </div>
+                                    <div class="avatar avatar-xl">
+                                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&h=100&fit=crop&crop=face" alt="user">
+                                    </div>
+                                </div>
+                                <div class="flex gap-3 items-center mb-3">
+                                    <div class="avatar avatar-md avatar-online">
+                                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop&crop=face" alt="user">
+                                    </div>
+                                    <div class="avatar avatar-md avatar-square">
+                                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face" alt="user">
+                                    </div>
+                                </div>
+                                <div class="avatar-group">
+                                    <div class="avatar avatar-md">
+                                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face" alt="user">
+                                    </div>
+                                    <div class="avatar avatar-md">
+                                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="user">
+                                    </div>
+                                    <div class="avatar avatar-md">
+                                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&h=100&fit=crop&crop=face" alt="user">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- navigation -->
+                        <div id="navigation" class="mb-5">
+                            <h2 class="mb-3">navigation</h2>
+                            
+                            <div class="mb-4">
+                                <h3 class="mb-2">breadcrumbs</h3>
+                                <nav class="breadcrumb">
+                                    <div class="breadcrumb-item">home</div>
+                                    <div class="breadcrumb-item">components</div>
+                                    <div class="breadcrumb-item active">navigation</div>
+                                </nav>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="mb-2">tabs</h3>
+                                <div class="tabs">
+                                    <div class="tab active" data-tab="tab1">tab 1</div>
+                                    <div class="tab" data-tab="tab2">tab 2</div>
+                                    <div class="tab" data-tab="tab3">tab 3</div>
+                                </div>
+                                <div class="tab-content active" id="tab1">
+                                    <p>content for tab 1. this is the active tab by default.</p>
+                                </div>
+                                <div class="tab-content" id="tab2">
+                                    <p>content for tab 2. click the tab to see this content.</p>
+                                </div>
+                                <div class="tab-content" id="tab3">
+                                    <p>content for tab 3. each tab has its own content area.</p>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="mb-2">pill tabs</h3>
+                                <div class="tabs tab-pills">
+                                    <div class="tab active" data-tab="pill1">pill 1</div>
+                                    <div class="tab" data-tab="pill2">pill 2</div>
+                                    <div class="tab" data-tab="pill3">pill 3</div>
+                                </div>
+                                <div class="tab-content active" id="pill1">
+                                    <p>pill tab content 1</p>
+                                </div>
+                                <div class="tab-content" id="pill2">
+                                    <p>pill tab content 2</p>
+                                </div>
+                                <div class="tab-content" id="pill3">
+                                    <p>pill tab content 3</p>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="mb-2">pagination</h3>
+                                <ul class="pagination">
+                                    <li class="page-item disabled">
+                                        <a class="page-link">
+                                            <span class="material-symbols-outlined">chevron_left</span>
+                                        </a>
+                                    </li>
+                                    <li class="page-item active">
+                                        <a class="page-link">1</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link">2</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link">3</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link">
+                                            <span class="material-symbols-outlined">chevron_right</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="mb-2">menu</h3>
+                                <ul class="menu" style="background: var(--border-color); max-width: 200px;">
+                                    <li class="menu-title">navigation</li>
+                                    <li class="menu-item active">home</li>
+                                    <li class="menu-item">about</li>
+                                    <li class="menu-item">services</li>
+                                    <li class="menu-title">account</li>
+                                    <li class="menu-item">profile</li>
+                                    <li class="menu-item">settings</li>
+                                    <li class="menu-item">logout</li>
+                                </ul>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="mb-2">dropdown</h3>
+                                <div class="dropdown">
+                                    <button class="btn btn-primary" data-dropdown-trigger>
+                                        dropdown menu
+                                        <span class="material-symbols-outlined">expand_more</span>
+                                    </button>
+                                    <div class="dropdown-content">
+                                        <a class="dropdown-item">action 1</a>
+                                        <a class="dropdown-item">action 2</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item">separated action</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- feedback & overlays -->
+                        <div id="feedback" class="mb-5">
+                            <h2 class="mb-3">feedback & overlays</h2>
+                            
+                            <div class="mb-4">
+                                <h3 class="mb-2">alerts</h3>
+                                <div class="alert alert-info mb-2">
+                                    <strong>info:</strong> this is an informational alert.
+                                </div>
+                                <div class="alert alert-success mb-2">
+                                    <strong>success:</strong> operation completed successfully.
+                                </div>
+                                <div class="alert alert-warning mb-2">
+                                    <strong>warning:</strong> please review this information.
+                                </div>
+                                <div class="alert alert-error mb-2">
+                                    <strong>error:</strong> something went wrong.
+                                </div>
+                                <div class="alert alert-info alert-dismissible">
+                                    <strong>dismissible:</strong> click the x to close this alert.
+                                    <button class="alert-close">
+                                        <span class="material-symbols-outlined">close</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="mb-2">modals</h3>
+                                <div class="flex gap-2 flex-wrap">
+                                    <button class="btn btn-primary" data-modal-target="demo-modal">open modal</button>
+                                    <button class="btn btn-outline" onclick="ThroneUI.showToast('toast notification!', 3000)">show toast</button>
+                                    <button class="btn btn-ghost" data-drawer-target="demo-drawer">open drawer</button>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="mb-2">tooltips</h3>
+                                <div class="flex gap-3 flex-wrap">
+                                    <button class="btn btn-primary tooltip" data-tooltip="this is a tooltip">hover me</button>
+                                    <button class="btn btn-outline tooltip tooltip-right" data-tooltip="tooltip on right">right tooltip</button>
+                                    <button class="btn btn-ghost tooltip tooltip-left" data-tooltip="tooltip on left">left tooltip</button>
+                                    <button class="btn btn-secondary tooltip tooltip-top" data-tooltip="tooltip on top">top tooltip</button>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="mb-2">accordion</h3>
+                                <div class="accordion">
+                                    <div class="accordion-item">
+                                        <div class="accordion-header">
+                                            <span>accordion item 1</span>
+                                            <span class="material-symbols-outlined accordion-icon">expand_more</span>
+                                        </div>
+                                        <div class="accordion-content">
+                                            <p>this is the content for the first accordion item. it can contain any html content.</p>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <div class="accordion-header">
+                                            <span>accordion item 2</span>
+                                            <span class="material-symbols-outlined accordion-icon">expand_more</span>
+                                        </div>
+                                        <div class="accordion-content">
+                                            <p>content for the second accordion item. only one item can be open at a time.</p>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <div class="accordion-header">
+                                            <span>accordion item 3</span>
+                                            <span class="material-symbols-outlined accordion-icon">expand_more</span>
+                                        </div>
+                                        <div class="accordion-content">
+                                            <p>third accordion item content. click any header to expand that section.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- data display -->
+                        <div id="data" class="mb-5">
+                            <h2 class="mb-3">data display</h2>
+                            
+                            <div class="mb-4">
+                                <h3 class="mb-2">badges</h3>
+                                <div class="flex gap-2 items-center flex-wrap mb-3">
+                                    <span class="badge">default</span>
+                                    <span class="badge badge-outline">outline</span>
+                                    <span class="badge badge-secondary">secondary</span>
+                                    <span class="badge badge-lg">large badge</span>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="mb-2">chips</h3>
+                                <div class="flex gap-2 flex-wrap mb-3">
+                                    <div class="chip">basic chip</div>
+                                    <div class="chip chip-removable">
+                                        removable chip
+                                        <button class="chip-remove">
+                                            <span class="material-symbols-outlined">close</span>
+                                        </button>
+                                    </div>
+                                    <div class="chip">
+                                        <span class="material-symbols-outlined">tag</span>
+                                        icon chip
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="mb-2">progress bars</h3>
+                                <div class="mb-3">
+                                    <label class="text-sm mb-1">default progress</label>
+                                    <div class="progress">
+                                        <div class="progress-bar" data-progress="75" style="width: 75%;"></div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="text-sm mb-1">small progress</label>
+                                    <div class="progress progress-sm">
+                                        <div class="progress-bar" data-progress="60" style="width: 60%;"></div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="text-sm mb-1">large progress</label>
+                                    <div class="progress progress-lg">
+                                        <div class="progress-bar" data-progress="90" style="width: 90%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="mb-2">spinners</h3>
+                                <div class="flex gap-3 items-center">
+                                    <div class="spinner spinner-sm"></div>
+                                    <div class="spinner"></div>
+                                    <div class="spinner spinner-lg"></div>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="mb-2">skeleton loaders</h3>
+                                <div class="mb-3">
+                                    <div class="flex gap-3 items-start">
+                                        <div class="skeleton skeleton-avatar"></div>
+                                        <div class="flex-1">
+                                            <div class="skeleton skeleton-text" style="width: 60%;"></div>
+                                            <div class="skeleton skeleton-text" style="width: 80%;"></div>
+                                            <div class="skeleton skeleton-text" style="width: 40%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="mb-2">tables</h3>
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>name</th>
+                                                <th>role</th>
+                                                <th>status</th>
+                                                <th>actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>john doe</td>
+                                                <td>developer</td>
+                                                <td><span class="badge">active</span></td>
+                                                <td>
+                                                    <button class="btn btn-ghost btn-sm">edit</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>jane smith</td>
+                                                <td>designer</td>
+                                                <td><span class="badge badge-secondary">inactive</span></td>
+                                                <td>
+                                                    <button class="btn btn-ghost btn-sm">edit</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>bob wilson</td>
+                                                <td>manager</td>
+                                                <td><span class="badge">active</span></td>
+                                                <td>
+                                                    <button class="btn btn-ghost btn-sm">edit</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="mb-2">table variants</h3>
+                                <div class="grid grid-2 gap-4">
+                                    <div>
+                                        <h4 class="text-sm mb-2">bordered table</h4>
+                                        <table class="table table-bordered table-sm">
+                                            <thead>
+                                                <tr>
+                                                    <th>col 1</th>
+                                                    <th>col 2</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>data 1</td>
+                                                    <td>data 2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>data 3</td>
+                                                    <td>data 4</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm mb-2">small table</h4>
+                                        <table class="table table-sm">
+                                            <thead>
+                                                <tr>
+                                                    <th>col 1</th>
+                                                    <th>col 2</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>compact</td>
+                                                    <td>data</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>less</td>
+                                                    <td>padding</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- utilities -->
+                        <div id="utilities" class="mb-5">
+                            <h2 class="mb-3">utility classes</h2>
+                            
+                            <div class="mb-4">
+                                <h3 class="mb-2">spacing utilities</h3>
+                                <div class="grid grid-2 gap-4">
+                                    <div>
+                                        <h4 class="text-sm mb-2">margins</h4>
+                                        <div class="p-2" style="background: var(--border-color);">
+                                            <div class="m-2 p-2" style="background: var(--accent-color); color: var(--black);">m-2</div>
+                                            <div class="mt-3 p-2" style="background: var(--accent-color); color: var(--black);">mt-3</div>
+                                            <div class="mb-4 p-2" style="background: var(--accent-color); color: var(--black);">mb-4</div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm mb-2">padding</h4>
+                                        <div class="p-2" style="background: var(--border-color);">
+                                            <div class="p-2" style="background: var(--text-secondary); color: var(--bg-color);">p-2</div>
+                                            <div class="px-4 py-2 mt-2" style="background: var(--text-secondary); color: var(--bg-color);">px-4 py-2</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="mb-2">text utilities</h3>
+                                <div class="mb-3">
+                                    <h4 class="text-sm mb-2">sizes</h4>
+                                    <div class="text-xs mb-1">extra small text (text-xs)</div>
+                                    <div class="text-sm mb-1">small text (text-sm)</div>
+                                    <div class="text-base mb-1">base text (text-base)</div>
+                                    <div class="text-lg mb-1">large text (text-lg)</div>
+                                    <div class="text-xl mb-1">extra large text (text-xl)</div>
+                                    <div class="text-2xl mb-1">2x large text (text-2xl)</div>
+                                </div>
+                                <div class="mb-3">
+                                    <h4 class="text-sm mb-2">alignment</h4>
+                                    <div class="text-left mb-1">left aligned text</div>
+                                    <div class="text-center mb-1">center aligned text</div>
+                                    <div class="text-right mb-1">right aligned text</div>
+                                </div>
+                                <div class="mb-3">
+                                    <h4 class="text-sm mb-2">colors</h4>
+                                    <div class="text-primary mb-1">primary text color</div>
+                                    <div class="text-secondary mb-1">secondary text color</div>
+                                    <div class="text-accent mb-1">accent text color</div>
+                                </div>
+                                <div class="mb-3">
+                                    <h4 class="text-sm mb-2">weights & styles</h4>
+                                    <div class="font-thin mb-1">thin weight (font-thin)</div>
+                                    <div class="font-normal mb-1">normal weight (font-normal)</div>
+                                    <div class="font-medium mb-1">medium weight (font-medium)</div>
+                                    <div class="font-semibold mb-1">semibold weight (font-semibold)</div>
+                                    <div class="font-bold mb-1">bold weight (font-bold)</div>
+                                    <div class="italic mb-1">italic text (italic)</div>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="mb-2">display utilities</h3>
+                                <div class="mb-3">
+                                    <div class="block p-2 mb-2" style="background: var(--accent-color); color: var(--black);">block element</div>
+                                    <div class="inline-block p-2 mr-2" style="background: var(--text-secondary); color: var(--bg-color);">inline-block</div>
+                                    <div class="inline-block p-2" style="background: var(--text-secondary); color: var(--bg-color);">inline-block</div>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="mb-2">position utilities</h3>
+                                <div class="relative p-4" style="background: var(--border-color); height: 100px;">
+                                    <div class="absolute top-0 left-0 p-2" style="background: var(--accent-color); color: var(--black);">absolute positioned</div>
+                                    <div class="relative p-2 ml-auto w-fit" style="background: var(--text-secondary); color: var(--bg-color);">relative positioned</div>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="mb-2">width & height utilities</h3>
+                                <div class="mb-3">
+                                    <div class="w-1/4 p-2 mb-2" style="background: var(--accent-color); color: var(--black);">w-1/4 (25%)</div>
+                                    <div class="w-1/2 p-2 mb-2" style="background: var(--accent-color); color: var(--black);">w-1/2 (50%)</div>
+                                    <div class="w-3/4 p-2 mb-2" style="background: var(--accent-color); color: var(--black);">w-3/4 (75%)</div>
+                                    <div class="w-full p-2" style="background: var(--accent-color); color: var(--black);">w-full (100%)</div>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="mb-2">opacity utilities</h3>
+                                <div class="flex gap-2">
+                                    <div class="opacity-25 p-2" style="background: var(--accent-color); color: var(--black);">opacity-25</div>
+                                    <div class="opacity-50 p-2" style="background: var(--accent-color); color: var(--black);">opacity-50</div>
+                                    <div class="opacity-75 p-2" style="background: var(--accent-color); color: var(--black);">opacity-75</div>
+                                    <div class="opacity-100 p-2" style="background: var(--accent-color); color: var(--black);">opacity-100</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- spa route -->
+            <div class="route" data-route-path="/spa">
+                <section class="section">
+                    <div class="container">
+                        <div class="text-center mb-5">
+                            <h1>single page application</h1>
+                            <p class="text-lg text-secondary">built with vanilla html, css, and javascript only</p>
+                        </div>
+
+                        <div class="grid grid-2 gap-4 mb-5">
+                            <div class="card card-bordered">
+                                <h3 class="card-title">client-side routing</h3>
+                                <p class="card-text">navigate between pages without full page reloads using the history api</p>
+                                <div class="card-actions">
+                                    <button class="btn btn-primary btn-sm" onclick="window.throneUI.navigateTo('/')">home</button>
+                                    <button class="btn btn-outline btn-sm" onclick="window.throneUI.navigateTo('/components')">components</button>
+                                    <button class="btn btn-ghost btn-sm" onclick="window.throneUI.navigateTo('/about')">about</button>
+                                </div>
+                            </div>
+                            <div class="card card-bordered">
+                                <h3 class="card-title">smooth transitions</h3>
+                                <p class="card-text">css transitions provide smooth page changes with fade and slide effects</p>
+                                <div class="card-actions">
+                                    <span class="badge">no libraries</span>
+                                    <span class="badge badge-outline">vanilla js</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-5">
+                            <h2 class="mb-3">spa features</h2>
+                            <div class="grid grid-3 gap-3">
+                                <div class="card">
+                                    <span class="material-symbols-outlined text-3xl text-accent mb-2">route</span>
+                                    <h4 class="card-title">url routing</h4>
+                                    <p class="card-text">clean urls with browser history support</p>
+                                </div>
+                                <div class="card">
+                                    <span class="material-symbols-outlined text-3xl text-accent mb-2">animation</span>
+                                    <h4 class="card-title">page transitions</h4>
+                                    <p class="card-text">smooth animations between routes</p>
+                                </div>
+                                <div class="card">
+                                    <span class="material-symbols-outlined text-3xl text-accent mb-2">memory</span>
+                                    <h4 class="card-title">state management</h4>
+                                    <p class="card-text">maintain application state across navigation</p>
+                                </div>
+                                <div class="card">
+                                    <span class="material-symbols-outlined text-3xl text-accent mb-2">link</span>
+                                    <h4 class="card-title">deep linking</h4>
+                                    <p class="card-text">shareable urls for any page</p>
+                                </div>
+                                <div class="card">
+                                    <span class="material-symbols-outlined text-3xl text-accent mb-2">history</span>
+                                    <h4 class="card-title">browser history</h4>
+                                    <p class="card-text">back/forward buttons work correctly</p>
+                                </div>
+                                <div class="card">
+                                    <span class="material-symbols-outlined text-3xl text-accent mb-2">speed</span>
+                                    <h4 class="card-title">fast navigation</h4>
+                                    <p class="card-text">instant page changes without reloads</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-5">
+                            <h2 class="mb-3">technical implementation</h2>
+                            <div class="card card-bordered">
+                                <h3 class="card-title">how it works</h3>
+                                <div class="card-text">
+                                    <p class="mb-3">this spa is built using vanilla technologies:</p>
+                                    <ul style="list-style: none; padding: 0;">
+                                        <li class="mb-2"><strong>html:</strong> semantic structure with data attributes for routing</li>
+                                        <li class="mb-2"><strong>css:</strong> transitions and animations for smooth page changes</li>
+                                        <li class="mb-2"><strong>javascript:</strong> history api for url management and dom manipulation</li>
+                                    </ul>
+                                    <p class="mt-3">no frameworks, no build tools, no complex dependencies - just clean, efficient code.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-5">
+                            <h2 class="mb-3">code examples</h2>
+                            <div class="accordion">
+                                <div class="accordion-item">
+                                    <div class="accordion-header">
+                                        <span>routing setup</span>
+                                        <span class="material-symbols-outlined accordion-icon">expand_more</span>
+                                    </div>
+                                    <div class="accordion-content">
+                                        <pre style="background: var(--border-color); padding: 1rem; overflow-x: auto;"><code>// register routes
+throneUI.registerRoute('/', () => {
+  console.log('home page loaded');
+});
+
+// navigate programmatically
+throneUI.navigateTo('/about');
+
+// handle route changes
+window.addEventListener('popstate', () => {
+  throneUI.handleRouteChange();
+});</code></pre>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <div class="accordion-header">
+                                        <span>html structure</span>
+                                        <span class="material-symbols-outlined accordion-icon">expand_more</span>
+                                    </div>
+                                    <div class="accordion-content">
+                                        <pre style="background: var(--border-color); padding: 1rem; overflow-x: auto;"><code>&lt;div class="route" data-route-path="/"&gt;
+  &lt;h1&gt;home page content&lt;/h1&gt;
+&lt;/div&gt;
+
+&lt;div class="route" data-route-path="/about"&gt;
+  &lt;h1&gt;about page content&lt;/h1&gt;
+&lt;/div&gt;
+
+&lt;a href="#" data-route="/about"&gt;go to about&lt;/a&gt;</code></pre>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <div class="accordion-header">
+                                        <span>css transitions</span>
+                                        <span class="material-symbols-outlined accordion-icon">expand_more</span>
+                                    </div>
+                                    <div class="accordion-content">
+                                        <pre style="background: var(--border-color); padding: 1rem; overflow-x: auto;"><code>.spa-content {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.spa-content.transitioning {
+  opacity: 0;
+  transform: translateY(20px);
+}</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- about route -->
+            <div class="route" data-route-path="/about">
+                <section class="section">
+                    <div class="container">
+                        <div class="text-center mb-5">
+                            <div class="avatar avatar-xl mb-3">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" alt="thekzbn">
+                            </div>
+                            <h1>thekzbn</h1>
+                            <p class="text-xl text-accent mb-2">15 years old developer</p>
+                            <p class="text-lg text-secondary">passionate about minimalist design and clean code</p>
+                        </div>
+
+                        <div class="grid grid-2 gap-5 mb-5">
+                            <div class="card">
+                                <h3 class="card-title">about me</h3>
+                                <p class="card-text">
+                                    i'm a 15-year-old developer who believes in the power of constraints and minimalism. 
+                                    i started coding at 13 and have been fascinated by how much you can achieve with 
+                                    simple, well-crafted code.
+                                </p>
+                                <p class="card-text">
+                                    throne ui represents my philosophy that great design comes from what you leave out, 
+                                    not what you add. every component is intentionally constrained to prove that 
+                                    limitations breed creativity.
+                                </p>
+                            </div>
+                            <div class="card">
+                                <h3 class="card-title">my approach</h3>
+                                <p class="card-text">
+                                    i focus on vanilla technologies because they're timeless. frameworks come and go, 
+                                    but html, css, and javascript are the foundation of the web.
+                                </p>
+                                <p class="card-text">
+                                    this entire library was built without any external dependencies, 
+                                    proving that you don't need complex tooling to create something beautiful and functional.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="mb-5">
+                            <h2 class="mb-3">skills & technologies</h2>
+                            <div class="grid grid-4 gap-2">
+                                <div class="chip">html5</div>
+                                <div class="chip">css3</div>
+                                <div class="chip">javascript</div>
+                                <div class="chip">responsive design</div>
+                                <div class="chip">accessibility</div>
+                                <div class="chip">performance</div>
+                                <div class="chip">ui/ux design</div>
+                                <div class="chip">minimalism</div>
+                                <div class="chip">typography</div>
+                                <div class="chip">color theory</div>
+                                <div class="chip">git</div>
+                                <div class="chip">problem solving</div>
+                            </div>
+                        </div>
+
+                        <div class="mb-5">
+                            <h2 class="mb-3">design principles</h2>
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <div class="timeline-date">principle 1</div>
+                                    <h4 class="timeline-title">constraints breed creativity</h4>
+                                    <p class="timeline-content">
+                                        limiting yourself to 3 colors and no shadows forces you to find creative solutions 
+                                        and focus on what really matters.
+                                    </p>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-date">principle 2</div>
+                                    <h4 class="timeline-title">less is more</h4>
+                                    <p class="timeline-content">
+                                        every element should serve a purpose. if it doesn't add value, remove it. 
+                                        simplicity is the ultimate sophistication.
+                                    </p>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-date">principle 3</div>
+                                    <h4 class="timeline-title">accessibility first</h4>
+                                    <p class="timeline-content">
+                                        beautiful design means nothing if it's not accessible. semantic html and proper 
+                                        contrast ratios are non-negotiable.
+                                    </p>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-date">principle 4</div>
+                                    <h4 class="timeline-title">performance matters</h4>
+                                    <p class="timeline-content">
+                                        fast websites provide better user experiences. vanilla code is often faster 
+                                        than framework alternatives.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <h2 class="mb-3">get in touch</h2>
+                            <p class="text-lg text-secondary mb-4">
+                                interested in collaborating or just want to chat about web development?
+                            </p>
+                            <div class="flex gap-3 justify-center">
+                                <button class="btn btn-primary">
+                                    <span class="material-symbols-outlined">email</span>
+                                    email me
+                                </button>
+                                <button class="btn btn-outline">
+                                    <span class="material-symbols-outlined">code</span>
+                                    github
+                                </button>
+                                <button class="btn btn-ghost">
+                                    <span class="material-symbols-outlined">person</span>
+                                    linkedin
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
         </div>
-    </section>
-
-    <div class="container">
-        <!-- Design Philosophy -->
-        <section id="philosophy" class="mt-4 mb-4">
-            <h2 class="text-center mb-3">Design Philosophy</h2>
-            <div class="grid grid-3">
-                <div class="card card-about text-center">
-                    <h3 class="card-title">3 Colors Only</h3>
-                    <p class="card-description">
-                        Gold (#d6ad60), Black (#000), White (#fff). 
-                        No exceptions, no gradients, no additional colors.
-                    </p>
-                </div>
-                <div class="card card-about text-center">
-                    <h3 class="card-title">No Shadows</h3>
-                    <p class="card-description">
-                        Clean, flat design aesthetic. Visual hierarchy through 
-                        typography, spacing, and color contrast only.
-                    </p>
-                </div>
-                <div class="card card-about text-center">
-                    <h3 class="card-title">Minimal Borders</h3>
-                    <p class="card-description">
-                        Borders only where absolutely necessary: forms, 
-                        profile images, and certification cards.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Color System -->
-        <section id="colors" class="mb-4">
-            <h2 class="mb-3">Color System</h2>
-            <div class="grid grid-3">
-                <div class="card text-center">
-                    <div style="width: 100px; height: 100px; background: #d6ad60; margin: 0 auto 1rem; border-radius: 50%;"></div>
-                    <h4 class="card-title">Gold</h4>
-                    <p class="card-description">#d6ad60<br>Accent & Interactive</p>
-                </div>
-                <div class="card text-center">
-                    <div style="width: 100px; height: 100px; background: #000; margin: 0 auto 1rem; border-radius: 50%;"></div>
-                    <h4 class="card-title">Black</h4>
-                    <p class="card-description">#000<br>Primary Text & Backgrounds</p>
-                </div>
-                <div class="card text-center">
-                    <div style="width: 100px; height: 100px; background: #fff; border: 1px solid #666; margin: 0 auto 1rem; border-radius: 50%;"></div>
-                    <h4 class="card-title">White</h4>
-                    <p class="card-description">#fff<br>Backgrounds & Contrast</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Typography -->
-        <section id="typography" class="mb-4">
-            <h2 class="mb-3">Typography Hierarchy</h2>
-            <div class="card">
-                <h1>Heading 1 - Hero Title</h1>
-                <h2>Heading 2 - Section Title</h2>
-                <h3>Heading 3 - Card Title</h3>
-                <h4>Heading 4 - Subsection</h4>
-                <h5>Heading 5 - Component Title</h5>
-                <h6>Heading 6 - Small Title</h6>
-                <p>Regular paragraph text with comfortable line height for readability.</p>
-                <p class="text-large">Large text for emphasis and important content.</p>
-                <p class="text-small">Small text for secondary information and captions.</p>
-                <p class="text-xs">Extra small text for fine print and metadata.</p>
-                <p class="text-secondary">Secondary text in muted color for less important content.</p>
-                <p class="text-accent">Accent text in gold for highlights and interactive elements.</p>
-            </div>
-        </section>
-
-        <!-- Buttons -->
-        <section id="buttons" class="mb-4">
-            <h2 class="mb-3">Buttons</h2>
-            <div class="card">
-                <h3 class="card-title">Button Variants</h3>
-                <div class="flex gap-2 mb-3">
-                    <button class="btn btn-primary">Primary Button</button>
-                    <button class="btn btn-link">Link Button</button>
-                    <button class="btn btn-icon">
-                        <span class="material-icons">favorite</span>
-                        Icon Button
-                    </button>
-                </div>
-                <p class="card-description">
-                    Primary buttons use gold background with black text. 
-                    Hover state inverts colors for clear feedback.
-                </p>
-            </div>
-        </section>
-
-        <!-- Cards -->
-        <section id="cards" class="mb-4">
-            <h2 class="mb-3">Cards</h2>
-            
-            <h3 class="mb-2">Project Cards (No Borders)</h3>
-            <div class="grid grid-2 mb-3">
-                <div class="card card-project">
-                    <h3 class="card-title">Project Alpha</h3>
-                    <div class="card-subtitle">Web Application</div>
-                    <p class="card-description">
-                        Clean project card with no borders, relying on spacing 
-                        and hover effects for visual separation.
-                    </p>
-                </div>
-                <div class="card card-project">
-                    <h3 class="card-title">Project Beta</h3>
-                    <div class="card-subtitle">Mobile App</div>
-                    <p class="card-description">
-                        Demonstrates the power of minimal design through 
-                        typography and spacing hierarchy.
-                    </p>
-                </div>
-            </div>
-
-            <h3 class="mb-2">Certification Cards (With Borders - Exception)</h3>
-            <div class="grid grid-2 mb-3">
-                <div class="card card-cert">
-                    <h3 class="card-title">AWS Certified</h3>
-                    <div class="card-subtitle">Cloud Architect</div>
-                    <p class="card-description">
-                        Certification cards are one of the few components 
-                        allowed to have borders in the design system.
-                    </p>
-                </div>
-                <div class="card card-cert">
-                    <h3 class="card-title">Google Cloud</h3>
-                    <div class="card-subtitle">Professional Developer</div>
-                    <p class="card-description">
-                        Border changes to gold on hover, maintaining 
-                        the strict color palette.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Forms -->
-        <section id="forms" class="mb-4">
-            <h2 class="mb-3">Forms (Borders Allowed - Exception)</h2>
-            <div class="card">
-                <h3 class="card-title">Contact Form</h3>
-                <form>
-                    <div class="form-group">
-                        <label class="form-label" for="name">Name</label>
-                        <input type="text" id="name" class="form-input" placeholder="Your name" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="email">Email</label>
-                        <input type="email" id="email" class="form-input" placeholder="your@email.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="subject">Subject</label>
-                        <select id="subject" class="form-select" required>
-                            <option value="">Select a subject</option>
-                            <option value="general">General Inquiry</option>
-                            <option value="support">Support</option>
-                            <option value="feedback">Feedback</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="message">Message</label>
-                        <textarea id="message" class="form-textarea" placeholder="Your message..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                </form>
-            </div>
-        </section>
-
-        <!-- Timeline -->
-        <section id="timeline" class="mb-4">
-            <h2 class="mb-3">Experience Timeline</h2>
-            <div class="card">
-                <h3 class="card-title">Work Experience</h3>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-date">2023 - Present</div>
-                        <h3 class="timeline-title">Senior Frontend Developer</h3>
-                        <div class="timeline-company">TechCorp Inc.</div>
-                        <p class="timeline-description">
-                            Leading frontend development initiatives with focus on 
-                            minimalist design systems and performance optimization.
-                        </p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">2021 - 2023</div>
-                        <h3 class="timeline-title">UI/UX Designer</h3>
-                        <div class="timeline-company">Design Studio</div>
-                        <p class="timeline-description">
-                            Specialized in creating clean, purposeful interfaces 
-                            with strict design constraints and minimal aesthetics.
-                        </p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">2019 - 2021</div>
-                        <h3 class="timeline-title">Frontend Developer</h3>
-                        <div class="timeline-company">StartupXYZ</div>
-                        <p class="timeline-description">
-                            Built responsive web applications with vanilla JavaScript 
-                            and modern CSS techniques.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Profile Images -->
-        <section id="profile" class="mb-4">
-            <h2 class="mb-3">Profile Images (Borders Allowed - Exception)</h2>
-            <div class="card text-center">
-                <h3 class="card-title">Team Members</h3>
-                <div class="flex gap-3 justify-center">
-                    <div class="profile-image">
-                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face" 
-                             alt="Team member 1" width="80" height="80">
-                    </div>
-                    <div class="profile-image">
-                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face" 
-                             alt="Team member 2" width="80" height="80">
-                    </div>
-                    <div class="profile-image">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" 
-                             alt="Team member 3" width="80" height="80">
-                    </div>
-                </div>
-                <p class="card-description mt-2">
-                    Profile images have gold borders as one of the design system exceptions.
-                </p>
-            </div>
-        </section>
-
-        <!-- Grid Systems -->
-        <section id="grids" class="mb-4">
-            <h2 class="mb-3">Grid Systems</h2>
-            
-            <h3 class="mb-2">2-Column Grid</h3>
-            <div class="grid grid-2 mb-3">
-                <div class="card">
-                    <h4 class="card-title">Grid Item 1</h4>
-                    <p class="card-description">Clean grid layout with gap spacing.</p>
-                </div>
-                <div class="card">
-                    <h4 class="card-title">Grid Item 2</h4>
-                    <p class="card-description">No border separators between items.</p>
-                </div>
-            </div>
-
-            <h3 class="mb-2">3-Column Grid</h3>
-            <div class="grid grid-3 mb-3">
-                <div class="card">
-                    <h4 class="card-title">Item A</h4>
-                    <p class="card-description">Visual separation through spacing.</p>
-                </div>
-                <div class="card">
-                    <h4 class="card-title">Item B</h4>
-                    <p class="card-description">Responsive grid system.</p>
-                </div>
-                <div class="card">
-                    <h4 class="card-title">Item C</h4>
-                    <p class="card-description">Pure CSS Grid implementation.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Utility Classes -->
-        <section id="utilities" class="mb-4">
-            <h2 class="mb-3">Utility Classes</h2>
-            <div class="card">
-                <h3 class="card-title">Spacing & Layout</h3>
-                <div class="mb-3">
-                    <div class="flex gap-2 mb-2">
-                        <div class="p-2" style="background: var(--accent-color); color: var(--black);">p-2</div>
-                        <div class="p-3" style="background: var(--accent-color); color: var(--black);">p-3</div>
-                        <div class="p-4" style="background: var(--accent-color); color: var(--black);">p-4</div>
-                    </div>
-                    <div class="flex gap-2">
-                        <div class="mb-2" style="background: var(--text-secondary); color: var(--bg-color); padding: 0.5rem;">mb-2</div>
-                        <div class="mt-2" style="background: var(--text-secondary); color: var(--bg-color); padding: 0.5rem;">mt-2</div>
-                    </div>
-                </div>
-                
-                <h4 class="mb-2">Text Alignment</h4>
-                <div class="mb-3">
-                    <p class="text-left">Left aligned text</p>
-                    <p class="text-center">Center aligned text</p>
-                    <p class="text-right">Right aligned text</p>
-                </div>
-
-                <h4 class="mb-2">Flexbox Utilities</h4>
-                <div class="flex justify-between items-center p-2" style="background: var(--text-secondary); color: var(--bg-color);">
-                    <span>Left</span>
-                    <span>Center</span>
-                    <span>Right</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- Design Constraints -->
-        <section id="constraints" class="mb-4">
-            <h2 class="mb-3">Design Constraints</h2>
-            <div class="grid grid-2">
-                <div class="card">
-                    <h3 class="card-title text-accent">✓ Allowed</h3>
-                    <ul style="list-style: none; padding: 0;">
-                        <li class="mb-1">• 3 colors: Gold, Black, White</li>
-                        <li class="mb-1">• Form input borders</li>
-                        <li class="mb-1">• Profile image borders</li>
-                        <li class="mb-1">• Certification card borders</li>
-                        <li class="mb-1">• Color transitions</li>
-                        <li class="mb-1">• translateY(-2px) hover</li>
-                        <li class="mb-1">• Typography hierarchy</li>
-                        <li class="mb-1">• Generous spacing</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h3 class="card-title text-secondary">✗ Forbidden</h3>
-                    <ul style="list-style: none; padding: 0;">
-                        <li class="mb-1">• Any shadows (box, text, drop)</li>
-                        <li class="mb-1">• Additional colors</li>
-                        <li class="mb-1">• Borders on most elements</li>
-                        <li class="mb-1">• Gradients</li>
-                        <li class="mb-1">• Complex animations</li>
-                        <li class="mb-1">• Decorative elements</li>
-                        <li class="mb-1">• Border separators</li>
-                        <li class="mb-1">• Visual noise</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
     </div>
 
-    <!-- Footer -->
-    <footer class="text-center p-4 mt-4" style="border-top: 1px solid var(--text-secondary);">
-        <p class="text-secondary">
-            ThroneUi - Ultra-minimalist design system. Built with vanilla HTML, CSS, and JavaScript.
-        </p>
-        <p class="text-xs text-secondary mt-1">
-            Demonstrating the power of constraints in design.
-        </p>
-    </footer>
+    <!-- modal -->
+    <div class="modal" id="demo-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">demo modal</h3>
+                <button class="modal-close" data-modal-close>
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>this is a modal dialog built with vanilla javascript. it supports:</p>
+                <ul style="list-style: none; padding: 0; margin-top: 1rem;">
+                    <li>• backdrop click to close</li>
+                    <li>• escape key to close</li>
+                    <li>• smooth animations</li>
+                    <li>• focus management</li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-ghost" data-modal-close>cancel</button>
+                <button class="btn btn-primary" data-modal-close>confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- drawer -->
+    <div class="drawer-backdrop"></div>
+    <div class="drawer" id="demo-drawer">
+        <div class="flex justify-between items-center mb-4">
+            <h3>demo drawer</h3>
+            <button data-drawer-close>
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+        <p class="mb-4">this drawer slides in from the right side. it's perfect for:</p>
+        <ul style="list-style: none; padding: 0;">
+            <li class="mb-2">• navigation menus</li>
+            <li class="mb-2">• settings panels</li>
+            <li class="mb-2">• filters and options</li>
+            <li class="mb-2">• detailed information</li>
+        </ul>
+        <div class="mt-4">
+            <button class="btn btn-primary btn-block" data-drawer-close>close drawer</button>
+        </div>
+    </div>
 
     <script src="src/throne-ui.js"></script>
 </body>
