@@ -5,13 +5,113 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>throne ui - ultra-minimalist component library</title>
     <link rel="stylesheet" href="src/throne-ui.css">
+    
+    <!-- PrismJS for code highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+    
+    <!-- Cascadia Code font for code -->
+    <link href="https://fonts.cdnfonts.com/css/cascadia-code" rel="stylesheet">
+    
+    <style>
+        /* Prevent horizontal overflow on the entire page */
+        html, body {
+            overflow-x: hidden !important;
+        }
+        
+        /* Code block styling with Cascadia Code */
+        code, pre, .component-code {
+            font-family: 'Cascadia Code', 'SF Mono', Monaco, 'Roboto Mono', Consolas, monospace !important;
+        }
+        
+        .component-code {
+            background: rgba(var(--text-secondary), 0.05);
+            border: 0.0625rem solid rgba(var(--text-secondary), 0.1);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            font-size: 0.875rem;
+            line-height: 1.5;
+            overflow-x: auto;
+            white-space: pre;
+            max-width: 100%;
+        }
+        
+        /* PrismJS customization */
+        pre[class*="language-"] {
+            font-family: 'Cascadia Code', 'SF Mono', Monaco, 'Roboto Mono', Consolas, monospace !important;
+            background: rgba(var(--text-secondary), 0.05) !important;
+            border: 0.0625rem solid rgba(var(--text-secondary), 0.1) !important;
+            border-radius: 0.5rem !important;
+            padding: 1rem !important;
+            margin: 1rem 0 !important;
+            overflow-x: auto !important;
+            max-width: 100% !important;
+            white-space: pre !important;
+        }
+        
+        .line-numbers .line-numbers-rows {
+            border-right: 0.0625rem solid rgba(var(--text-secondary), 0.2) !important;
+            padding-right: 0.5rem !important;
+        }
+        
+        /* Responsive docs layout */
+        @media (max-width: 768px) {
+            .docs-grid-2 {
+                grid-template-columns: 1fr !important;
+            }
+            
+            .docs-grid-3 {
+                grid-template-columns: 1fr !important;
+            }
+            
+            .docs-flex-wrap {
+                flex-direction: column !important;
+                gap: 0.5rem !important;
+            }
+            
+            .component-code {
+                font-size: 0.75rem !important;
+            }
+            
+            pre[class*="language-"] {
+                font-size: 0.75rem !important;
+                padding: 0.75rem !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .docs-container {
+                padding: 0 1rem !important;
+            }
+            
+            .docs-section {
+                margin-bottom: 2rem !important;
+            }
+            
+            pre[class*="language-"] {
+                font-size: 0.625rem !important;
+                padding: 0.5rem !important;
+                margin: 0.5rem 0 !important;
+            }
+            
+            .component-code {
+                font-size: 0.625rem !important;
+                padding: 0.5rem !important;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="spa-container">
-        <!-- floating theme toggle -->
-        <button class="theme-toggle" aria-label="toggle theme">
-            <span class="material-symbols-outlined">dark_mode</span>
-        </button>
+        <!-- floating controls -->
+        <div class="floating-controls">
+            <button class="control-btn" onclick="window.throneUI.navigateTo('/')" aria-label="go to home">
+                <span class="material-symbols-outlined">home</span>
+            </button>
+            <button class="theme-toggle" aria-label="toggle theme">
+                <span class="material-symbols-outlined">dark_mode</span>
+            </button>
+        </div>
 
         <!-- spa content wrapper -->
         <div class="spa-content">
@@ -31,9 +131,13 @@
                                 <span class="material-symbols-outlined">widgets</span>
                                 browse components
                             </a>
-                            <a href="#" data-route="/about" class="btn btn-outline">
-                                <span class="material-symbols-outlined">info</span>
-                                about thekzbn
+                            <a href="#" data-route="/docs" class="btn btn-outline">
+                                <span class="material-symbols-outlined">menu_book</span>
+                                documentation
+                            </a>
+                            <a href="https://thekzbn.netlify.app" target="_blank" class="btn btn-ghost">
+                                <span class="material-symbols-outlined">person</span>
+                                thekzbn's portfolio
                             </a>
                         </div>
                     </div>
@@ -43,6 +147,13 @@
                 <section class="section">
                     <div class="container">
                         <h2 class="text-center mb-4">ready-to-use components</h2>
+                        <div class="text-center mb-6">
+                            <p class="text-secondary mb-3">need help getting started?</p>
+                            <a href="#" data-route="/docs" class="btn btn-outline btn-sm">
+                                <span class="material-symbols-outlined">menu_book</span>
+                                read documentation
+                            </a>
+                        </div>
                         <div class="grid grid-auto gap-3">
                             <div class="card cursor-pointer" onclick="window.throneUI.navigateTo('/navbar')">
                                 <h4 class="card-title">navbar</h4>
@@ -104,6 +215,12 @@
                         <div class="text-center mb-5">
                             <h1>all components</h1>
                             <p class="text-lg text-secondary">copy-paste ready components</p>
+                            <div class="mt-4">
+                                <a href="#" data-route="/docs" class="btn btn-outline btn-sm">
+                                    <span class="material-symbols-outlined">menu_book</span>
+                                    need help? read docs
+                                </a>
+                            </div>
                         </div>
 
                         <div class="grid grid-auto gap-4">
@@ -289,7 +406,11 @@
                 <section class="section">
                     <div class="container">
                         <div class="mb-5">
-                            <a href="#" data-route="/components" class="text-accent text-sm">← back to components</a>
+                            <div class="flex gap-2 text-sm mb-2">
+                                <a href="#" data-route="/" class="text-secondary">home</a>
+                                <span class="text-secondary">/</span>
+                                <a href="#" data-route="/components" class="text-accent">components</a>
+                            </div>
                             <h1 class="mt-2">navbar</h1>
                             <p class="text-lg text-secondary">responsive navigation bars with mobile menu support</p>
                         </div>
@@ -389,7 +510,11 @@ function toggleMobileNav(btn) {
                 <section class="section">
                     <div class="container">
                         <div class="mb-5">
-                            <a href="#" data-route="/components" class="text-accent text-sm">← back to components</a>
+                            <div class="flex gap-2 text-sm mb-2">
+                                <a href="#" data-route="/" class="text-secondary">home</a>
+                                <span class="text-secondary">/</span>
+                                <a href="#" data-route="/components" class="text-accent">components</a>
+                            </div>
                             <h1 class="mt-2">buttons</h1>
                             <p class="text-lg text-secondary">all button variants following the 3-color design system</p>
                         </div>
@@ -489,7 +614,11 @@ function toggleMobileNav(btn) {
                 <section class="section">
                     <div class="container">
                         <div class="mb-5">
-                            <a href="#" data-route="/components" class="text-accent text-sm">← back to components</a>
+                            <div class="flex gap-2 text-sm mb-2">
+                                <a href="#" data-route="/" class="text-secondary">home</a>
+                                <span class="text-secondary">/</span>
+                                <a href="#" data-route="/components" class="text-accent">components</a>
+                            </div>
                             <h1 class="mt-2">cards</h1>
                             <p class="text-lg text-secondary">content containers and layout cards</p>
                         </div>
@@ -554,7 +683,11 @@ function toggleMobileNav(btn) {
                 <section class="section">
                     <div class="container">
                         <div class="mb-5">
-                            <a href="#" data-route="/components" class="text-accent text-sm">← back to components</a>
+                            <div class="flex gap-2 text-sm mb-2">
+                                <a href="#" data-route="/" class="text-secondary">home</a>
+                                <span class="text-secondary">/</span>
+                                <a href="#" data-route="/components" class="text-accent">components</a>
+                            </div>
                             <h1 class="mt-2">forms</h1>
                             <p class="text-lg text-secondary">form inputs and validation (borders allowed - exception)</p>
                         </div>
@@ -2392,75 +2525,549 @@ function toggleMobileNav(btn) {
                 </section>
             </div>
 
-            <!-- about route -->
-            <div class="route" data-route-path="/about">
+            <!-- documentation route -->
+            <div class="route" data-route-path="/docs">
                 <section class="section">
-                    <div class="container">
-                        <div class="text-center mb-5">
-                            <div class="avatar avatar-xl mb-3">
-                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" alt="thekzbn">
+                    <div class="container docs-container">
+                        <div class="mb-5">
+                            <div class="flex gap-2 text-sm mb-2">
+                                <a href="#" data-route="/" class="text-secondary">home</a>
+                                <span class="text-secondary">/</span>
+                                <span class="text-accent">documentation</span>
                             </div>
-                            <h1>thekzbn</h1>
-                            <p class="text-xl text-accent mb-2">15 years old developer</p>
-                            <p class="text-lg text-secondary">passionate about minimalist design and clean code</p>
-                        </div>
-
-                        <div class="grid grid-2 gap-5 mb-5">
-                            <div class="card">
-                                <h3 class="card-title">about me</h3>
-                                <p class="card-text">
-                                    i'm a 15-year-old developer who believes in the power of constraints and minimalism. 
-                                    i started coding at 13 and have been fascinated by how much you can achieve with 
-                                    simple, well-crafted code.
-                                </p>
-                                <p class="card-text">
-                                    throne ui represents my philosophy that great design comes from what you leave out, 
-                                    not what you add. every component is intentionally constrained to prove that 
-                                    limitations breed creativity.
-                                </p>
-                            </div>
-                            <div class="card">
-                                <h3 class="card-title">my approach</h3>
-                                <p class="card-text">
-                                    i focus on vanilla technologies because they're timeless. frameworks come and go, 
-                                    but html, css, and javascript are the foundation of the web.
-                                </p>
-                                <p class="card-text">
-                                    this entire library was built without any external dependencies, 
-                                    proving that you don't need complex tooling to create something beautiful and functional.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="text-center">
-                            <h2 class="mb-3">get in touch</h2>
-                            <p class="text-lg text-secondary mb-4">
-                                interested in collaborating or just want to chat about web development?
-                            </p>
-                            <div class="flex gap-3 justify-center flex-wrap">
-                                <button class="btn btn-primary">
-                                    <span class="material-symbols-outlined">email</span>
-                                    email me
-                                </button>
-                                <button class="btn btn-outline">
+                            <h1 class="mt-2">documentation</h1>
+                            <p class="text-lg text-secondary mb-4">everything you need to know about using throne ui</p>
+                            
+                            <!-- Open source info -->
+                            <div class="flex flex-wrap gap-3 items-center justify-center md:justify-start docs-flex-wrap">
+                                <div class="badge badge-primary">
+                                    <span class="material-symbols-outlined">open_in_new</span>
+                                    open source
+                                </div>
+                                <a href="https://github.com/thekzbn/throne-ui" target="_blank" class="btn btn-outline btn-sm">
                                     <span class="material-symbols-outlined">code</span>
                                     github
-                                </button>
+                                </a>
+                                <a href="https://thekzbn.netlify.app" target="_blank" class="btn btn-ghost btn-sm">
+                                    <span class="material-symbols-outlined">person</span>
+                                    thekzbn's portfolio
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- quick start section -->
+                        <div class="mb-12 docs-section">
+                            <h2 class="mb-6">🚀 quick start</h2>
+                            <div class="grid grid-2 gap-6 docs-grid-2">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <span class="material-symbols-outlined text-accent">content_copy</span>
+                                        <h3>copy & paste (easiest)</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <p class="mb-4">perfect for beginners - just copy components and paste into your project</p>
+                                        <ol class="text-sm text-secondary mb-4">
+                                            <li>browse <a href="#" data-route="/components" class="text-accent">components</a></li>
+                                            <li>click on any component</li>
+                                            <li>hit the copy button</li>
+                                            <li>paste into your html</li>
+                                        </ol>
+                                        <a href="#" data-route="/components" class="btn btn-primary btn-sm">browse components</a>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        <span class="material-symbols-outlined text-accent">cloud</span>
+                                        <h3>cdn setup (recommended)</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <p class="mb-4">full project setup with professional styling</p>
+                                        <pre class="line-numbers language-html"><code>&lt;!-- foundation css (makes it look amazing) --&gt;
+&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/thekzbn/throne-ui@main/src/throne-foundation.css"&gt;
+
+&lt;!-- throne ui css --&gt;
+&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/thekzbn/throne-ui@main/dist/throne-ui.min.css"&gt;
+
+&lt;!-- throne ui javascript --&gt;
+&lt;script src="https://cdn.jsdelivr.net/gh/thekzbn/throne-ui@main/dist/throne-ui.min.js"&gt;&lt;/script&gt;</code></pre>
+                                        <button class="btn btn-outline btn-sm" onclick="copyCode(this)" data-code="cdn-setup">copy cdn links</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- foundation css section -->
+                        <div class="mb-12 docs-section">
+                            <h2 class="mb-6">🎨 foundation css (essential)</h2>
+                            <div class="alert">
+                                <span class="material-symbols-outlined">lightbulb</span>
+                                <div>
+                                    <strong>pro tip:</strong> foundation css is the secret to making components look absolutely stunning. 
+                                    it provides perfect typography, spacing, and responsive design.
+                                </div>
+                            </div>
+                            <div class="mt-6">
+                                <h3 class="mb-3">what you get with foundation css:</h3>
+                                <div class="grid grid-2 gap-4 mb-6 docs-grid-2">
+                                    <div class="flex gap-3">
+                                        <span class="material-symbols-outlined text-accent">font_download</span>
+                                        <div>
+                                            <strong>perfect typography</strong>
+                                            <p class="text-sm text-secondary">inter fonts, responsive sizing, optimal line heights</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-3">
+                                        <span class="material-symbols-outlined text-accent">straighten</span>
+                                        <div>
+                                            <strong>visual rhythm</strong>
+                                            <p class="text-sm text-secondary">consistent spacing and professional appearance</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-3">
+                                        <span class="material-symbols-outlined text-accent">phone_android</span>
+                                        <div>
+                                            <strong>responsive design</strong>
+                                            <p class="text-sm text-secondary">automatic mobile optimization</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-3">
+                                        <span class="material-symbols-outlined text-accent">accessibility</span>
+                                        <div>
+                                            <strong>accessibility</strong>
+                                            <p class="text-sm text-secondary">focus styles, contrast, reduced motion support</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex gap-3 flex-wrap docs-flex-wrap">
+                                    <a href="examples/foundation-demo.html" target="_blank" class="btn btn-primary">
+                                        see before/after demo
+                                    </a>
+                                    <a href="docs/foundation-guide.md" target="_blank" class="btn btn-outline">
+                                        complete guide
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- design system section -->
+                        <div class="mb-12 docs-section">
+                            <h2 class="mb-6">🎨 design system</h2>
+                            <div class="grid grid-2 gap-6 docs-grid-2">
+                                <div>
+                                    <h3 class="mb-3">3-color system</h3>
+                                    <div class="flex gap-3 mb-4">
+                                        <div class="w-12 h-12 rounded" style="background-color: #d6ad60;"></div>
+                                        <div>
+                                            <strong>gold (#d6ad60)</strong>
+                                            <p class="text-sm text-secondary">accent color for highlights</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-3 mb-4">
+                                        <div class="w-12 h-12 rounded" style="background-color: #000; border: 1px solid #ccc;"></div>
+                                        <div>
+                                            <strong>black (#000)</strong>
+                                            <p class="text-sm text-secondary">primary text and elements</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-3 mb-4">
+                                        <div class="w-12 h-12 rounded" style="background-color: #fff; border: 1px solid #ccc;"></div>
+                                        <div>
+                                            <strong>white (#fff)</strong>
+                                            <p class="text-sm text-secondary">backgrounds and contrast</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 class="mb-3">design rules</h3>
+                                    <div class="mb-4">
+                                        <h4 class="text-sm font-semibold text-accent mb-2">✅ allowed</h4>
+                                        <ul class="text-sm text-secondary">
+                                            <li>3 colors only (gold, black, white)</li>
+                                            <li>borders on forms, profile images, cert cards</li>
+                                            <li>hover effects: color changes, subtle transforms</li>
+                                            <li>typography hierarchy</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm font-semibold text-accent mb-2">❌ forbidden</h4>
+                                        <ul class="text-sm text-secondary">
+                                            <li>shadows of any kind</li>
+                                            <li>extra colors beyond the 3-color system</li>
+                                            <li>borders on buttons, cards, navigation</li>
+                                            <li>complex animations</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- examples section -->
+                        <div class="mb-12 docs-section">
+                            <h2 class="mb-6">📖 examples & guides</h2>
+                            <div class="grid grid-3 gap-4 docs-grid-3">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <span class="material-symbols-outlined text-accent">play_arrow</span>
+                                        <h3>getting started</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <p class="text-sm text-secondary mb-3">complete working example showing how to structure your first throne ui project</p>
+                                        <a href="examples/getting-started.html" target="_blank" class="btn btn-outline btn-sm">
+                                            view example
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        <span class="material-symbols-outlined text-accent">person</span>
+                                        <h3>portfolio site</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <p class="text-sm text-secondary mb-3">real-world example of a minimalist portfolio built with throne ui components</p>
+                                        <a href="examples/portfolio.html" target="_blank" class="btn btn-outline btn-sm">
+                                            view example
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        <span class="material-symbols-outlined text-accent">compare</span>
+                                        <h3>foundation demo</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <p class="text-sm text-secondary mb-3">before/after comparison showing the dramatic difference foundation css makes</p>
+                                        <a href="examples/foundation-demo.html" target="_blank" class="btn btn-outline btn-sm">
+                                            view demo
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- javascript api section -->
+                        <div class="mb-12 docs-section">
+                            <h2 class="mb-6">⚡ javascript api</h2>
+                            <div class="mb-6">
+                                <h3 class="mb-3">theme management</h3>
+                                <pre class="line-numbers language-javascript"><code>// toggle between light and dark themes
+window.throneUI.toggleTheme();
+
+// set specific theme
+window.throneUI.setTheme('dark');
+window.throneUI.setTheme('light');</code></pre>
+                            </div>
+                            
+                            <div class="mb-6">
+                                <h3 class="mb-3">interactive components</h3>
+                                <pre class="line-numbers language-javascript"><code>// modals
+window.throneUI.showModal('my-modal');
+window.throneUI.hideModal('my-modal');
+
+// alerts
+window.throneUI.showAlert('success', 'operation completed!');
+
+// spa navigation
+window.throneUI.navigateTo('/about');</code></pre>
+                            </div>
+
+                            <div class="mb-6">
+                                <h3 class="mb-3">programmatic component creation</h3>
+                                <pre class="line-numbers language-javascript"><code>// create components with javascript
+const button = window.throneUI.createButton('click me', 'primary', () => {
+    alert('button clicked!');
+});
+document.body.appendChild(button);
+
+// create other components
+const card = window.throneUI.createCard('title', 'content');
+const badge = window.throneUI.createBadge('new', 'primary');</code></pre>
+                            </div>
+                        </div>
+
+                        <!-- component css section -->
+                        <div class="mb-12 docs-section">
+                            <h2 class="mb-6">🎨 component css (customizable)</h2>
+                            <p class="text-secondary mb-6">actual css code for each component that you can customize and modify</p>
+                            
+                            <div class="mb-8">
+                                <h3 class="mb-3">buttons</h3>
+                                <pre class="line-numbers language-css"><code>/* button base */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: none;
+  color: var(--text-color);
+  text-transform: none;
+}
+
+.btn:hover {
+  transform: translateY(-0.125rem);
+}
+
+/* button variants */
+.btn-primary {
+  background-color: var(--accent-color);
+  color: var(--black);
+}
+
+.btn-primary:hover {
+  background-color: var(--text-color);
+  color: var(--bg-color);
+}
+
+.btn-outline {
+  border: 0.0625rem solid var(--text-secondary);
+  color: var(--text-color);
+}
+
+.btn-outline:hover {
+  background-color: var(--text-color);
+  color: var(--bg-color);
+}
+
+.btn-ghost {
+  color: var(--text-secondary);
+}
+
+.btn-ghost:hover {
+  color: var(--accent-color);
+}</code></pre>
+                            </div>
+
+                            <div class="mb-8">
+                                <h3 class="mb-3">cards</h3>
+                                <pre class="line-numbers language-css"><code>/* card base */
+.card {
+  background-color: var(--bg-color);
+  padding: 2rem;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-0.125rem);
+}
+
+.card-bordered {
+  border: 0.0625rem solid var(--text-secondary);
+}
+
+/* card elements */
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.card-body {
+  margin-bottom: 1.5rem;
+}
+
+.card-text {
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.card-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}</code></pre>
+                            </div>
+
+                            <div class="mb-8">
+                                <h3 class="mb-3">forms</h3>
+                                <pre class="line-numbers language-css"><code>/* form elements */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+/* inputs (borders allowed - exception) */
+.form-input,
+.form-textarea,
+.form-select {
+  padding: 0.75rem;
+  font-size: 0.875rem;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border: 0.0625rem solid var(--text-secondary);
+  transition: border-color 0.2s ease;
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+
+.form-textarea {
+  min-height: 7.5rem;
+  resize: vertical;
+}</code></pre>
+                            </div>
+
+                            <div class="mb-8">
+                                <h3 class="mb-3">navbar</h3>
+                                <pre class="line-numbers language-css"><code>/* navbar */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: var(--bg-color);
+}
+
+.navbar-brand {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.navbar-nav {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.navbar-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.navbar-link:hover,
+.navbar-link.active {
+  color: var(--accent-color);
+}
+
+/* responsive navbar */
+@media (max-width: 48rem) {
+  .navbar {
+    flex-wrap: wrap;
+  }
+  
+  .navbar-nav {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 1rem;
+    gap: 1rem;
+  }
+}</code></pre>
+                            </div>
+
+                            <div class="text-center">
+                                <p class="text-secondary mb-4">want to see css for other components?</p>
+                                <a href="src/throne-ui.css" target="_blank" class="btn btn-primary">
+                                    view complete css file
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- resources section -->
+                        <div class="mb-12 docs-section">
+                            <h2 class="mb-6">📚 additional resources</h2>
+                            <div class="grid grid-2 gap-4 docs-grid-2">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h3 class="mb-2">📖 foundation guide</h3>
+                                        <p class="text-sm text-secondary mb-3">complete documentation for foundation css with examples and best practices</p>
+                                        <a href="docs/foundation-guide.md" target="_blank" class="btn btn-outline btn-sm">read guide</a>
+                                    </div>
+                                </div>
+                                
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h3 class="mb-2">📋 readme</h3>
+                                        <p class="text-sm text-secondary mb-3">comprehensive readme with setup instructions, usage examples, and api reference</p>
+                                        <a href="README.md" target="_blank" class="btn btn-outline btn-sm">view readme</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- call to action -->
+                        <div class="text-center">
+                            <h2 class="mb-4">ready to start building?</h2>
+                            <p class="text-lg text-secondary mb-6">choose your preferred method and start creating amazing interfaces</p>
+                            <div class="flex gap-3 justify-center flex-wrap docs-flex-wrap">
+                                <a href="#" data-route="/components" class="btn btn-primary">
+                                    browse components
+                                </a>
+                                <a href="examples/getting-started.html" target="_blank" class="btn btn-outline">
+                                    see examples
+                                </a>
+                                <a href="https://github.com/thekzbn/throne-ui" target="_blank" class="btn btn-ghost">
+                                    <span class="material-symbols-outlined">code</span>
+                                    github
+                                </a>
                             </div>
                         </div>
                     </div>
                 </section>
             </div>
+
+
         </div>
     </div>
 
-    <script src="src/throne-ui.js"></script>
+            <script src="src/throne-ui.js"></script>
+        
+        <!-- PrismJS for code highlighting -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
     <script>
         // copy to clipboard functionality
         function copyCode(btn) {
             const codeId = btn.getAttribute('data-code');
-            const codeElement = document.getElementById(codeId);
-            const text = codeElement.textContent;
+            let text;
+            
+            if (codeId === 'cdn-setup') {
+                // Special case for CDN setup
+                text = `<!-- foundation css (makes it look amazing) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/thekzbn/throne-ui@main/src/throne-foundation.css">
+
+<!-- throne ui css -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/thekzbn/throne-ui@main/dist/throne-ui.min.css">
+
+<!-- throne ui javascript -->
+<script src="https://cdn.jsdelivr.net/gh/thekzbn/throne-ui@main/dist/throne-ui.min.js"></script>`;
+            } else {
+                const codeElement = document.getElementById(codeId);
+                text = codeElement.textContent;
+            }
             
             navigator.clipboard.writeText(text).then(() => {
                 const originalIcon = btn.querySelector('.material-symbols-outlined');
