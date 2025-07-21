@@ -3,376 +3,2484 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ThroneUi - Ultra-Minimalist UI Library</title>
+    <title>throne ui - ultra-minimalist component library</title>
     <link rel="stylesheet" href="src/throne-ui.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="nav">
-        <a href="#" class="nav-brand">ThroneUi</a>
-        <ul class="nav-links">
-            <li><a href="#hero" class="nav-link active">Home</a></li>
-            <li><a href="#components" class="nav-link">Components</a></li>
-            <li><a href="#examples" class="nav-link">Examples</a></li>
-            <li><a href="#docs" class="nav-link">Docs</a></li>
-        </ul>
-        <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
-    </nav>
+    <div class="spa-container">
+        <!-- floating theme toggle -->
+        <button class="theme-toggle" aria-label="toggle theme">
+            <span class="material-symbols-outlined">dark_mode</span>
+        </button>
 
-    <!-- Hero Section -->
-    <section id="hero" class="hero">
-        <h1 class="hero-title">ThroneUi</h1>
-        <p class="hero-subtitle">Ultra-Minimalist Design System</p>
-        <p class="hero-description">
-            A vanilla HTML/CSS/JavaScript UI library built on strict constraints: 
-            3 colors maximum, no shadows, minimal borders, typography-first design.
-        </p>
-        <div class="flex gap-2 justify-center">
-            <a href="#components" class="btn btn-primary">View Components</a>
-            <a href="#docs" class="btn btn-link">Documentation</a>
+        <!-- spa content wrapper -->
+        <div class="spa-content">
+            <!-- home route -->
+            <div class="route active" data-route-path="/">
+                <!-- hero section -->
+                <section class="section">
+                    <div class="container text-center">
+                        <h1 class="mb-2">throne ui</h1>
+                        <p class="text-xl text-accent mb-2">ultra-minimalist component library</p>
+                        <p class="text-lg text-secondary mb-4 mx-auto" style="max-width: 600px;">
+                            copy-paste ready components built with vanilla html, css, and javascript. 
+                            strict 3-color design system. no shadows, minimal borders, typography-first.
+                        </p>
+                        <div class="flex gap-2 justify-center flex-wrap">
+                            <a href="#" data-route="/components" class="btn btn-primary">
+                                <span class="material-symbols-outlined">widgets</span>
+                                browse components
+                            </a>
+                            <a href="#" data-route="/about" class="btn btn-outline">
+                                <span class="material-symbols-outlined">info</span>
+                                about thekzbn
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- quick component access -->
+                <section class="section">
+                    <div class="container">
+                        <h2 class="text-center mb-4">ready-to-use components</h2>
+                        <div class="grid grid-auto gap-3">
+                            <div class="card cursor-pointer" onclick="window.throneUI.navigateTo('/navbar')">
+                                <h4 class="card-title">navbar</h4>
+                                <p class="card-text text-sm">responsive navigation bars</p>
+                            </div>
+                            <div class="card cursor-pointer" onclick="window.throneUI.navigateTo('/buttons')">
+                                <h4 class="card-title">buttons</h4>
+                                <p class="card-text text-sm">primary, secondary, ghost, outline</p>
+                            </div>
+                            <div class="card cursor-pointer" onclick="window.throneUI.navigateTo('/cards')">
+                                <h4 class="card-title">cards</h4>
+                                <p class="card-text text-sm">content containers and layouts</p>
+                            </div>
+                            <div class="card cursor-pointer" onclick="window.throneUI.navigateTo('/forms')">
+                                <h4 class="card-title">forms</h4>
+                                <p class="card-text text-sm">inputs, selects, validation</p>
+                            </div>
+                            <div class="card cursor-pointer" onclick="window.throneUI.navigateTo('/hero')">
+                                <h4 class="card-title">hero sections</h4>
+                                <p class="card-text text-sm">landing page headers</p>
+                            </div>
+                            <div class="card cursor-pointer" onclick="window.throneUI.navigateTo('/footer')">
+                                <h4 class="card-title">footers</h4>
+                                <p class="card-text text-sm">page footers and contact info</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- design philosophy -->
+                <section class="section">
+                    <div class="container">
+                        <h2 class="text-center mb-4">design philosophy</h2>
+                        <div class="grid grid-3 gap-4">
+                            <div class="card text-center">
+                                <span class="material-symbols-outlined text-5xl text-accent mb-2">palette</span>
+                                <h3 class="card-title">3 colors only</h3>
+                                <p class="card-text">gold (#d6ad60), black (#000), white (#fff). no exceptions.</p>
+                            </div>
+                            <div class="card text-center">
+                                <span class="material-symbols-outlined text-5xl text-accent mb-2">visibility_off</span>
+                                <h3 class="card-title">no shadows</h3>
+                                <p class="card-text">clean, flat design. visual hierarchy through typography only.</p>
+                            </div>
+                            <div class="card text-center">
+                                <span class="material-symbols-outlined text-5xl text-accent mb-2">border_style</span>
+                                <h3 class="card-title">minimal borders</h3>
+                                <p class="card-text">borders only on forms, avatars, and certification cards.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- components list route -->
+            <div class="route" data-route-path="/components">
+                <section class="section">
+                    <div class="container">
+                        <div class="text-center mb-5">
+                            <h1>all components</h1>
+                            <p class="text-lg text-secondary">copy-paste ready components</p>
+                        </div>
+
+                        <div class="grid grid-auto gap-4">
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/navbar')">
+                                <h4 class="card-title">navbar</h4>
+                                <p class="card-text">responsive navigation bars with mobile menu</p>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/buttons')">
+                                <h4 class="card-title">buttons</h4>
+                                <p class="card-text">all button variants and sizes</p>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/cards')">
+                                <h4 class="card-title">cards</h4>
+                                <p class="card-text">content cards and layouts</p>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/forms')">
+                                <h4 class="card-title">forms</h4>
+                                <p class="card-text">form inputs and validation</p>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/hero')">
+                                <h4 class="card-title">hero sections</h4>
+                                <p class="card-text">landing page headers</p>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/footer')">
+                                <h4 class="card-title">footers</h4>
+                                <p class="card-text">page footers and contact sections</p>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/timeline')">
+                                <h4 class="card-title">timeline</h4>
+                                <p class="card-text">experience and event timelines</p>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/avatars')">
+                                <h4 class="card-title">avatars</h4>
+                                <p class="card-text">profile images and user avatars</p>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/badges')">
+                                <h4 class="card-title">badges</h4>
+                                <p class="card-text">status indicators and labels</p>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/alerts')">
+                                <h4 class="card-title">alerts</h4>
+                                <p class="card-text">notifications and messages</p>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/modals')">
+                                <h4 class="card-title">modals</h4>
+                                <p class="card-text">dialog boxes and overlays</p>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/tabs')">
+                                <h4 class="card-title">tabs</h4>
+                                <p class="card-text">tabbed content interfaces</p>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/accordions')">
+                                <h4 class="card-title">accordions</h4>
+                                <p class="card-text">collapsible content panels</p>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/dropdowns')">
+                                <h4 class="card-title">dropdowns</h4>
+                                <p class="card-text">dropdown menus and selects</p>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/progress')">
+                                <h4 class="card-title">progress bars</h4>
+                                <p class="card-text">loading and progress indicators</p>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/tables')">
+                                <h4 class="card-title">tables</h4>
+                                <p class="card-text">data tables and grids</p>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/pagination')">
+                                <h4 class="card-title">pagination</h4>
+                                <p class="card-text">page navigation controls</p>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/spinners')">
+                                <h4 class="card-title">spinners</h4>
+                                <p class="card-text">loading animations</p>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/skeleton')">
+                                <h4 class="card-title">skeleton</h4>
+                                <p class="card-text">loading placeholders</p>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/tooltips')">
+                                <h4 class="card-title">tooltips</h4>
+                                <p class="card-text">hover information popups</p>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/drawers')">
+                                <h4 class="card-title">drawers</h4>
+                                <p class="card-text">side panel navigation</p>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/chips')">
+                                <h4 class="card-title">chips</h4>
+                                <p class="card-text">tags and filter chips</p>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/grid')">
+                                <h4 class="card-title">grid system</h4>
+                                <p class="card-text">responsive layout grids</p>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/utilities')">
+                                <h4 class="card-title">utilities</h4>
+                                <p class="card-text">spacing and layout helpers</p>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/inputs')">
+                                <h4 class="card-title">inputs</h4>
+                                <p class="card-text">input fields and controls</p>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/selects')">
+                                <h4 class="card-title">selects</h4>
+                                <p class="card-text">dropdown select controls</p>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/checkboxes')">
+                                <h4 class="card-title">checkboxes</h4>
+                                <p class="card-text">checkbox and radio inputs</p>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/switches')">
+                                <h4 class="card-title">switches</h4>
+                                <p class="card-text">toggle switches</p>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/sliders')">
+                                <h4 class="card-title">sliders</h4>
+                                <p class="card-text">range sliders</p>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/breadcrumbs')">
+                                <h4 class="card-title">breadcrumbs</h4>
+                                <p class="card-text">navigation breadcrumbs</p>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/steps')">
+                                <h4 class="card-title">steps</h4>
+                                <p class="card-text">step indicators</p>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/lists')">
+                                <h4 class="card-title">lists</h4>
+                                <p class="card-text">list components</p>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/media')">
+                                <h4 class="card-title">media</h4>
+                                <p class="card-text">images and media objects</p>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/overlays')">
+                                <h4 class="card-title">overlays</h4>
+                                <p class="card-text">overlay and backdrop components</p>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/dividers')">
+                                <h4 class="card-title">dividers</h4>
+                                <p class="card-text">section dividers</p>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/stats')">
+                                <h4 class="card-title">stats</h4>
+                                <p class="card-text">statistics displays</p>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/pricing')">
+                                <h4 class="card-title">pricing</h4>
+                                <p class="card-text">pricing cards</p>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/testimonials')">
+                                <h4 class="card-title">testimonials</h4>
+                                <p class="card-text">testimonial components</p>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/features')">
+                                <h4 class="card-title">features</h4>
+                                <p class="card-text">feature showcase</p>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/cta')">
+                                <h4 class="card-title">call to action</h4>
+                                <p class="card-text">cta sections</p>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/logos')">
+                                <h4 class="card-title">logos</h4>
+                                <p class="card-text">logo grids and displays</p>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/team')">
+                                <h4 class="card-title">team</h4>
+                                <p class="card-text">team member cards</p>
+                            </div>
+                            <div class="card card-bordered cursor-pointer" onclick="window.throneUI.navigateTo('/contact')">
+                                <h4 class="card-title">contact</h4>
+                                <p class="card-text">contact forms and info</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- navbar component page -->
+            <div class="route" data-route-path="/navbar">
+                <section class="section">
+                    <div class="container">
+                        <div class="mb-5">
+                            <a href="#" data-route="/components" class="text-accent text-sm">← back to components</a>
+                            <h1 class="mt-2">navbar</h1>
+                            <p class="text-lg text-secondary">responsive navigation bars with mobile menu support</p>
+                        </div>
+
+                        <!-- basic navbar -->
+                        <div class="component-showcase">
+                            <div class="component-header">
+                                <h2 class="component-title">basic navbar</h2>
+                                <button class="copy-btn" onclick="copyCode(this)" data-code="navbar-basic">
+                                    <span class="material-symbols-outlined">content_copy</span>
+                                </button>
+                            </div>
+                            <div class="component-demo">
+                                <nav class="navbar">
+                                    <a href="#" class="navbar-brand">brand</a>
+                                    <div class="navbar-collapse">
+                                        <ul class="navbar-nav">
+                                            <li><a href="#" class="navbar-link active">home</a></li>
+                                            <li><a href="#" class="navbar-link">about</a></li>
+                                            <li><a href="#" class="navbar-link">services</a></li>
+                                            <li><a href="#" class="navbar-link">contact</a></li>
+                                        </ul>
+                                    </div>
+                                </nav>
+                            </div>
+                            <div class="component-code" id="navbar-basic">
+&lt;nav class="navbar"&gt;
+    &lt;a href="#" class="navbar-brand"&gt;brand&lt;/a&gt;
+    &lt;div class="navbar-collapse"&gt;
+        &lt;ul class="navbar-nav"&gt;
+            &lt;li&gt;&lt;a href="#" class="navbar-link active"&gt;home&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#" class="navbar-link"&gt;about&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#" class="navbar-link"&gt;services&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#" class="navbar-link"&gt;contact&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/nav&gt;</div>
+                        </div>
+
+                        <!-- navbar with mobile menu -->
+                        <div class="component-showcase">
+                            <div class="component-header">
+                                <h2 class="component-title">mobile responsive navbar</h2>
+                                <button class="copy-btn" onclick="copyCode(this)" data-code="navbar-mobile">
+                                    <span class="material-symbols-outlined">content_copy</span>
+                                </button>
+                            </div>
+                            <div class="component-demo">
+                                <nav class="navbar">
+                                    <a href="#" class="navbar-brand">brand</a>
+                                    <button class="navbar-toggle" onclick="toggleMobileNav(this)">
+                                        <span class="material-symbols-outlined">menu</span>
+                                    </button>
+                                    <div class="navbar-collapse">
+                                        <ul class="navbar-nav">
+                                            <li><a href="#" class="navbar-link active">home</a></li>
+                                            <li><a href="#" class="navbar-link">about</a></li>
+                                            <li><a href="#" class="navbar-link">services</a></li>
+                                            <li><a href="#" class="navbar-link">contact</a></li>
+                                        </ul>
+                                        <button class="btn btn-primary">get started</button>
+                                    </div>
+                                </nav>
+                            </div>
+                            <div class="component-code" id="navbar-mobile">
+&lt;nav class="navbar"&gt;
+    &lt;a href="#" class="navbar-brand"&gt;brand&lt;/a&gt;
+    &lt;button class="navbar-toggle" onclick="toggleMobileNav(this)"&gt;
+        &lt;span class="material-symbols-outlined"&gt;menu&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;div class="navbar-collapse"&gt;
+        &lt;ul class="navbar-nav"&gt;
+            &lt;li&gt;&lt;a href="#" class="navbar-link active"&gt;home&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#" class="navbar-link"&gt;about&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#" class="navbar-link"&gt;services&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#" class="navbar-link"&gt;contact&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;button class="btn btn-primary"&gt;get started&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/nav&gt;
+
+&lt;script&gt;
+function toggleMobileNav(btn) {
+    const collapse = btn.nextElementSibling;
+    collapse.classList.toggle('active');
+    const icon = btn.querySelector('.material-symbols-outlined');
+    icon.textContent = collapse.classList.contains('active') ? 'close' : 'menu';
+}
+&lt;/script&gt;</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- buttons component page -->
+            <div class="route" data-route-path="/buttons">
+                <section class="section">
+                    <div class="container">
+                        <div class="mb-5">
+                            <a href="#" data-route="/components" class="text-accent text-sm">← back to components</a>
+                            <h1 class="mt-2">buttons</h1>
+                            <p class="text-lg text-secondary">all button variants following the 3-color design system</p>
+                        </div>
+
+                        <!-- button variants -->
+                        <div class="component-showcase">
+                            <div class="component-header">
+                                <h2 class="component-title">button variants</h2>
+                                <button class="copy-btn" onclick="copyCode(this)" data-code="button-variants">
+                                    <span class="material-symbols-outlined">content_copy</span>
+                                </button>
+                            </div>
+                            <div class="component-demo">
+                                <div class="flex gap-2 flex-wrap">
+                                    <button class="btn btn-primary">primary</button>
+                                    <button class="btn btn-secondary">secondary</button>
+                                    <button class="btn btn-outline">outline</button>
+                                    <button class="btn btn-ghost">ghost</button>
+                                    <button class="btn btn-link">link</button>
+                                </div>
+                            </div>
+                            <div class="component-code" id="button-variants">
+&lt;button class="btn btn-primary"&gt;primary&lt;/button&gt;
+&lt;button class="btn btn-secondary"&gt;secondary&lt;/button&gt;
+&lt;button class="btn btn-outline"&gt;outline&lt;/button&gt;
+&lt;button class="btn btn-ghost"&gt;ghost&lt;/button&gt;
+&lt;button class="btn btn-link"&gt;link&lt;/button&gt;</div>
+                        </div>
+
+                        <!-- button sizes -->
+                        <div class="component-showcase">
+                            <div class="component-header">
+                                <h2 class="component-title">button sizes</h2>
+                                <button class="copy-btn" onclick="copyCode(this)" data-code="button-sizes">
+                                    <span class="material-symbols-outlined">content_copy</span>
+                                </button>
+                            </div>
+                            <div class="component-demo">
+                                <div class="flex gap-2 items-center flex-wrap">
+                                    <button class="btn btn-primary btn-sm">small</button>
+                                    <button class="btn btn-primary">normal</button>
+                                    <button class="btn btn-primary btn-lg">large</button>
+                                    <button class="btn btn-primary btn-xl">extra large</button>
+                                </div>
+                            </div>
+                            <div class="component-code" id="button-sizes">
+&lt;button class="btn btn-primary btn-sm"&gt;small&lt;/button&gt;
+&lt;button class="btn btn-primary"&gt;normal&lt;/button&gt;
+&lt;button class="btn btn-primary btn-lg"&gt;large&lt;/button&gt;
+&lt;button class="btn btn-primary btn-xl"&gt;extra large&lt;/button&gt;</div>
+                        </div>
+
+                        <!-- icon buttons -->
+                        <div class="component-showcase">
+                            <div class="component-header">
+                                <h2 class="component-title">icon buttons</h2>
+                                <button class="copy-btn" onclick="copyCode(this)" data-code="icon-buttons">
+                                    <span class="material-symbols-outlined">content_copy</span>
+                                </button>
+                            </div>
+                            <div class="component-demo">
+                                <div class="flex gap-2 flex-wrap">
+                                    <button class="btn btn-primary">
+                                        <span class="material-symbols-outlined">download</span>
+                                        download
+                                    </button>
+                                    <button class="btn btn-outline">
+                                        <span class="material-symbols-outlined">share</span>
+                                        share
+                                    </button>
+                                    <button class="btn btn-ghost">
+                                        <span class="material-symbols-outlined">favorite</span>
+                                        like
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="component-code" id="icon-buttons">
+&lt;button class="btn btn-primary"&gt;
+    &lt;span class="material-symbols-outlined"&gt;download&lt;/span&gt;
+    download
+&lt;/button&gt;
+&lt;button class="btn btn-outline"&gt;
+    &lt;span class="material-symbols-outlined"&gt;share&lt;/span&gt;
+    share
+&lt;/button&gt;
+&lt;button class="btn btn-ghost"&gt;
+    &lt;span class="material-symbols-outlined"&gt;favorite&lt;/span&gt;
+    like
+&lt;/button&gt;</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- cards component page -->
+            <div class="route" data-route-path="/cards">
+                <section class="section">
+                    <div class="container">
+                        <div class="mb-5">
+                            <a href="#" data-route="/components" class="text-accent text-sm">← back to components</a>
+                            <h1 class="mt-2">cards</h1>
+                            <p class="text-lg text-secondary">content containers and layout cards</p>
+                        </div>
+
+                        <!-- basic card -->
+                        <div class="component-showcase">
+                            <div class="component-header">
+                                <h2 class="component-title">basic card</h2>
+                                <button class="copy-btn" onclick="copyCode(this)" data-code="basic-card">
+                                    <span class="material-symbols-outlined">content_copy</span>
+                                </button>
+                            </div>
+                            <div class="component-demo">
+                                <div class="card" style="max-width: 300px;">
+                                    <h4 class="card-title">card title</h4>
+                                    <div class="card-subtitle">subtitle</div>
+                                    <p class="card-text">this is a basic card with no borders, following the minimalist design principles.</p>
+                                    <div class="card-actions">
+                                        <button class="btn btn-primary btn-sm">action</button>
+                                        <button class="btn btn-ghost btn-sm">cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="component-code" id="basic-card">
+&lt;div class="card"&gt;
+    &lt;h4 class="card-title"&gt;card title&lt;/h4&gt;
+    &lt;div class="card-subtitle"&gt;subtitle&lt;/div&gt;
+    &lt;p class="card-text"&gt;card content goes here.&lt;/p&gt;
+    &lt;div class="card-actions"&gt;
+        &lt;button class="btn btn-primary btn-sm"&gt;action&lt;/button&gt;
+        &lt;button class="btn btn-ghost btn-sm"&gt;cancel&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</div>
+                        </div>
+
+                        <!-- bordered card -->
+                        <div class="component-showcase">
+                            <div class="component-header">
+                                <h2 class="component-title">bordered card</h2>
+                                <button class="copy-btn" onclick="copyCode(this)" data-code="bordered-card">
+                                    <span class="material-symbols-outlined">content_copy</span>
+                                </button>
+                            </div>
+                            <div class="component-demo">
+                                <div class="card card-bordered" style="max-width: 300px;">
+                                    <h4 class="card-title">bordered card</h4>
+                                    <p class="card-text">this card has a subtle border for when you need more visual separation.</p>
+                                </div>
+                            </div>
+                            <div class="component-code" id="bordered-card">
+&lt;div class="card card-bordered"&gt;
+    &lt;h4 class="card-title"&gt;bordered card&lt;/h4&gt;
+    &lt;p class="card-text"&gt;card with subtle border.&lt;/p&gt;
+&lt;/div&gt;</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- forms component page -->
+            <div class="route" data-route-path="/forms">
+                <section class="section">
+                    <div class="container">
+                        <div class="mb-5">
+                            <a href="#" data-route="/components" class="text-accent text-sm">← back to components</a>
+                            <h1 class="mt-2">forms</h1>
+                            <p class="text-lg text-secondary">form inputs and validation (borders allowed - exception)</p>
+                        </div>
+
+                        <!-- contact form -->
+                        <div class="component-showcase">
+                            <div class="component-header">
+                                <h2 class="component-title">contact form</h2>
+                                <button class="copy-btn" onclick="copyCode(this)" data-code="contact-form">
+                                    <span class="material-symbols-outlined">content_copy</span>
+                                </button>
+                            </div>
+                            <div class="component-demo">
+                                <form style="max-width: 400px;">
+                                    <div class="form-control">
+                                        <label class="form-label" for="name">name</label>
+                                        <input type="text" id="name" class="form-input" placeholder="your name" required>
+                                    </div>
+                                    <div class="form-control">
+                                        <label class="form-label" for="email">email</label>
+                                        <input type="email" id="email" class="form-input" placeholder="your@email.com" required>
+                                    </div>
+                                    <div class="form-control">
+                                        <label class="form-label" for="message">message</label>
+                                        <textarea id="message" class="form-textarea" placeholder="your message..." required></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">send message</button>
+                                </form>
+                            </div>
+                            <div class="component-code" id="contact-form">
+&lt;form&gt;
+    &lt;div class="form-control"&gt;
+        &lt;label class="form-label" for="name"&gt;name&lt;/label&gt;
+        &lt;input type="text" id="name" class="form-input" placeholder="your name" required&gt;
+    &lt;/div&gt;
+    &lt;div class="form-control"&gt;
+        &lt;label class="form-label" for="email"&gt;email&lt;/label&gt;
+        &lt;input type="email" id="email" class="form-input" placeholder="your@email.com" required&gt;
+    &lt;/div&gt;
+    &lt;div class="form-control"&gt;
+        &lt;label class="form-label" for="message"&gt;message&lt;/label&gt;
+        &lt;textarea id="message" class="form-textarea" placeholder="your message..." required&gt;&lt;/textarea&gt;
+    &lt;/div&gt;
+    &lt;button type="submit" class="btn btn-primary"&gt;send message&lt;/button&gt;
+&lt;/form&gt;</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- hero component page -->
+            <div class="route" data-route-path="/hero">
+                <section class="section">
+                    <div class="container">
+                        <div class="mb-5">
+                            <a href="#" data-route="/components" class="text-accent text-sm">← back to components</a>
+                            <h1 class="mt-2">hero sections</h1>
+                            <p class="text-lg text-secondary">landing page headers and hero sections</p>
+                        </div>
+
+                        <!-- centered hero -->
+                        <div class="component-showcase">
+                            <div class="component-header">
+                                <h2 class="component-title">centered hero</h2>
+                                <button class="copy-btn" onclick="copyCode(this)" data-code="centered-hero">
+                                    <span class="material-symbols-outlined">content_copy</span>
+                                </button>
+                            </div>
+                            <div class="component-demo">
+                                <section class="section text-center">
+                                    <h1 class="mb-2">your product name</h1>
+                                    <p class="text-xl text-accent mb-2">tagline or subtitle</p>
+                                    <p class="text-lg text-secondary mb-4 mx-auto" style="max-width: 600px;">
+                                        brief description of your product or service. keep it concise and compelling.
+                                    </p>
+                                    <div class="flex gap-2 justify-center flex-wrap">
+                                        <button class="btn btn-primary">get started</button>
+                                        <button class="btn btn-outline">learn more</button>
+                                    </div>
+                                </section>
+                            </div>
+                            <div class="component-code" id="centered-hero">
+&lt;section class="section text-center"&gt;
+    &lt;h1 class="mb-2"&gt;your product name&lt;/h1&gt;
+    &lt;p class="text-xl text-accent mb-2"&gt;tagline or subtitle&lt;/p&gt;
+    &lt;p class="text-lg text-secondary mb-4 mx-auto" style="max-width: 600px;"&gt;
+        brief description of your product or service.
+    &lt;/p&gt;
+    &lt;div class="flex gap-2 justify-center flex-wrap"&gt;
+        &lt;button class="btn btn-primary"&gt;get started&lt;/button&gt;
+        &lt;button class="btn btn-outline"&gt;learn more&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/section&gt;</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- footer component page -->
+            <div class="route" data-route-path="/footer">
+                <section class="section">
+                    <div class="container">
+                        <div class="mb-5">
+                            <a href="#" data-route="/components" class="text-accent text-sm">← back to components</a>
+                            <h1 class="mt-2">footers</h1>
+                            <p class="text-lg text-secondary">page footers and contact sections</p>
+                        </div>
+
+                        <!-- simple footer -->
+                        <div class="component-showcase">
+                            <div class="component-header">
+                                <h2 class="component-title">simple footer</h2>
+                                <button class="copy-btn" onclick="copyCode(this)" data-code="simple-footer">
+                                    <span class="material-symbols-outlined">content_copy</span>
+                                </button>
+                            </div>
+                            <div class="component-demo">
+                                <footer class="text-center p-4" style="border-top: 1px solid var(--text-secondary);">
+                                    <p class="text-secondary mb-2">
+                                        © 2024 your company name. built with throne ui.
+                                    </p>
+                                    <div class="flex gap-4 justify-center">
+                                        <a href="#" class="text-secondary">privacy</a>
+                                        <a href="#" class="text-secondary">terms</a>
+                                        <a href="#" class="text-secondary">contact</a>
+                                    </div>
+                                </footer>
+                            </div>
+                            <div class="component-code" id="simple-footer">
+&lt;footer class="text-center p-4" style="border-top: 1px solid var(--text-secondary);"&gt;
+    &lt;p class="text-secondary mb-2"&gt;
+        © 2024 your company name. built with throne ui.
+    &lt;/p&gt;
+    &lt;div class="flex gap-4 justify-center"&gt;
+        &lt;a href="#" class="text-secondary"&gt;privacy&lt;/a&gt;
+        &lt;a href="#" class="text-secondary"&gt;terms&lt;/a&gt;
+        &lt;a href="#" class="text-secondary"&gt;contact&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/footer&gt;</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- timeline component page -->
+            <div class="route" data-route-path="/timeline">
+                <section class="section">
+                    <div class="container">
+                        <div class="mb-5">
+                            <a href="#" data-route="/components" class="text-accent text-sm">← back to components</a>
+                            <h1 class="mt-2">timeline</h1>
+                            <p class="text-lg text-secondary">experience and event timelines</p>
+                        </div>
+
+                        <!-- vertical timeline -->
+                        <div class="component-showcase">
+                            <div class="component-header">
+                                <h2 class="component-title">vertical timeline</h2>
+                                <button class="copy-btn" onclick="copyCode(this)" data-code="vertical-timeline">
+                                    <span class="material-symbols-outlined">content_copy</span>
+                                </button>
+                            </div>
+                            <div class="component-demo">
+                                <div class="timeline">
+                                    <div class="timeline-item">
+                                        <div class="timeline-date">2024</div>
+                                        <div class="timeline-content">
+                                            <h4>senior developer</h4>
+                                            <p class="text-secondary">tech company</p>
+                                            <p>leading development team and architecting scalable solutions</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-date">2023</div>
+                                        <div class="timeline-content">
+                                            <h4>full stack developer</h4>
+                                            <p class="text-secondary">startup inc</p>
+                                            <p>built multiple web applications from concept to deployment</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="component-code" id="vertical-timeline">
+&lt;div class="timeline"&gt;
+    &lt;div class="timeline-item"&gt;
+        &lt;div class="timeline-date"&gt;2024&lt;/div&gt;
+        &lt;div class="timeline-content"&gt;
+            &lt;h4&gt;senior developer&lt;/h4&gt;
+            &lt;p class="text-secondary"&gt;tech company&lt;/p&gt;
+            &lt;p&gt;leading development team and architecting scalable solutions&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="timeline-item"&gt;
+        &lt;div class="timeline-date"&gt;2023&lt;/div&gt;
+        &lt;div class="timeline-content"&gt;
+            &lt;h4&gt;full stack developer&lt;/h4&gt;
+            &lt;p class="text-secondary"&gt;startup inc&lt;/p&gt;
+            &lt;p&gt;built multiple web applications from concept to deployment&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</div>
+                        </div>
+
+                        <!-- horizontal timeline -->
+                        <div class="component-showcase">
+                            <div class="component-header">
+                                <h2 class="component-title">horizontal timeline</h2>
+                                <button class="copy-btn" onclick="copyCode(this)" data-code="horizontal-timeline">
+                                    <span class="material-symbols-outlined">content_copy</span>
+                                </button>
+                            </div>
+                            <div class="component-demo">
+                                <div class="timeline-horizontal">
+                                    <div class="timeline-item">
+                                        <div class="timeline-date">2022</div>
+                                        <div class="timeline-content">
+                                            <h5>project alpha</h5>
+                                            <p>launched successfully</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-date">2023</div>
+                                        <div class="timeline-content">
+                                            <h5>project beta</h5>
+                                            <p>in development</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-date">2024</div>
+                                        <div class="timeline-content">
+                                            <h5>project gamma</h5>
+                                            <p>planning phase</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="component-code" id="horizontal-timeline">
+&lt;div class="timeline-horizontal"&gt;
+    &lt;div class="timeline-item"&gt;
+        &lt;div class="timeline-date"&gt;2022&lt;/div&gt;
+        &lt;div class="timeline-content"&gt;
+            &lt;h5&gt;project alpha&lt;/h5&gt;
+            &lt;p&gt;launched successfully&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="timeline-item"&gt;
+        &lt;div class="timeline-date"&gt;2023&lt;/div&gt;
+        &lt;div class="timeline-content"&gt;
+            &lt;h5&gt;project beta&lt;/h5&gt;
+            &lt;p&gt;in development&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="timeline-item"&gt;
+        &lt;div class="timeline-date"&gt;2024&lt;/div&gt;
+        &lt;div class="timeline-content"&gt;
+            &lt;h5&gt;project gamma&lt;/h5&gt;
+            &lt;p&gt;planning phase&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- avatars component page -->
+            <div class="route" data-route-path="/avatars">
+                <section class="section">
+                    <div class="container">
+                        <div class="mb-5">
+                            <a href="#" data-route="/components" class="text-accent text-sm">← back to components</a>
+                            <h1 class="mt-2">avatars</h1>
+                            <p class="text-lg text-secondary">profile images and user avatars</p>
+                        </div>
+
+                        <!-- avatar sizes -->
+                        <div class="component-showcase">
+                            <div class="component-header">
+                                <h2 class="component-title">avatar sizes</h2>
+                                <button class="copy-btn" onclick="copyCode(this)" data-code="avatar-sizes">
+                                    <span class="material-symbols-outlined">content_copy</span>
+                                </button>
+                            </div>
+                            <div class="component-demo">
+                                <div class="flex gap-4 items-center flex-wrap">
+                                    <div class="avatar avatar-xs">
+                                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face" alt="user">
+                                    </div>
+                                    <div class="avatar avatar-sm">
+                                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face" alt="user">
+                                    </div>
+                                    <div class="avatar">
+                                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=48&h=48&fit=crop&crop=face" alt="user">
+                                    </div>
+                                    <div class="avatar avatar-lg">
+                                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=64&h=64&fit=crop&crop=face" alt="user">
+                                    </div>
+                                    <div class="avatar avatar-xl">
+                                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=96&h=96&fit=crop&crop=face" alt="user">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="component-code" id="avatar-sizes">
+&lt;div class="avatar avatar-xs"&gt;
+    &lt;img src="user.jpg" alt="user"&gt;
+&lt;/div&gt;
+&lt;div class="avatar avatar-sm"&gt;
+    &lt;img src="user.jpg" alt="user"&gt;
+&lt;/div&gt;
+&lt;div class="avatar"&gt;
+    &lt;img src="user.jpg" alt="user"&gt;
+&lt;/div&gt;
+&lt;div class="avatar avatar-lg"&gt;
+    &lt;img src="user.jpg" alt="user"&gt;
+&lt;/div&gt;
+&lt;div class="avatar avatar-xl"&gt;
+    &lt;img src="user.jpg" alt="user"&gt;
+&lt;/div&gt;</div>
+                        </div>
+
+                        <!-- avatar group -->
+                        <div class="component-showcase">
+                            <div class="component-header">
+                                <h2 class="component-title">avatar group</h2>
+                                <button class="copy-btn" onclick="copyCode(this)" data-code="avatar-group">
+                                    <span class="material-symbols-outlined">content_copy</span>
+                                </button>
+                            </div>
+                            <div class="component-demo">
+                                <div class="avatar-group">
+                                    <div class="avatar">
+                                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=48&h=48&fit=crop&crop=face" alt="user 1">
+                                    </div>
+                                    <div class="avatar">
+                                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=48&h=48&fit=crop&crop=face" alt="user 2">
+                                    </div>
+                                    <div class="avatar">
+                                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=48&h=48&fit=crop&crop=face" alt="user 3">
+                                    </div>
+                                    <div class="avatar">
+                                        <span>+5</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="component-code" id="avatar-group">
+&lt;div class="avatar-group"&gt;
+    &lt;div class="avatar"&gt;
+        &lt;img src="user1.jpg" alt="user 1"&gt;
+    &lt;/div&gt;
+    &lt;div class="avatar"&gt;
+        &lt;img src="user2.jpg" alt="user 2"&gt;
+    &lt;/div&gt;
+    &lt;div class="avatar"&gt;
+        &lt;img src="user3.jpg" alt="user 3"&gt;
+    &lt;/div&gt;
+    &lt;div class="avatar"&gt;
+        &lt;span&gt;+5&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- badges component page -->
+            <div class="route" data-route-path="/badges">
+                <section class="section">
+                    <div class="container">
+                        <div class="mb-5">
+                            <a href="#" data-route="/components" class="text-accent text-sm">← back to components</a>
+                            <h1 class="mt-2">badges</h1>
+                            <p class="text-lg text-secondary">status indicators and labels</p>
+                        </div>
+
+                        <!-- badge variants -->
+                        <div class="component-showcase">
+                            <div class="component-header">
+                                <h2 class="component-title">badge variants</h2>
+                                <button class="copy-btn" onclick="copyCode(this)" data-code="badge-variants">
+                                    <span class="material-symbols-outlined">content_copy</span>
+                                </button>
+                            </div>
+                            <div class="component-demo">
+                                <div class="flex gap-3 flex-wrap">
+                                    <span class="badge">default</span>
+                                    <span class="badge badge-primary">primary</span>
+                                    <span class="badge badge-outline">outline</span>
+                                    <span class="badge badge-sm">small</span>
+                                    <span class="badge badge-lg">large</span>
+                                </div>
+                            </div>
+                            <div class="component-code" id="badge-variants">
+&lt;span class="badge"&gt;default&lt;/span&gt;
+&lt;span class="badge badge-primary"&gt;primary&lt;/span&gt;
+&lt;span class="badge badge-outline"&gt;outline&lt;/span&gt;
+&lt;span class="badge badge-sm"&gt;small&lt;/span&gt;
+&lt;span class="badge badge-lg"&gt;large&lt;/span&gt;</div>
+                        </div>
+
+                        <!-- badge with icon -->
+                        <div class="component-showcase">
+                            <div class="component-header">
+                                <h2 class="component-title">badge with icon</h2>
+                                <button class="copy-btn" onclick="copyCode(this)" data-code="badge-icon">
+                                    <span class="material-symbols-outlined">content_copy</span>
+                                </button>
+                            </div>
+                            <div class="component-demo">
+                                <div class="flex gap-3 flex-wrap">
+                                    <span class="badge">
+                                        <span class="material-symbols-outlined">check</span>
+                                        verified
+                                    </span>
+                                    <span class="badge badge-primary">
+                                        <span class="material-symbols-outlined">star</span>
+                                        premium
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="component-code" id="badge-icon">
+&lt;span class="badge"&gt;
+    &lt;span class="material-symbols-outlined"&gt;check&lt;/span&gt;
+    verified
+&lt;/span&gt;
+&lt;span class="badge badge-primary"&gt;
+    &lt;span class="material-symbols-outlined"&gt;star&lt;/span&gt;
+    premium
+&lt;/span&gt;</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- alerts component page -->
+            <div class="route" data-route-path="/alerts">
+                <section class="section">
+                    <div class="container">
+                        <div class="mb-5">
+                            <a href="#" data-route="/components" class="text-accent text-sm">← back to components</a>
+                            <h1 class="mt-2">alerts</h1>
+                            <p class="text-lg text-secondary">notifications and messages</p>
+                        </div>
+
+                        <!-- alert variants -->
+                        <div class="component-showcase">
+                            <div class="component-header">
+                                <h2 class="component-title">alert types</h2>
+                                <button class="copy-btn" onclick="copyCode(this)" data-code="alert-types">
+                                    <span class="material-symbols-outlined">content_copy</span>
+                                </button>
+                            </div>
+                            <div class="component-demo">
+                                <div class="flex flex-col gap-3">
+                                    <div class="alert">
+                                        <span class="material-symbols-outlined">info</span>
+                                        <div>
+                                            <strong>info:</strong> this is an informational message
+                                        </div>
+                                    </div>
+                                    <div class="alert alert-success">
+                                        <span class="material-symbols-outlined">check_circle</span>
+                                        <div>
+                                            <strong>success:</strong> operation completed successfully
+                                        </div>
+                                    </div>
+                                    <div class="alert alert-warning">
+                                        <span class="material-symbols-outlined">warning</span>
+                                        <div>
+                                            <strong>warning:</strong> please review this action
+                                        </div>
+                                    </div>
+                                    <div class="alert alert-error">
+                                        <span class="material-symbols-outlined">error</span>
+                                        <div>
+                                            <strong>error:</strong> something went wrong
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="component-code" id="alert-types">
+&lt;div class="alert"&gt;
+    &lt;span class="material-symbols-outlined"&gt;info&lt;/span&gt;
+    &lt;div&gt;
+        &lt;strong&gt;info:&lt;/strong&gt; this is an informational message
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="alert alert-success"&gt;
+    &lt;span class="material-symbols-outlined"&gt;check_circle&lt;/span&gt;
+    &lt;div&gt;
+        &lt;strong&gt;success:&lt;/strong&gt; operation completed successfully
+    &lt;/div&gt;
+&lt;/div&gt;</div>
+                        </div>
+
+                        <!-- dismissible alert -->
+                        <div class="component-showcase">
+                            <div class="component-header">
+                                <h2 class="component-title">dismissible alert</h2>
+                                <button class="copy-btn" onclick="copyCode(this)" data-code="alert-dismissible">
+                                    <span class="material-symbols-outlined">content_copy</span>
+                                </button>
+                            </div>
+                            <div class="component-demo">
+                                <div class="alert">
+                                    <span class="material-symbols-outlined">info</span>
+                                    <div class="flex-1">
+                                        this alert can be dismissed by clicking the close button
+                                    </div>
+                                    <button class="alert-close" onclick="this.parentElement.remove()">
+                                        <span class="material-symbols-outlined">close</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="component-code" id="alert-dismissible">
+&lt;div class="alert"&gt;
+    &lt;span class="material-symbols-outlined"&gt;info&lt;/span&gt;
+    &lt;div class="flex-1"&gt;
+        this alert can be dismissed by clicking the close button
+    &lt;/div&gt;
+    &lt;button class="alert-close" onclick="this.parentElement.remove()"&gt;
+        &lt;span class="material-symbols-outlined"&gt;close&lt;/span&gt;
+    &lt;/button&gt;
+&lt;/div&gt;</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- modals component page -->
+            <div class="route" data-route-path="/modals">
+                <section class="section">
+                    <div class="container">
+                        <div class="mb-5">
+                            <a href="#" data-route="/components" class="text-accent text-sm">← back to components</a>
+                            <h1 class="mt-2">modals</h1>
+                            <p class="text-lg text-secondary">dialog boxes and overlays</p>
+                        </div>
+
+                        <!-- basic modal -->
+                        <div class="component-showcase">
+                            <div class="component-header">
+                                <h2 class="component-title">basic modal</h2>
+                                <button class="copy-btn" onclick="copyCode(this)" data-code="basic-modal">
+                                    <span class="material-symbols-outlined">content_copy</span>
+                                </button>
+                            </div>
+                            <div class="component-demo">
+                                <button class="btn btn-primary" onclick="document.getElementById('demo-modal').classList.add('active')">
+                                    open modal
+                                </button>
+                                <div class="modal" id="demo-modal">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h3>modal title</h3>
+                                            <button class="modal-close" onclick="document.getElementById('demo-modal').classList.remove('active')">
+                                                <span class="material-symbols-outlined">close</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>this is a basic modal dialog. it can contain any content you need.</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="btn btn-outline" onclick="document.getElementById('demo-modal').classList.remove('active')">cancel</button>
+                                            <button class="btn btn-primary">confirm</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="component-code" id="basic-modal">
+&lt;button class="btn btn-primary" onclick="document.getElementById('my-modal').classList.add('active')"&gt;
+    open modal
+&lt;/button&gt;
+&lt;div class="modal" id="my-modal"&gt;
+    &lt;div class="modal-content"&gt;
+        &lt;div class="modal-header"&gt;
+            &lt;h3&gt;modal title&lt;/h3&gt;
+            &lt;button class="modal-close" onclick="document.getElementById('my-modal').classList.remove('active')"&gt;
+                &lt;span class="material-symbols-outlined"&gt;close&lt;/span&gt;
+            &lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div class="modal-body"&gt;
+            &lt;p&gt;this is a basic modal dialog. it can contain any content you need.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="modal-footer"&gt;
+            &lt;button class="btn btn-outline" onclick="document.getElementById('my-modal').classList.remove('active')"&gt;cancel&lt;/button&gt;
+            &lt;button class="btn btn-primary"&gt;confirm&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- tabs component page -->
+            <div class="route" data-route-path="/tabs">
+                <section class="section">
+                    <div class="container">
+                        <div class="mb-5">
+                            <a href="#" data-route="/components" class="text-accent text-sm">← back to components</a>
+                            <h1 class="mt-2">tabs</h1>
+                            <p class="text-lg text-secondary">tabbed content interfaces</p>
+                        </div>
+
+                        <!-- basic tabs -->
+                        <div class="component-showcase">
+                            <div class="component-header">
+                                <h2 class="component-title">basic tabs</h2>
+                                <button class="copy-btn" onclick="copyCode(this)" data-code="basic-tabs">
+                                    <span class="material-symbols-outlined">content_copy</span>
+                                </button>
+                            </div>
+                            <div class="component-demo">
+                                <div class="tabs" data-tabs>
+                                    <div class="tab-nav">
+                                        <button class="tab-button active" data-tab="tab1">overview</button>
+                                        <button class="tab-button" data-tab="tab2">features</button>
+                                        <button class="tab-button" data-tab="tab3">pricing</button>
+                                    </div>
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" data-tab-pane="tab1">
+                                            <h4>overview</h4>
+                                            <p>this is the overview content. it provides a general introduction to the product.</p>
+                                        </div>
+                                        <div class="tab-pane" data-tab-pane="tab2">
+                                            <h4>features</h4>
+                                            <p>here are the key features and capabilities of our product.</p>
+                                        </div>
+                                        <div class="tab-pane" data-tab-pane="tab3">
+                                            <h4>pricing</h4>
+                                            <p>check out our competitive pricing plans.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="component-code" id="basic-tabs">
+&lt;div class="tabs" data-tabs&gt;
+    &lt;div class="tab-nav"&gt;
+        &lt;button class="tab-button active" data-tab="tab1"&gt;overview&lt;/button&gt;
+        &lt;button class="tab-button" data-tab="tab2"&gt;features&lt;/button&gt;
+        &lt;button class="tab-button" data-tab="tab3"&gt;pricing&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class="tab-content"&gt;
+        &lt;div class="tab-pane active" data-tab-pane="tab1"&gt;
+            &lt;h4&gt;overview&lt;/h4&gt;
+            &lt;p&gt;this is the overview content.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="tab-pane" data-tab-pane="tab2"&gt;
+            &lt;h4&gt;features&lt;/h4&gt;
+            &lt;p&gt;here are the key features.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="tab-pane" data-tab-pane="tab3"&gt;
+            &lt;h4&gt;pricing&lt;/h4&gt;
+            &lt;p&gt;check out our pricing plans.&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- accordions component page -->
+            <div class="route" data-route-path="/accordions">
+                <section class="section">
+                    <div class="container">
+                        <div class="mb-5">
+                            <a href="#" data-route="/components" class="text-accent text-sm">← back to components</a>
+                            <h1 class="mt-2">accordions</h1>
+                            <p class="text-lg text-secondary">collapsible content panels</p>
+                        </div>
+
+                        <!-- basic accordion -->
+                        <div class="component-showcase">
+                            <div class="component-header">
+                                <h2 class="component-title">basic accordion</h2>
+                                <button class="copy-btn" onclick="copyCode(this)" data-code="basic-accordion">
+                                    <span class="material-symbols-outlined">content_copy</span>
+                                </button>
+                            </div>
+                            <div class="component-demo">
+                                <div class="accordion" data-accordion>
+                                    <div class="accordion-item">
+                                        <button class="accordion-button" data-accordion-trigger>
+                                            <span>what is throne ui?</span>
+                                            <span class="material-symbols-outlined">expand_more</span>
+                                        </button>
+                                        <div class="accordion-content" data-accordion-content>
+                                            <p>throne ui is an ultra-minimalist component library built with vanilla html, css, and javascript. it follows a strict 3-color design system.</p>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <button class="accordion-button" data-accordion-trigger>
+                                            <span>how do i use it?</span>
+                                            <span class="material-symbols-outlined">expand_more</span>
+                                        </button>
+                                        <div class="accordion-content" data-accordion-content>
+                                            <p>simply copy and paste the component code into your project. no npm packages or build tools required.</p>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <button class="accordion-button" data-accordion-trigger>
+                                            <span>is it responsive?</span>
+                                            <span class="material-symbols-outlined">expand_more</span>
+                                        </button>
+                                        <div class="accordion-content" data-accordion-content>
+                                            <p>yes! all components are fully responsive and work great on mobile, tablet, and desktop devices.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="component-code" id="basic-accordion">
+&lt;div class="accordion" data-accordion&gt;
+    &lt;div class="accordion-item"&gt;
+        &lt;button class="accordion-button" data-accordion-trigger&gt;
+            &lt;span&gt;what is throne ui?&lt;/span&gt;
+            &lt;span class="material-symbols-outlined"&gt;expand_more&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;div class="accordion-content" data-accordion-content&gt;
+            &lt;p&gt;throne ui is an ultra-minimalist component library.&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="accordion-item"&gt;
+        &lt;button class="accordion-button" data-accordion-trigger&gt;
+            &lt;span&gt;how do i use it?&lt;/span&gt;
+            &lt;span class="material-symbols-outlined"&gt;expand_more&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;div class="accordion-content" data-accordion-content&gt;
+            &lt;p&gt;simply copy and paste the component code.&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- dropdowns component page -->
+            <div class="route" data-route-path="/dropdowns">
+                <section class="section">
+                    <div class="container">
+                        <div class="mb-5">
+                            <a href="#" data-route="/components" class="text-accent text-sm">← back to components</a>
+                            <h1 class="mt-2">dropdowns</h1>
+                            <p class="text-lg text-secondary">dropdown menus and selects</p>
+                        </div>
+
+                        <!-- basic dropdown -->
+                        <div class="component-showcase">
+                            <div class="component-header">
+                                <h2 class="component-title">basic dropdown</h2>
+                                <button class="copy-btn" onclick="copyCode(this)" data-code="basic-dropdown">
+                                    <span class="material-symbols-outlined">content_copy</span>
+                                </button>
+                            </div>
+                            <div class="component-demo">
+                                <div class="dropdown" data-dropdown>
+                                    <button class="btn btn-outline dropdown-toggle" data-dropdown-trigger>
+                                        actions
+                                        <span class="material-symbols-outlined">expand_more</span>
+                                    </button>
+                                    <div class="dropdown-menu" data-dropdown-menu>
+                                        <a href="#" class="dropdown-item">
+                                            <span class="material-symbols-outlined">edit</span>
+                                            edit
+                                        </a>
+                                        <a href="#" class="dropdown-item">
+                                            <span class="material-symbols-outlined">share</span>
+                                            share
+                                        </a>
+                                        <div class="dropdown-divider"></div>
+                                        <a href="#" class="dropdown-item text-error">
+                                            <span class="material-symbols-outlined">delete</span>
+                                            delete
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="component-code" id="basic-dropdown">
+&lt;div class="dropdown" data-dropdown&gt;
+    &lt;button class="btn btn-outline dropdown-toggle" data-dropdown-trigger&gt;
+        actions
+        &lt;span class="material-symbols-outlined"&gt;expand_more&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;div class="dropdown-menu" data-dropdown-menu&gt;
+        &lt;a href="#" class="dropdown-item"&gt;
+            &lt;span class="material-symbols-outlined"&gt;edit&lt;/span&gt;
+            edit
+        &lt;/a&gt;
+        &lt;a href="#" class="dropdown-item"&gt;
+            &lt;span class="material-symbols-outlined"&gt;share&lt;/span&gt;
+            share
+        &lt;/a&gt;
+        &lt;div class="dropdown-divider"&gt;&lt;/div&gt;
+        &lt;a href="#" class="dropdown-item text-error"&gt;
+            &lt;span class="material-symbols-outlined"&gt;delete&lt;/span&gt;
+            delete
+        &lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- progress component page -->
+            <div class="route" data-route-path="/progress">
+                <section class="section">
+                    <div class="container">
+                        <div class="mb-5">
+                            <a href="#" data-route="/components" class="text-accent text-sm">← back to components</a>
+                            <h1 class="mt-2">progress bars</h1>
+                            <p class="text-lg text-secondary">loading and progress indicators</p>
+                        </div>
+
+                        <!-- progress bars -->
+                        <div class="component-showcase">
+                            <div class="component-header">
+                                <h2 class="component-title">progress bars</h2>
+                                <button class="copy-btn" onclick="copyCode(this)" data-code="progress-bars">
+                                    <span class="material-symbols-outlined">content_copy</span>
+                                </button>
+                            </div>
+                            <div class="component-demo">
+                                <div class="flex flex-col gap-4">
+                                    <div>
+                                        <div class="flex justify-between mb-1">
+                                            <span class="text-sm">html</span>
+                                            <span class="text-sm">90%</span>
+                                        </div>
+                                        <div class="progress">
+                                            <div class="progress-bar" style="width: 90%"></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="flex justify-between mb-1">
+                                            <span class="text-sm">css</span>
+                                            <span class="text-sm">85%</span>
+                                        </div>
+                                        <div class="progress">
+                                            <div class="progress-bar" style="width: 85%"></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="flex justify-between mb-1">
+                                            <span class="text-sm">javascript</span>
+                                            <span class="text-sm">75%</span>
+                                        </div>
+                                        <div class="progress">
+                                            <div class="progress-bar" style="width: 75%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="component-code" id="progress-bars">
+&lt;div&gt;
+    &lt;div class="flex justify-between mb-1"&gt;
+        &lt;span class="text-sm"&gt;html&lt;/span&gt;
+        &lt;span class="text-sm"&gt;90%&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="progress"&gt;
+        &lt;div class="progress-bar" style="width: 90%"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div&gt;
+    &lt;div class="flex justify-between mb-1"&gt;
+        &lt;span class="text-sm"&gt;css&lt;/span&gt;
+        &lt;span class="text-sm"&gt;85%&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="progress"&gt;
+        &lt;div class="progress-bar" style="width: 85%"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</div>
+                        </div>
+
+                        <!-- circular progress -->
+                        <div class="component-showcase">
+                            <div class="component-header">
+                                <h2 class="component-title">circular progress</h2>
+                                <button class="copy-btn" onclick="copyCode(this)" data-code="circular-progress">
+                                    <span class="material-symbols-outlined">content_copy</span>
+                                </button>
+                            </div>
+                            <div class="component-demo">
+                                <div class="flex gap-4 items-center flex-wrap">
+                                    <div class="progress-circle" style="--progress: 25%">
+                                        <span>25%</span>
+                                    </div>
+                                    <div class="progress-circle" style="--progress: 50%">
+                                        <span>50%</span>
+                                    </div>
+                                    <div class="progress-circle" style="--progress: 75%">
+                                        <span>75%</span>
+                                    </div>
+                                    <div class="progress-circle" style="--progress: 100%">
+                                        <span>100%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="component-code" id="circular-progress">
+&lt;div class="progress-circle" style="--progress: 75%"&gt;
+    &lt;span&gt;75%&lt;/span&gt;
+&lt;/div&gt;</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- tables component page -->
+            <div class="route" data-route-path="/tables">
+                <section class="section">
+                    <div class="container">
+                        <div class="mb-5">
+                            <a href="#" data-route="/components" class="text-accent text-sm">← back to components</a>
+                            <h1 class="mt-2">tables</h1>
+                            <p class="text-lg text-secondary">data tables and grids</p>
+                        </div>
+
+                        <!-- basic table -->
+                        <div class="component-showcase">
+                            <div class="component-header">
+                                <h2 class="component-title">basic table</h2>
+                                <button class="copy-btn" onclick="copyCode(this)" data-code="basic-table">
+                                    <span class="material-symbols-outlined">content_copy</span>
+                                </button>
+                            </div>
+                            <div class="component-demo">
+                                <div class="table-container">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>name</th>
+                                                <th>role</th>
+                                                <th>status</th>
+                                                <th>actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>john doe</td>
+                                                <td>developer</td>
+                                                <td><span class="badge badge-primary">active</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline">edit</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>jane smith</td>
+                                                <td>designer</td>
+                                                <td><span class="badge">inactive</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline">edit</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>mike johnson</td>
+                                                <td>manager</td>
+                                                <td><span class="badge badge-primary">active</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline">edit</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="component-code" id="basic-table">
+&lt;div class="table-container"&gt;
+    &lt;table class="table"&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th&gt;name&lt;/th&gt;
+                &lt;th&gt;role&lt;/th&gt;
+                &lt;th&gt;status&lt;/th&gt;
+                &lt;th&gt;actions&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;td&gt;john doe&lt;/td&gt;
+                &lt;td&gt;developer&lt;/td&gt;
+                &lt;td&gt;&lt;span class="badge badge-primary"&gt;active&lt;/span&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;button class="btn btn-sm btn-outline"&gt;edit&lt;/button&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+&lt;/div&gt;</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- pagination component page -->
+            <div class="route" data-route-path="/pagination">
+                <section class="section">
+                    <div class="container">
+                        <div class="mb-5">
+                            <a href="#" data-route="/components" class="text-accent text-sm">← back to components</a>
+                            <h1 class="mt-2">pagination</h1>
+                            <p class="text-lg text-secondary">page navigation controls</p>
+                        </div>
+
+                        <!-- basic pagination -->
+                        <div class="component-showcase">
+                            <div class="component-header">
+                                <h2 class="component-title">basic pagination</h2>
+                                <button class="copy-btn" onclick="copyCode(this)" data-code="basic-pagination">
+                                    <span class="material-symbols-outlined">content_copy</span>
+                                </button>
+                            </div>
+                            <div class="component-demo">
+                                <nav class="pagination">
+                                    <button class="pagination-btn" disabled>
+                                        <span class="material-symbols-outlined">chevron_left</span>
+                                    </button>
+                                    <button class="pagination-btn active">1</button>
+                                    <button class="pagination-btn">2</button>
+                                    <button class="pagination-btn">3</button>
+                                    <span class="pagination-dots">...</span>
+                                    <button class="pagination-btn">10</button>
+                                    <button class="pagination-btn">
+                                        <span class="material-symbols-outlined">chevron_right</span>
+                                    </button>
+                                </nav>
+                            </div>
+                            <div class="component-code" id="basic-pagination">
+&lt;nav class="pagination"&gt;
+    &lt;button class="pagination-btn" disabled&gt;
+        &lt;span class="material-symbols-outlined"&gt;chevron_left&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;button class="pagination-btn active"&gt;1&lt;/button&gt;
+    &lt;button class="pagination-btn"&gt;2&lt;/button&gt;
+    &lt;button class="pagination-btn"&gt;3&lt;/button&gt;
+    &lt;span class="pagination-dots"&gt;...&lt;/span&gt;
+    &lt;button class="pagination-btn"&gt;10&lt;/button&gt;
+    &lt;button class="pagination-btn"&gt;
+        &lt;span class="material-symbols-outlined"&gt;chevron_right&lt;/span&gt;
+    &lt;/button&gt;
+&lt;/nav&gt;</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- spinners component page -->
+            <div class="route" data-route-path="/spinners">
+                <section class="section">
+                    <div class="container">
+                        <div class="mb-5">
+                            <a href="#" data-route="/components" class="text-accent text-sm">← back to components</a>
+                            <h1 class="mt-2">spinners</h1>
+                            <p class="text-lg text-secondary">loading animations</p>
+                        </div>
+
+                        <!-- spinner variants -->
+                        <div class="component-showcase">
+                            <div class="component-header">
+                                <h2 class="component-title">spinner variants</h2>
+                                <button class="copy-btn" onclick="copyCode(this)" data-code="spinner-variants">
+                                    <span class="material-symbols-outlined">content_copy</span>
+                                </button>
+                            </div>
+                            <div class="component-demo">
+                                <div class="flex gap-4 items-center flex-wrap">
+                                    <div class="spinner"></div>
+                                    <div class="spinner spinner-sm"></div>
+                                    <div class="spinner spinner-lg"></div>
+                                    <div class="spinner-dots">
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="component-code" id="spinner-variants">
+&lt;div class="spinner"&gt;&lt;/div&gt;
+&lt;div class="spinner spinner-sm"&gt;&lt;/div&gt;
+&lt;div class="spinner spinner-lg"&gt;&lt;/div&gt;
+&lt;div class="spinner-dots"&gt;
+    &lt;div&gt;&lt;/div&gt;
+    &lt;div&gt;&lt;/div&gt;
+    &lt;div&gt;&lt;/div&gt;
+&lt;/div&gt;</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- skeleton component page -->
+            <div class="route" data-route-path="/skeleton">
+                <section class="section">
+                    <div class="container">
+                        <div class="mb-5">
+                            <a href="#" data-route="/components" class="text-accent text-sm">← back to components</a>
+                            <h1 class="mt-2">skeleton</h1>
+                            <p class="text-lg text-secondary">loading placeholders</p>
+                        </div>
+
+                        <!-- skeleton variants -->
+                        <div class="component-showcase">
+                            <div class="component-header">
+                                <h2 class="component-title">skeleton loading</h2>
+                                <button class="copy-btn" onclick="copyCode(this)" data-code="skeleton-loading">
+                                    <span class="material-symbols-outlined">content_copy</span>
+                                </button>
+                            </div>
+                            <div class="component-demo">
+                                <div class="card">
+                                    <div class="flex gap-3 mb-3">
+                                        <div class="skeleton skeleton-circle" style="width: 48px; height: 48px;"></div>
+                                        <div class="flex-1">
+                                            <div class="skeleton skeleton-text" style="width: 60%;"></div>
+                                            <div class="skeleton skeleton-text" style="width: 40%;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="skeleton skeleton-text" style="width: 100%;"></div>
+                                    <div class="skeleton skeleton-text" style="width: 80%;"></div>
+                                    <div class="skeleton skeleton-text" style="width: 90%;"></div>
+                                </div>
+                            </div>
+                            <div class="component-code" id="skeleton-loading">
+&lt;div class="card"&gt;
+    &lt;div class="flex gap-3 mb-3"&gt;
+        &lt;div class="skeleton skeleton-circle" style="width: 48px; height: 48px;"&gt;&lt;/div&gt;
+        &lt;div class="flex-1"&gt;
+            &lt;div class="skeleton skeleton-text" style="width: 60%;"&gt;&lt;/div&gt;
+            &lt;div class="skeleton skeleton-text" style="width: 40%;"&gt;&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="skeleton skeleton-text" style="width: 100%;"&gt;&lt;/div&gt;
+    &lt;div class="skeleton skeleton-text" style="width: 80%;"&gt;&lt;/div&gt;
+    &lt;div class="skeleton skeleton-text" style="width: 90%;"&gt;&lt;/div&gt;
+&lt;/div&gt;</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- tooltips component page -->
+            <div class="route" data-route-path="/tooltips">
+                <section class="section">
+                    <div class="container">
+                        <div class="mb-5">
+                            <a href="#" data-route="/components" class="text-accent text-sm">← back to components</a>
+                            <h1 class="mt-2">tooltips</h1>
+                            <p class="text-lg text-secondary">hover information popups</p>
+                        </div>
+
+                        <!-- tooltip variants -->
+                        <div class="component-showcase">
+                            <div class="component-header">
+                                <h2 class="component-title">tooltip positions</h2>
+                                <button class="copy-btn" onclick="copyCode(this)" data-code="tooltip-positions">
+                                    <span class="material-symbols-outlined">content_copy</span>
+                                </button>
+                            </div>
+                            <div class="component-demo">
+                                <div class="flex gap-4 justify-center flex-wrap" style="padding: 2rem;">
+                                    <button class="btn btn-outline" data-tooltip="tooltip on top" data-tooltip-position="top">
+                                        top
+                                    </button>
+                                    <button class="btn btn-outline" data-tooltip="tooltip on right" data-tooltip-position="right">
+                                        right
+                                    </button>
+                                    <button class="btn btn-outline" data-tooltip="tooltip on bottom" data-tooltip-position="bottom">
+                                        bottom
+                                    </button>
+                                    <button class="btn btn-outline" data-tooltip="tooltip on left" data-tooltip-position="left">
+                                        left
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="component-code" id="tooltip-positions">
+&lt;button class="btn btn-outline" data-tooltip="tooltip on top" data-tooltip-position="top"&gt;
+    top
+&lt;/button&gt;
+&lt;button class="btn btn-outline" data-tooltip="tooltip on right" data-tooltip-position="right"&gt;
+    right
+&lt;/button&gt;
+&lt;button class="btn btn-outline" data-tooltip="tooltip on bottom" data-tooltip-position="bottom"&gt;
+    bottom
+&lt;/button&gt;
+&lt;button class="btn btn-outline" data-tooltip="tooltip on left" data-tooltip-position="left"&gt;
+    left
+&lt;/button&gt;</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- drawers component page -->
+            <div class="route" data-route-path="/drawers">
+                <section class="section">
+                    <div class="container">
+                        <div class="mb-5">
+                            <a href="#" data-route="/components" class="text-accent text-sm">← back to components</a>
+                            <h1 class="mt-2">drawers</h1>
+                            <p class="text-lg text-secondary">side panel navigation</p>
+                        </div>
+
+                        <!-- drawer demo -->
+                        <div class="component-showcase">
+                            <div class="component-header">
+                                <h2 class="component-title">side drawer</h2>
+                                <button class="copy-btn" onclick="copyCode(this)" data-code="side-drawer">
+                                    <span class="material-symbols-outlined">content_copy</span>
+                                </button>
+                            </div>
+                            <div class="component-demo">
+                                <button class="btn btn-primary" onclick="document.getElementById('demo-drawer').classList.add('active')">
+                                    open drawer
+                                </button>
+                                <div class="drawer drawer-left" id="demo-drawer">
+                                    <div class="drawer-content">
+                                        <div class="drawer-header">
+                                            <h3>navigation</h3>
+                                            <button class="drawer-close" onclick="document.getElementById('demo-drawer').classList.remove('active')">
+                                                <span class="material-symbols-outlined">close</span>
+                                            </button>
+                                        </div>
+                                        <div class="drawer-body">
+                                            <nav class="drawer-nav">
+                                                <a href="#" class="drawer-nav-item">
+                                                    <span class="material-symbols-outlined">home</span>
+                                                    home
+                                                </a>
+                                                <a href="#" class="drawer-nav-item">
+                                                    <span class="material-symbols-outlined">person</span>
+                                                    profile
+                                                </a>
+                                                <a href="#" class="drawer-nav-item">
+                                                    <span class="material-symbols-outlined">settings</span>
+                                                    settings
+                                                </a>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="component-code" id="side-drawer">
+&lt;button class="btn btn-primary" onclick="document.getElementById('my-drawer').classList.add('active')"&gt;
+    open drawer
+&lt;/button&gt;
+&lt;div class="drawer drawer-left" id="my-drawer"&gt;
+    &lt;div class="drawer-content"&gt;
+        &lt;div class="drawer-header"&gt;
+            &lt;h3&gt;navigation&lt;/h3&gt;
+            &lt;button class="drawer-close" onclick="document.getElementById('my-drawer').classList.remove('active')"&gt;
+                &lt;span class="material-symbols-outlined"&gt;close&lt;/span&gt;
+            &lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div class="drawer-body"&gt;
+            &lt;nav class="drawer-nav"&gt;
+                &lt;a href="#" class="drawer-nav-item"&gt;
+                    &lt;span class="material-symbols-outlined"&gt;home&lt;/span&gt;
+                    home
+                &lt;/a&gt;
+                &lt;a href="#" class="drawer-nav-item"&gt;
+                    &lt;span class="material-symbols-outlined"&gt;person&lt;/span&gt;
+                    profile
+                &lt;/a&gt;
+            &lt;/nav&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- chips component page -->
+            <div class="route" data-route-path="/chips">
+                <section class="section">
+                    <div class="container">
+                        <div class="mb-5">
+                            <a href="#" data-route="/components" class="text-accent text-sm">← back to components</a>
+                            <h1 class="mt-2">chips</h1>
+                            <p class="text-lg text-secondary">tags and filter chips</p>
+                        </div>
+
+                        <!-- chip variants -->
+                        <div class="component-showcase">
+                            <div class="component-header">
+                                <h2 class="component-title">chip variants</h2>
+                                <button class="copy-btn" onclick="copyCode(this)" data-code="chip-variants">
+                                    <span class="material-symbols-outlined">content_copy</span>
+                                </button>
+                            </div>
+                            <div class="component-demo">
+                                <div class="flex gap-2 flex-wrap">
+                                    <span class="chip">javascript</span>
+                                    <span class="chip chip-primary">react</span>
+                                    <span class="chip chip-outline">css</span>
+                                    <span class="chip chip-removable">
+                                        html
+                                        <button class="chip-remove">
+                                            <span class="material-symbols-outlined">close</span>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="component-code" id="chip-variants">
+&lt;span class="chip"&gt;javascript&lt;/span&gt;
+&lt;span class="chip chip-primary"&gt;react&lt;/span&gt;
+&lt;span class="chip chip-outline"&gt;css&lt;/span&gt;
+&lt;span class="chip chip-removable"&gt;
+    html
+    &lt;button class="chip-remove"&gt;
+        &lt;span class="material-symbols-outlined"&gt;close&lt;/span&gt;
+    &lt;/button&gt;
+&lt;/span&gt;</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- grid component page -->
+            <div class="route" data-route-path="/grid">
+                <section class="section">
+                    <div class="container">
+                        <div class="mb-5">
+                            <a href="#" data-route="/components" class="text-accent text-sm">← back to components</a>
+                            <h1 class="mt-2">grid system</h1>
+                            <p class="text-lg text-secondary">responsive layout grids</p>
+                        </div>
+
+                        <!-- grid layouts -->
+                        <div class="component-showcase">
+                            <div class="component-header">
+                                <h2 class="component-title">responsive grids</h2>
+                                <button class="copy-btn" onclick="copyCode(this)" data-code="responsive-grids">
+                                    <span class="material-symbols-outlined">content_copy</span>
+                                </button>
+                            </div>
+                            <div class="component-demo">
+                                <div class="grid grid-2 gap-3 mb-4">
+                                    <div class="card">
+                                        <h4>2-column grid</h4>
+                                        <p>item 1</p>
+                                    </div>
+                                    <div class="card">
+                                        <h4>2-column grid</h4>
+                                        <p>item 2</p>
+                                    </div>
+                                </div>
+                                <div class="grid grid-3 gap-3 mb-4">
+                                    <div class="card">
+                                        <h4>3-column</h4>
+                                        <p>item 1</p>
+                                    </div>
+                                    <div class="card">
+                                        <h4>3-column</h4>
+                                        <p>item 2</p>
+                                    </div>
+                                    <div class="card">
+                                        <h4>3-column</h4>
+                                        <p>item 3</p>
+                                    </div>
+                                </div>
+                                <div class="grid grid-auto gap-3">
+                                    <div class="card">
+                                        <h4>auto grid</h4>
+                                        <p>responsive</p>
+                                    </div>
+                                    <div class="card">
+                                        <h4>auto grid</h4>
+                                        <p>adaptive</p>
+                                    </div>
+                                    <div class="card">
+                                        <h4>auto grid</h4>
+                                        <p>flexible</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="component-code" id="responsive-grids">
+&lt;div class="grid grid-2 gap-3"&gt;
+    &lt;div class="card"&gt;2-column grid&lt;/div&gt;
+    &lt;div class="card"&gt;2-column grid&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="grid grid-3 gap-3"&gt;
+    &lt;div class="card"&gt;3-column&lt;/div&gt;
+    &lt;div class="card"&gt;3-column&lt;/div&gt;
+    &lt;div class="card"&gt;3-column&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="grid grid-auto gap-3"&gt;
+    &lt;div class="card"&gt;auto grid&lt;/div&gt;
+    &lt;div class="card"&gt;auto grid&lt;/div&gt;
+    &lt;div class="card"&gt;auto grid&lt;/div&gt;
+&lt;/div&gt;</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- utilities component page -->
+            <div class="route" data-route-path="/utilities">
+                <section class="section">
+                    <div class="container">
+                        <div class="mb-5">
+                            <a href="#" data-route="/components" class="text-accent text-sm">← back to components</a>
+                            <h1 class="mt-2">utilities</h1>
+                            <p class="text-lg text-secondary">spacing and layout helpers</p>
+                        </div>
+
+                        <!-- spacing utilities -->
+                        <div class="component-showcase">
+                            <div class="component-header">
+                                <h2 class="component-title">spacing utilities</h2>
+                                <button class="copy-btn" onclick="copyCode(this)" data-code="spacing-utilities">
+                                    <span class="material-symbols-outlined">content_copy</span>
+                                </button>
+                            </div>
+                            <div class="component-demo">
+                                <div class="flex flex-col gap-3">
+                                    <div class="p-3" style="background: var(--text-secondary); color: var(--bg-color); border-radius: 4px;">
+                                        .p-3 (padding: 1rem)
+                                    </div>
+                                    <div class="m-2 p-2" style="background: var(--accent-color); color: var(--black); border-radius: 4px;">
+                                        .m-2 .p-2 (margin: 0.5rem, padding: 0.5rem)
+                                    </div>
+                                    <div class="mx-4 py-3" style="background: var(--text-secondary); color: var(--bg-color); border-radius: 4px;">
+                                        .mx-4 .py-3 (margin-x: 1.5rem, padding-y: 1rem)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="component-code" id="spacing-utilities">
+&lt;!-- padding utilities --&gt;
+&lt;div class="p-1"&gt;padding: 0.25rem&lt;/div&gt;
+&lt;div class="p-2"&gt;padding: 0.5rem&lt;/div&gt;
+&lt;div class="p-3"&gt;padding: 1rem&lt;/div&gt;
+&lt;div class="p-4"&gt;padding: 1.5rem&lt;/div&gt;
+&lt;div class="p-5"&gt;padding: 2rem&lt;/div&gt;
+
+&lt;!-- margin utilities --&gt;
+&lt;div class="m-1"&gt;margin: 0.25rem&lt;/div&gt;
+&lt;div class="m-2"&gt;margin: 0.5rem&lt;/div&gt;
+&lt;div class="m-3"&gt;margin: 1rem&lt;/div&gt;
+&lt;div class="m-4"&gt;margin: 1.5rem&lt;/div&gt;
+&lt;div class="m-5"&gt;margin: 2rem&lt;/div&gt;
+
+&lt;!-- directional spacing --&gt;
+&lt;div class="px-3"&gt;padding-x: 1rem&lt;/div&gt;
+&lt;div class="py-3"&gt;padding-y: 1rem&lt;/div&gt;
+&lt;div class="mx-4"&gt;margin-x: 1.5rem&lt;/div&gt;
+&lt;div class="my-4"&gt;margin-y: 1.5rem&lt;/div&gt;</div>
+                        </div>
+
+                        <!-- flex utilities -->
+                        <div class="component-showcase">
+                            <div class="component-header">
+                                <h2 class="component-title">flex utilities</h2>
+                                <button class="copy-btn" onclick="copyCode(this)" data-code="flex-utilities">
+                                    <span class="material-symbols-outlined">content_copy</span>
+                                </button>
+                            </div>
+                            <div class="component-demo">
+                                <div class="flex flex-col gap-3">
+                                    <div class="flex justify-between items-center p-3" style="background: var(--text-secondary); color: var(--bg-color); border-radius: 4px;">
+                                        <span>left</span>
+                                        <span>center</span>
+                                        <span>right</span>
+                                    </div>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="badge">flex</span>
+                                        <span class="badge">flex-wrap</span>
+                                        <span class="badge">gap-2</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="component-code" id="flex-utilities">
+&lt;!-- flex display --&gt;
+&lt;div class="flex"&gt;display: flex&lt;/div&gt;
+&lt;div class="flex-col"&gt;flex-direction: column&lt;/div&gt;
+&lt;div class="flex-wrap"&gt;flex-wrap: wrap&lt;/div&gt;
+
+&lt;!-- justify content --&gt;
+&lt;div class="justify-start"&gt;justify-content: flex-start&lt;/div&gt;
+&lt;div class="justify-center"&gt;justify-content: center&lt;/div&gt;
+&lt;div class="justify-between"&gt;justify-content: space-between&lt;/div&gt;
+&lt;div class="justify-end"&gt;justify-content: flex-end&lt;/div&gt;
+
+&lt;!-- align items --&gt;
+&lt;div class="items-start"&gt;align-items: flex-start&lt;/div&gt;
+&lt;div class="items-center"&gt;align-items: center&lt;/div&gt;
+&lt;div class="items-end"&gt;align-items: flex-end&lt;/div&gt;
+
+&lt;!-- gaps --&gt;
+&lt;div class="gap-1"&gt;gap: 0.25rem&lt;/div&gt;
+&lt;div class="gap-2"&gt;gap: 0.5rem&lt;/div&gt;
+&lt;div class="gap-3"&gt;gap: 1rem&lt;/div&gt;</div>
+                        </div>
+
+                        <!-- text utilities -->
+                        <div class="component-showcase">
+                            <div class="component-header">
+                                <h2 class="component-title">text utilities</h2>
+                                <button class="copy-btn" onclick="copyCode(this)" data-code="text-utilities">
+                                    <span class="material-symbols-outlined">content_copy</span>
+                                </button>
+                            </div>
+                            <div class="component-demo">
+                                <div class="flex flex-col gap-2">
+                                    <p class="text-left">left aligned text</p>
+                                    <p class="text-center">center aligned text</p>
+                                    <p class="text-right">right aligned text</p>
+                                    <p class="text-sm">small text</p>
+                                    <p class="text-lg">large text</p>
+                                    <p class="text-xl">extra large text</p>
+                                    <p class="text-secondary">secondary text color</p>
+                                    <p class="text-accent">accent text color</p>
+                                </div>
+                            </div>
+                            <div class="component-code" id="text-utilities">
+&lt;!-- text alignment --&gt;
+&lt;p class="text-left"&gt;left aligned text&lt;/p&gt;
+&lt;p class="text-center"&gt;center aligned text&lt;/p&gt;
+&lt;p class="text-right"&gt;right aligned text&lt;/p&gt;
+
+&lt;!-- text sizes --&gt;
+&lt;p class="text-xs"&gt;extra small text&lt;/p&gt;
+&lt;p class="text-sm"&gt;small text&lt;/p&gt;
+&lt;p class="text-base"&gt;base text&lt;/p&gt;
+&lt;p class="text-lg"&gt;large text&lt;/p&gt;
+&lt;p class="text-xl"&gt;extra large text&lt;/p&gt;
+&lt;p class="text-2xl"&gt;2x large text&lt;/p&gt;
+
+&lt;!-- text colors --&gt;
+&lt;p class="text-primary"&gt;primary text&lt;/p&gt;
+&lt;p class="text-secondary"&gt;secondary text&lt;/p&gt;
+&lt;p class="text-accent"&gt;accent text&lt;/p&gt;
+&lt;p class="text-error"&gt;error text&lt;/p&gt;</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- inputs component page -->
+            <div class="route" data-route-path="/inputs">
+                <section class="section">
+                    <div class="container">
+                        <div class="mb-5">
+                            <a href="#" data-route="/components" class="text-accent text-sm">← back to components</a>
+                            <h1 class="mt-2">inputs</h1>
+                            <p class="text-lg text-secondary">input fields and controls</p>
+                        </div>
+
+                        <!-- input types -->
+                        <div class="component-showcase">
+                            <div class="component-header">
+                                <h2 class="component-title">input types</h2>
+                                <button class="copy-btn" onclick="copyCode(this)" data-code="input-types">
+                                    <span class="material-symbols-outlined">content_copy</span>
+                                </button>
+                            </div>
+                            <div class="component-demo">
+                                <div class="flex flex-col gap-4">
+                                    <div class="form-group">
+                                        <label class="form-label">text input</label>
+                                        <input type="text" class="form-input" placeholder="enter text">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">email input</label>
+                                        <input type="email" class="form-input" placeholder="enter email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">password input</label>
+                                        <input type="password" class="form-input" placeholder="enter password">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">number input</label>
+                                        <input type="number" class="form-input" placeholder="enter number">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">search input</label>
+                                        <input type="search" class="form-input" placeholder="search...">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="component-code" id="input-types">
+&lt;div class="form-group"&gt;
+    &lt;label class="form-label"&gt;text input&lt;/label&gt;
+    &lt;input type="text" class="form-input" placeholder="enter text"&gt;
+&lt;/div&gt;
+&lt;div class="form-group"&gt;
+    &lt;label class="form-label"&gt;email input&lt;/label&gt;
+    &lt;input type="email" class="form-input" placeholder="enter email"&gt;
+&lt;/div&gt;
+&lt;div class="form-group"&gt;
+    &lt;label class="form-label"&gt;password input&lt;/label&gt;
+    &lt;input type="password" class="form-input" placeholder="enter password"&gt;
+&lt;/div&gt;
+&lt;div class="form-group"&gt;
+    &lt;label class="form-label"&gt;number input&lt;/label&gt;
+    &lt;input type="number" class="form-input" placeholder="enter number"&gt;
+&lt;/div&gt;</div>
+                        </div>
+
+                        <!-- input with icon -->
+                        <div class="component-showcase">
+                            <div class="component-header">
+                                <h2 class="component-title">input with icon</h2>
+                                <button class="copy-btn" onclick="copyCode(this)" data-code="input-with-icon">
+                                    <span class="material-symbols-outlined">content_copy</span>
+                                </button>
+                            </div>
+                            <div class="component-demo">
+                                <div class="flex flex-col gap-4">
+                                    <div class="form-group">
+                                        <label class="form-label">search</label>
+                                        <div class="input-group">
+                                            <span class="input-icon">
+                                                <span class="material-symbols-outlined">search</span>
+                                            </span>
+                                            <input type="search" class="form-input" placeholder="search...">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">email</label>
+                                        <div class="input-group">
+                                            <span class="input-icon">
+                                                <span class="material-symbols-outlined">email</span>
+                                            </span>
+                                            <input type="email" class="form-input" placeholder="your@email.com">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="component-code" id="input-with-icon">
+&lt;div class="form-group"&gt;
+    &lt;label class="form-label"&gt;search&lt;/label&gt;
+    &lt;div class="input-group"&gt;
+        &lt;span class="input-icon"&gt;
+            &lt;span class="material-symbols-outlined"&gt;search&lt;/span&gt;
+        &lt;/span&gt;
+        &lt;input type="search" class="form-input" placeholder="search..."&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- breadcrumbs component page -->
+            <div class="route" data-route-path="/breadcrumbs">
+                <section class="section">
+                    <div class="container">
+                        <div class="mb-5">
+                            <a href="#" data-route="/components" class="text-accent text-sm">← back to components</a>
+                            <h1 class="mt-2">breadcrumbs</h1>
+                            <p class="text-lg text-secondary">navigation breadcrumbs</p>
+                        </div>
+
+                        <!-- basic breadcrumbs -->
+                        <div class="component-showcase">
+                            <div class="component-header">
+                                <h2 class="component-title">basic breadcrumbs</h2>
+                                <button class="copy-btn" onclick="copyCode(this)" data-code="basic-breadcrumbs">
+                                    <span class="material-symbols-outlined">content_copy</span>
+                                </button>
+                            </div>
+                            <div class="component-demo">
+                                <nav class="breadcrumb">
+                                    <a href="#" class="breadcrumb-item">home</a>
+                                    <span class="breadcrumb-separator">
+                                        <span class="material-symbols-outlined">chevron_right</span>
+                                    </span>
+                                    <a href="#" class="breadcrumb-item">components</a>
+                                    <span class="breadcrumb-separator">
+                                        <span class="material-symbols-outlined">chevron_right</span>
+                                    </span>
+                                    <span class="breadcrumb-item breadcrumb-current">breadcrumbs</span>
+                                </nav>
+                            </div>
+                            <div class="component-code" id="basic-breadcrumbs">
+&lt;nav class="breadcrumb"&gt;
+    &lt;a href="#" class="breadcrumb-item"&gt;home&lt;/a&gt;
+    &lt;span class="breadcrumb-separator"&gt;
+        &lt;span class="material-symbols-outlined"&gt;chevron_right&lt;/span&gt;
+    &lt;/span&gt;
+    &lt;a href="#" class="breadcrumb-item"&gt;components&lt;/a&gt;
+    &lt;span class="breadcrumb-separator"&gt;
+        &lt;span class="material-symbols-outlined"&gt;chevron_right&lt;/span&gt;
+    &lt;/span&gt;
+    &lt;span class="breadcrumb-item breadcrumb-current"&gt;breadcrumbs&lt;/span&gt;
+&lt;/nav&gt;</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- steps component page -->
+            <div class="route" data-route-path="/steps">
+                <section class="section">
+                    <div class="container">
+                        <div class="mb-5">
+                            <a href="#" data-route="/components" class="text-accent text-sm">← back to components</a>
+                            <h1 class="mt-2">steps</h1>
+                            <p class="text-lg text-secondary">step indicators</p>
+                        </div>
+
+                        <!-- horizontal steps -->
+                        <div class="component-showcase">
+                            <div class="component-header">
+                                <h2 class="component-title">horizontal steps</h2>
+                                <button class="copy-btn" onclick="copyCode(this)" data-code="horizontal-steps">
+                                    <span class="material-symbols-outlined">content_copy</span>
+                                </button>
+                            </div>
+                            <div class="component-demo">
+                                <div class="steps">
+                                    <div class="step step-completed">
+                                        <div class="step-indicator">
+                                            <span class="material-symbols-outlined">check</span>
+                                        </div>
+                                        <div class="step-content">
+                                            <div class="step-title">account</div>
+                                            <div class="step-description">create your account</div>
+                                        </div>
+                                    </div>
+                                    <div class="step step-active">
+                                        <div class="step-indicator">2</div>
+                                        <div class="step-content">
+                                            <div class="step-title">profile</div>
+                                            <div class="step-description">complete your profile</div>
+                                        </div>
+                                    </div>
+                                    <div class="step">
+                                        <div class="step-indicator">3</div>
+                                        <div class="step-content">
+                                            <div class="step-title">verification</div>
+                                            <div class="step-description">verify your email</div>
+                                        </div>
+                                    </div>
+                                    <div class="step">
+                                        <div class="step-indicator">4</div>
+                                        <div class="step-content">
+                                            <div class="step-title">done</div>
+                                            <div class="step-description">you're all set</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="component-code" id="horizontal-steps">
+&lt;div class="steps"&gt;
+    &lt;div class="step step-completed"&gt;
+        &lt;div class="step-indicator"&gt;
+            &lt;span class="material-symbols-outlined"&gt;check&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class="step-content"&gt;
+            &lt;div class="step-title"&gt;account&lt;/div&gt;
+            &lt;div class="step-description"&gt;create your account&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="step step-active"&gt;
+        &lt;div class="step-indicator"&gt;2&lt;/div&gt;
+        &lt;div class="step-content"&gt;
+            &lt;div class="step-title"&gt;profile&lt;/div&gt;
+            &lt;div class="step-description"&gt;complete your profile&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="step"&gt;
+        &lt;div class="step-indicator"&gt;3&lt;/div&gt;
+        &lt;div class="step-content"&gt;
+            &lt;div class="step-title"&gt;verification&lt;/div&gt;
+            &lt;div class="step-description"&gt;verify your email&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- stats component page -->
+            <div class="route" data-route-path="/stats">
+                <section class="section">
+                    <div class="container">
+                        <div class="mb-5">
+                            <a href="#" data-route="/components" class="text-accent text-sm">← back to components</a>
+                            <h1 class="mt-2">stats</h1>
+                            <p class="text-lg text-secondary">statistics displays</p>
+                        </div>
+
+                        <!-- stats grid -->
+                        <div class="component-showcase">
+                            <div class="component-header">
+                                <h2 class="component-title">stats grid</h2>
+                                <button class="copy-btn" onclick="copyCode(this)" data-code="stats-grid">
+                                    <span class="material-symbols-outlined">content_copy</span>
+                                </button>
+                            </div>
+                            <div class="component-demo">
+                                <div class="stats-grid">
+                                    <div class="stat">
+                                        <div class="stat-value">1,234</div>
+                                        <div class="stat-label">users</div>
+                                    </div>
+                                    <div class="stat">
+                                        <div class="stat-value">5,678</div>
+                                        <div class="stat-label">downloads</div>
+                                    </div>
+                                    <div class="stat">
+                                        <div class="stat-value">99.9%</div>
+                                        <div class="stat-label">uptime</div>
+                                    </div>
+                                    <div class="stat">
+                                        <div class="stat-value">24/7</div>
+                                        <div class="stat-label">support</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="component-code" id="stats-grid">
+&lt;div class="stats-grid"&gt;
+    &lt;div class="stat"&gt;
+        &lt;div class="stat-value"&gt;1,234&lt;/div&gt;
+        &lt;div class="stat-label"&gt;users&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="stat"&gt;
+        &lt;div class="stat-value"&gt;5,678&lt;/div&gt;
+        &lt;div class="stat-label"&gt;downloads&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="stat"&gt;
+        &lt;div class="stat-value"&gt;99.9%&lt;/div&gt;
+        &lt;div class="stat-label"&gt;uptime&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="stat"&gt;
+        &lt;div class="stat-value"&gt;24/7&lt;/div&gt;
+        &lt;div class="stat-label"&gt;support&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- about route -->
+            <div class="route" data-route-path="/about">
+                <section class="section">
+                    <div class="container">
+                        <div class="text-center mb-5">
+                            <div class="avatar avatar-xl mb-3">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" alt="thekzbn">
+                            </div>
+                            <h1>thekzbn</h1>
+                            <p class="text-xl text-accent mb-2">15 years old developer</p>
+                            <p class="text-lg text-secondary">passionate about minimalist design and clean code</p>
+                        </div>
+
+                        <div class="grid grid-2 gap-5 mb-5">
+                            <div class="card">
+                                <h3 class="card-title">about me</h3>
+                                <p class="card-text">
+                                    i'm a 15-year-old developer who believes in the power of constraints and minimalism. 
+                                    i started coding at 13 and have been fascinated by how much you can achieve with 
+                                    simple, well-crafted code.
+                                </p>
+                                <p class="card-text">
+                                    throne ui represents my philosophy that great design comes from what you leave out, 
+                                    not what you add. every component is intentionally constrained to prove that 
+                                    limitations breed creativity.
+                                </p>
+                            </div>
+                            <div class="card">
+                                <h3 class="card-title">my approach</h3>
+                                <p class="card-text">
+                                    i focus on vanilla technologies because they're timeless. frameworks come and go, 
+                                    but html, css, and javascript are the foundation of the web.
+                                </p>
+                                <p class="card-text">
+                                    this entire library was built without any external dependencies, 
+                                    proving that you don't need complex tooling to create something beautiful and functional.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <h2 class="mb-3">get in touch</h2>
+                            <p class="text-lg text-secondary mb-4">
+                                interested in collaborating or just want to chat about web development?
+                            </p>
+                            <div class="flex gap-3 justify-center flex-wrap">
+                                <button class="btn btn-primary">
+                                    <span class="material-symbols-outlined">email</span>
+                                    email me
+                                </button>
+                                <button class="btn btn-outline">
+                                    <span class="material-symbols-outlined">code</span>
+                                    github
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
         </div>
-    </section>
-
-    <div class="container">
-        <!-- Design Philosophy -->
-        <section id="philosophy" class="mt-4 mb-4">
-            <h2 class="text-center mb-3">Design Philosophy</h2>
-            <div class="grid grid-3">
-                <div class="card card-about text-center">
-                    <h3 class="card-title">3 Colors Only</h3>
-                    <p class="card-description">
-                        Gold (#d6ad60), Black (#000), White (#fff). 
-                        No exceptions, no gradients, no additional colors.
-                    </p>
-                </div>
-                <div class="card card-about text-center">
-                    <h3 class="card-title">No Shadows</h3>
-                    <p class="card-description">
-                        Clean, flat design aesthetic. Visual hierarchy through 
-                        typography, spacing, and color contrast only.
-                    </p>
-                </div>
-                <div class="card card-about text-center">
-                    <h3 class="card-title">Minimal Borders</h3>
-                    <p class="card-description">
-                        Borders only where absolutely necessary: forms, 
-                        profile images, and certification cards.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Color System -->
-        <section id="colors" class="mb-4">
-            <h2 class="mb-3">Color System</h2>
-            <div class="grid grid-3">
-                <div class="card text-center">
-                    <div style="width: 100px; height: 100px; background: #d6ad60; margin: 0 auto 1rem; border-radius: 50%;"></div>
-                    <h4 class="card-title">Gold</h4>
-                    <p class="card-description">#d6ad60<br>Accent & Interactive</p>
-                </div>
-                <div class="card text-center">
-                    <div style="width: 100px; height: 100px; background: #000; margin: 0 auto 1rem; border-radius: 50%;"></div>
-                    <h4 class="card-title">Black</h4>
-                    <p class="card-description">#000<br>Primary Text & Backgrounds</p>
-                </div>
-                <div class="card text-center">
-                    <div style="width: 100px; height: 100px; background: #fff; border: 1px solid #666; margin: 0 auto 1rem; border-radius: 50%;"></div>
-                    <h4 class="card-title">White</h4>
-                    <p class="card-description">#fff<br>Backgrounds & Contrast</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Typography -->
-        <section id="typography" class="mb-4">
-            <h2 class="mb-3">Typography Hierarchy</h2>
-            <div class="card">
-                <h1>Heading 1 - Hero Title</h1>
-                <h2>Heading 2 - Section Title</h2>
-                <h3>Heading 3 - Card Title</h3>
-                <h4>Heading 4 - Subsection</h4>
-                <h5>Heading 5 - Component Title</h5>
-                <h6>Heading 6 - Small Title</h6>
-                <p>Regular paragraph text with comfortable line height for readability.</p>
-                <p class="text-large">Large text for emphasis and important content.</p>
-                <p class="text-small">Small text for secondary information and captions.</p>
-                <p class="text-xs">Extra small text for fine print and metadata.</p>
-                <p class="text-secondary">Secondary text in muted color for less important content.</p>
-                <p class="text-accent">Accent text in gold for highlights and interactive elements.</p>
-            </div>
-        </section>
-
-        <!-- Buttons -->
-        <section id="buttons" class="mb-4">
-            <h2 class="mb-3">Buttons</h2>
-            <div class="card">
-                <h3 class="card-title">Button Variants</h3>
-                <div class="flex gap-2 mb-3">
-                    <button class="btn btn-primary">Primary Button</button>
-                    <button class="btn btn-link">Link Button</button>
-                    <button class="btn btn-icon">
-                        <span class="material-icons">favorite</span>
-                        Icon Button
-                    </button>
-                </div>
-                <p class="card-description">
-                    Primary buttons use gold background with black text. 
-                    Hover state inverts colors for clear feedback.
-                </p>
-            </div>
-        </section>
-
-        <!-- Cards -->
-        <section id="cards" class="mb-4">
-            <h2 class="mb-3">Cards</h2>
-            
-            <h3 class="mb-2">Project Cards (No Borders)</h3>
-            <div class="grid grid-2 mb-3">
-                <div class="card card-project">
-                    <h3 class="card-title">Project Alpha</h3>
-                    <div class="card-subtitle">Web Application</div>
-                    <p class="card-description">
-                        Clean project card with no borders, relying on spacing 
-                        and hover effects for visual separation.
-                    </p>
-                </div>
-                <div class="card card-project">
-                    <h3 class="card-title">Project Beta</h3>
-                    <div class="card-subtitle">Mobile App</div>
-                    <p class="card-description">
-                        Demonstrates the power of minimal design through 
-                        typography and spacing hierarchy.
-                    </p>
-                </div>
-            </div>
-
-            <h3 class="mb-2">Certification Cards (With Borders - Exception)</h3>
-            <div class="grid grid-2 mb-3">
-                <div class="card card-cert">
-                    <h3 class="card-title">AWS Certified</h3>
-                    <div class="card-subtitle">Cloud Architect</div>
-                    <p class="card-description">
-                        Certification cards are one of the few components 
-                        allowed to have borders in the design system.
-                    </p>
-                </div>
-                <div class="card card-cert">
-                    <h3 class="card-title">Google Cloud</h3>
-                    <div class="card-subtitle">Professional Developer</div>
-                    <p class="card-description">
-                        Border changes to gold on hover, maintaining 
-                        the strict color palette.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Forms -->
-        <section id="forms" class="mb-4">
-            <h2 class="mb-3">Forms (Borders Allowed - Exception)</h2>
-            <div class="card">
-                <h3 class="card-title">Contact Form</h3>
-                <form>
-                    <div class="form-group">
-                        <label class="form-label" for="name">Name</label>
-                        <input type="text" id="name" class="form-input" placeholder="Your name" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="email">Email</label>
-                        <input type="email" id="email" class="form-input" placeholder="your@email.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="subject">Subject</label>
-                        <select id="subject" class="form-select" required>
-                            <option value="">Select a subject</option>
-                            <option value="general">General Inquiry</option>
-                            <option value="support">Support</option>
-                            <option value="feedback">Feedback</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="message">Message</label>
-                        <textarea id="message" class="form-textarea" placeholder="Your message..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                </form>
-            </div>
-        </section>
-
-        <!-- Timeline -->
-        <section id="timeline" class="mb-4">
-            <h2 class="mb-3">Experience Timeline</h2>
-            <div class="card">
-                <h3 class="card-title">Work Experience</h3>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-date">2023 - Present</div>
-                        <h3 class="timeline-title">Senior Frontend Developer</h3>
-                        <div class="timeline-company">TechCorp Inc.</div>
-                        <p class="timeline-description">
-                            Leading frontend development initiatives with focus on 
-                            minimalist design systems and performance optimization.
-                        </p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">2021 - 2023</div>
-                        <h3 class="timeline-title">UI/UX Designer</h3>
-                        <div class="timeline-company">Design Studio</div>
-                        <p class="timeline-description">
-                            Specialized in creating clean, purposeful interfaces 
-                            with strict design constraints and minimal aesthetics.
-                        </p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">2019 - 2021</div>
-                        <h3 class="timeline-title">Frontend Developer</h3>
-                        <div class="timeline-company">StartupXYZ</div>
-                        <p class="timeline-description">
-                            Built responsive web applications with vanilla JavaScript 
-                            and modern CSS techniques.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Profile Images -->
-        <section id="profile" class="mb-4">
-            <h2 class="mb-3">Profile Images (Borders Allowed - Exception)</h2>
-            <div class="card text-center">
-                <h3 class="card-title">Team Members</h3>
-                <div class="flex gap-3 justify-center">
-                    <div class="profile-image">
-                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face" 
-                             alt="Team member 1" width="80" height="80">
-                    </div>
-                    <div class="profile-image">
-                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face" 
-                             alt="Team member 2" width="80" height="80">
-                    </div>
-                    <div class="profile-image">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" 
-                             alt="Team member 3" width="80" height="80">
-                    </div>
-                </div>
-                <p class="card-description mt-2">
-                    Profile images have gold borders as one of the design system exceptions.
-                </p>
-            </div>
-        </section>
-
-        <!-- Grid Systems -->
-        <section id="grids" class="mb-4">
-            <h2 class="mb-3">Grid Systems</h2>
-            
-            <h3 class="mb-2">2-Column Grid</h3>
-            <div class="grid grid-2 mb-3">
-                <div class="card">
-                    <h4 class="card-title">Grid Item 1</h4>
-                    <p class="card-description">Clean grid layout with gap spacing.</p>
-                </div>
-                <div class="card">
-                    <h4 class="card-title">Grid Item 2</h4>
-                    <p class="card-description">No border separators between items.</p>
-                </div>
-            </div>
-
-            <h3 class="mb-2">3-Column Grid</h3>
-            <div class="grid grid-3 mb-3">
-                <div class="card">
-                    <h4 class="card-title">Item A</h4>
-                    <p class="card-description">Visual separation through spacing.</p>
-                </div>
-                <div class="card">
-                    <h4 class="card-title">Item B</h4>
-                    <p class="card-description">Responsive grid system.</p>
-                </div>
-                <div class="card">
-                    <h4 class="card-title">Item C</h4>
-                    <p class="card-description">Pure CSS Grid implementation.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Utility Classes -->
-        <section id="utilities" class="mb-4">
-            <h2 class="mb-3">Utility Classes</h2>
-            <div class="card">
-                <h3 class="card-title">Spacing & Layout</h3>
-                <div class="mb-3">
-                    <div class="flex gap-2 mb-2">
-                        <div class="p-2" style="background: var(--accent-color); color: var(--black);">p-2</div>
-                        <div class="p-3" style="background: var(--accent-color); color: var(--black);">p-3</div>
-                        <div class="p-4" style="background: var(--accent-color); color: var(--black);">p-4</div>
-                    </div>
-                    <div class="flex gap-2">
-                        <div class="mb-2" style="background: var(--text-secondary); color: var(--bg-color); padding: 0.5rem;">mb-2</div>
-                        <div class="mt-2" style="background: var(--text-secondary); color: var(--bg-color); padding: 0.5rem;">mt-2</div>
-                    </div>
-                </div>
-                
-                <h4 class="mb-2">Text Alignment</h4>
-                <div class="mb-3">
-                    <p class="text-left">Left aligned text</p>
-                    <p class="text-center">Center aligned text</p>
-                    <p class="text-right">Right aligned text</p>
-                </div>
-
-                <h4 class="mb-2">Flexbox Utilities</h4>
-                <div class="flex justify-between items-center p-2" style="background: var(--text-secondary); color: var(--bg-color);">
-                    <span>Left</span>
-                    <span>Center</span>
-                    <span>Right</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- Design Constraints -->
-        <section id="constraints" class="mb-4">
-            <h2 class="mb-3">Design Constraints</h2>
-            <div class="grid grid-2">
-                <div class="card">
-                    <h3 class="card-title text-accent">✓ Allowed</h3>
-                    <ul style="list-style: none; padding: 0;">
-                        <li class="mb-1">• 3 colors: Gold, Black, White</li>
-                        <li class="mb-1">• Form input borders</li>
-                        <li class="mb-1">• Profile image borders</li>
-                        <li class="mb-1">• Certification card borders</li>
-                        <li class="mb-1">• Color transitions</li>
-                        <li class="mb-1">• translateY(-2px) hover</li>
-                        <li class="mb-1">• Typography hierarchy</li>
-                        <li class="mb-1">• Generous spacing</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h3 class="card-title text-secondary">✗ Forbidden</h3>
-                    <ul style="list-style: none; padding: 0;">
-                        <li class="mb-1">• Any shadows (box, text, drop)</li>
-                        <li class="mb-1">• Additional colors</li>
-                        <li class="mb-1">• Borders on most elements</li>
-                        <li class="mb-1">• Gradients</li>
-                        <li class="mb-1">• Complex animations</li>
-                        <li class="mb-1">• Decorative elements</li>
-                        <li class="mb-1">• Border separators</li>
-                        <li class="mb-1">• Visual noise</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
     </div>
 
-    <!-- Footer -->
-    <footer class="text-center p-4 mt-4" style="border-top: 1px solid var(--text-secondary);">
-        <p class="text-secondary">
-            ThroneUi - Ultra-minimalist design system. Built with vanilla HTML, CSS, and JavaScript.
-        </p>
-        <p class="text-xs text-secondary mt-1">
-            Demonstrating the power of constraints in design.
-        </p>
-    </footer>
-
     <script src="src/throne-ui.js"></script>
+    <script>
+        // copy to clipboard functionality
+        function copyCode(btn) {
+            const codeId = btn.getAttribute('data-code');
+            const codeElement = document.getElementById(codeId);
+            const text = codeElement.textContent;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                const originalIcon = btn.querySelector('.material-symbols-outlined');
+                originalIcon.textContent = 'check';
+                btn.style.color = 'var(--accent-color)';
+                
+                setTimeout(() => {
+                    originalIcon.textContent = 'content_copy';
+                    btn.style.color = '';
+                }, 2000);
+            });
+        }
+
+        // mobile nav toggle
+        function toggleMobileNav(btn) {
+            const collapse = btn.nextElementSibling;
+            collapse.classList.toggle('active');
+            const icon = btn.querySelector('.material-symbols-outlined');
+            icon.textContent = collapse.classList.contains('active') ? 'close' : 'menu';
+        }
+    </script>
 </body>
 </html>

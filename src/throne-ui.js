@@ -1,33 +1,46 @@
 /**
- * ThroneUi JavaScript
- * Ultra-minimalist interactions and theme management
+ * throne ui javascript
+ * by thekzbn, age 15
+ * ultra-minimalist interactions, spa routing, and component utilities
  */
 
 class ThroneUI {
   constructor() {
     this.currentTheme = localStorage.getItem('throne-theme') || 'light';
+    this.currentRoute = '';
+    this.routes = new Map();
+    this.components = new Map();
     this.init();
   }
 
   init() {
     this.setTheme(this.currentTheme);
     this.initThemeToggle();
+    this.initSpaRouting();
     this.initNavigation();
     this.initForms();
     this.initCards();
+    this.initModals();
+    this.initDropdowns();
+    this.initTabs();
+    this.initAccordions();
+    this.initTooltips();
+    this.initProgressBars();
+    this.initAlerts();
+    this.initDrawers();
   }
 
-  // Theme Management
+  // theme management
   setTheme(theme) {
     this.currentTheme = theme;
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('throne-theme', theme);
     
-    // Update theme toggle icons
     const toggles = document.querySelectorAll('.theme-toggle');
     toggles.forEach(toggle => {
-      toggle.textContent = theme === 'dark' ? '☀️' : '🌙';
-      toggle.setAttribute('aria-label', `Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`);
+      const icon = toggle.querySelector('.material-symbols-outlined') || toggle;
+      icon.textContent = theme === 'dark' ? 'light_mode' : 'dark_mode';
+      toggle.setAttribute('aria-label', `switch to ${theme === 'dark' ? 'light' : 'dark'} theme`);
     });
   }
 
@@ -43,54 +56,143 @@ class ThroneUI {
     });
   }
 
-  // Navigation
+  // spa routing system
+  initSpaRouting() {
+    // handle initial route
+    this.handleRouteChange();
+    
+    // listen for popstate (back/forward buttons)
+    window.addEventListener('popstate', () => {
+      this.handleRouteChange();
+    });
+    
+    // intercept link clicks
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[data-route]');
+      if (link) {
+        e.preventDefault();
+        const route = link.getAttribute('data-route');
+        this.navigateTo(route);
+      }
+    });
+  }
+
+  registerRoute(path, handler) {
+    this.routes.set(path, handler);
+  }
+
+  navigateTo(path) {
+    if (path === this.currentRoute) return;
+    
+    // update url without page reload
+    history.pushState(null, '', path);
+    this.handleRouteChange();
+  }
+
+  handleRouteChange() {
+    const path = window.location.pathname;
+    this.currentRoute = path;
+    
+    // hide all routes
+    document.querySelectorAll('.route').forEach(route => {
+      route.classList.remove('active');
+    });
+    
+    // show current route
+    const currentRoute = document.querySelector(`[data-route-path="${path}"]`);
+    if (currentRoute) {
+      // add transition effect
+      const content = document.querySelector('.spa-content');
+      if (content) {
+        content.classList.add('transitioning');
+        
+        setTimeout(() => {
+          currentRoute.classList.add('active');
+          content.classList.remove('transitioning');
+        }, 150);
+      } else {
+        currentRoute.classList.add('active');
+      }
+    }
+    
+    // update active nav links
+    document.querySelectorAll('[data-route]').forEach(link => {
+      const linkPath = link.getAttribute('data-route');
+      if (linkPath === path) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+    
+    // call route handler if exists
+    const handler = this.routes.get(path);
+    if (handler) {
+      handler();
+    }
+  }
+
+  // navigation
   initNavigation() {
-    const navLinks = document.querySelectorAll('.nav-link');
-    const currentPath = window.location.pathname;
+    const navLinks = document.querySelectorAll('.nav-link:not([data-route])');
     
     navLinks.forEach(link => {
-      if (link.getAttribute('href') === currentPath) {
-        link.classList.add('active');
-      }
-      
       link.addEventListener('click', (e) => {
-        // Remove active from all links
+        // remove active from all links
         navLinks.forEach(l => l.classList.remove('active'));
-        // Add active to clicked link
+        // add active to clicked link
         link.classList.add('active');
       });
     });
   }
 
-  // Form Enhancements
+  // form enhancements
   initForms() {
     const forms = document.querySelectorAll('form');
     
     forms.forEach(form => {
-      // Add form validation styling
       const inputs = form.querySelectorAll('.form-input, .form-textarea, .form-select');
       
       inputs.forEach(input => {
-        input.addEventListener('invalid', (e) => {
+        // validation styling
+        input.addEventListener('invalid', () => {
           input.style.borderColor = 'var(--accent-color)';
         });
         
-        input.addEventListener('input', (e) => {
+        input.addEventListener('input', () => {
           if (input.checkValidity()) {
             input.style.borderColor = 'var(--text-secondary)';
           }
         });
+        
+        // floating labels effect
+        if (input.placeholder) {
+          input.addEventListener('focus', () => {
+            const label = form.querySelector(`label[for="${input.id}"]`);
+            if (label) {
+              label.style.transform = 'translateY(-0.5rem) scale(0.85)';
+              label.style.color = 'var(--accent-color)';
+            }
+          });
+          
+          input.addEventListener('blur', () => {
+            const label = form.querySelector(`label[for="${input.id}"]`);
+            if (label && !input.value) {
+              label.style.transform = '';
+              label.style.color = '';
+            }
+          });
+        }
       });
       
-      // Smooth form submission
+      // form submission
       form.addEventListener('submit', (e) => {
         const submitBtn = form.querySelector('[type="submit"]');
         if (submitBtn) {
           const originalText = submitBtn.textContent;
-          submitBtn.textContent = 'Submitting...';
+          submitBtn.textContent = 'submitting...';
           submitBtn.disabled = true;
           
-          // Re-enable after 2 seconds (adjust based on your needs)
           setTimeout(() => {
             submitBtn.textContent = originalText;
             submitBtn.disabled = false;
@@ -100,12 +202,11 @@ class ThroneUI {
     });
   }
 
-  // Card Interactions
+  // card interactions
   initCards() {
     const cards = document.querySelectorAll('.card');
     
     cards.forEach(card => {
-      // Add subtle interaction feedback
       card.addEventListener('mouseenter', () => {
         card.style.transform = 'translateY(-2px)';
       });
@@ -116,7 +217,231 @@ class ThroneUI {
     });
   }
 
-  // Utility Methods
+  // modal system
+  initModals() {
+    // modal triggers
+    document.addEventListener('click', (e) => {
+      const trigger = e.target.closest('[data-modal-target]');
+      if (trigger) {
+        const targetId = trigger.getAttribute('data-modal-target');
+        this.openModal(targetId);
+      }
+      
+      const close = e.target.closest('[data-modal-close]');
+      if (close) {
+        const modal = close.closest('.modal');
+        if (modal) {
+          this.closeModal(modal.id);
+        }
+      }
+    });
+    
+    // close on backdrop click
+    document.querySelectorAll('.modal').forEach(modal => {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          this.closeModal(modal.id);
+        }
+      });
+    });
+    
+    // close on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const activeModal = document.querySelector('.modal.active');
+        if (activeModal) {
+          this.closeModal(activeModal.id);
+        }
+      }
+    });
+  }
+
+  openModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  }
+
+  // dropdown system
+  initDropdowns() {
+    document.addEventListener('click', (e) => {
+      const trigger = e.target.closest('[data-dropdown-trigger]');
+      
+      if (trigger) {
+        e.preventDefault();
+        const dropdown = trigger.closest('.dropdown');
+        if (dropdown) {
+          dropdown.classList.toggle('active');
+        }
+      } else {
+        // close all dropdowns when clicking outside
+        document.querySelectorAll('.dropdown.active').forEach(dropdown => {
+          dropdown.classList.remove('active');
+        });
+      }
+    });
+  }
+
+  // tabs system
+  initTabs() {
+    document.addEventListener('click', (e) => {
+      const tab = e.target.closest('[data-tab]');
+      if (tab) {
+        const tabContainer = tab.closest('.tabs');
+        const targetId = tab.getAttribute('data-tab');
+        
+        // remove active from all tabs
+        tabContainer.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        // add active to clicked tab
+        tab.classList.add('active');
+        
+        // hide all tab contents
+        document.querySelectorAll('.tab-content').forEach(content => {
+          content.classList.remove('active');
+        });
+        
+        // show target content
+        const targetContent = document.getElementById(targetId);
+        if (targetContent) {
+          targetContent.classList.add('active');
+        }
+      }
+    });
+  }
+
+  // accordion system
+  initAccordions() {
+    document.addEventListener('click', (e) => {
+      const header = e.target.closest('.accordion-header');
+      if (header) {
+        const item = header.closest('.accordion-item');
+        const isActive = item.classList.contains('active');
+        
+        // close all items in same accordion
+        const accordion = item.closest('.accordion');
+        accordion.querySelectorAll('.accordion-item').forEach(i => {
+          i.classList.remove('active');
+        });
+        
+        // toggle current item
+        if (!isActive) {
+          item.classList.add('active');
+        }
+      }
+    });
+  }
+
+  // tooltip system
+  initTooltips() {
+    document.querySelectorAll('[data-tooltip]').forEach(element => {
+      element.classList.add('tooltip');
+    });
+  }
+
+  // progress bars
+  initProgressBars() {
+    document.querySelectorAll('.progress-bar[data-progress]').forEach(bar => {
+      const progress = bar.getAttribute('data-progress');
+      bar.style.width = `${progress}%`;
+    });
+    
+    // animated progress bars
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const bar = entry.target;
+          const progress = bar.getAttribute('data-progress');
+          bar.style.width = `${progress}%`;
+        }
+      });
+    });
+    
+    document.querySelectorAll('.progress-bar[data-animate]').forEach(bar => {
+      observer.observe(bar);
+    });
+  }
+
+  // alert system
+  initAlerts() {
+    document.addEventListener('click', (e) => {
+      const close = e.target.closest('.alert-close');
+      if (close) {
+        const alert = close.closest('.alert');
+        if (alert) {
+          alert.style.opacity = '0';
+          alert.style.transform = 'translateY(-10px)';
+          setTimeout(() => {
+            alert.remove();
+          }, 300);
+        }
+      }
+    });
+  }
+
+  // drawer system
+  initDrawers() {
+    document.addEventListener('click', (e) => {
+      const trigger = e.target.closest('[data-drawer-target]');
+      if (trigger) {
+        const targetId = trigger.getAttribute('data-drawer-target');
+        this.openDrawer(targetId);
+      }
+      
+      const close = e.target.closest('[data-drawer-close]');
+      if (close) {
+        const drawer = close.closest('.drawer');
+        if (drawer) {
+          this.closeDrawer(drawer.id);
+        }
+      }
+    });
+    
+    // close on backdrop click
+    document.querySelectorAll('.drawer-backdrop').forEach(backdrop => {
+      backdrop.addEventListener('click', () => {
+        const activeDrawer = document.querySelector('.drawer.active');
+        if (activeDrawer) {
+          this.closeDrawer(activeDrawer.id);
+        }
+      });
+    });
+  }
+
+  openDrawer(drawerId) {
+    const drawer = document.getElementById(drawerId);
+    const backdrop = document.querySelector('.drawer-backdrop');
+    
+    if (drawer) {
+      drawer.classList.add('active');
+      if (backdrop) {
+        backdrop.classList.add('active');
+      }
+    }
+  }
+
+  closeDrawer(drawerId) {
+    const drawer = document.getElementById(drawerId);
+    const backdrop = document.querySelector('.drawer-backdrop');
+    
+    if (drawer) {
+      drawer.classList.remove('active');
+      if (backdrop) {
+        backdrop.classList.remove('active');
+      }
+    }
+  }
+
+  // utility methods for creating components
   static createElement(tag, className = '', content = '') {
     const element = document.createElement(tag);
     if (className) element.className = className;
@@ -130,7 +455,18 @@ class ThroneUI {
     return button;
   }
 
-  static createCard(title, subtitle = '', description = '', type = 'card') {
+  static createIconButton(icon, text = '', type = 'btn-primary', onClick = null) {
+    const button = this.createElement('button', `btn ${type}`);
+    const iconEl = this.createElement('span', 'material-symbols-outlined', icon);
+    button.appendChild(iconEl);
+    if (text) {
+      button.appendChild(document.createTextNode(text));
+    }
+    if (onClick) button.addEventListener('click', onClick);
+    return button;
+  }
+
+  static createCard(title, subtitle = '', content = '', type = 'card') {
     const card = this.createElement('div', `card ${type}`);
     
     if (title) {
@@ -143,19 +479,21 @@ class ThroneUI {
       card.appendChild(subtitleEl);
     }
     
-    if (description) {
-      const descEl = this.createElement('p', 'card-description', description);
-      card.appendChild(descEl);
+    if (content) {
+      const contentEl = this.createElement('p', 'card-text', content);
+      card.appendChild(contentEl);
     }
     
     return card;
   }
 
-  static createFormGroup(label, inputType = 'text', placeholder = '', required = false) {
-    const group = this.createElement('div', 'form-group');
+  static createFormControl(label, inputType = 'text', placeholder = '', required = false) {
+    const control = this.createElement('div', 'form-control');
+    const id = `input-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
     
     const labelEl = this.createElement('label', 'form-label', label);
-    group.appendChild(labelEl);
+    labelEl.setAttribute('for', id);
+    control.appendChild(labelEl);
     
     let input;
     if (inputType === 'textarea') {
@@ -167,11 +505,63 @@ class ThroneUI {
       input.type = inputType;
     }
     
+    input.id = id;
     if (placeholder) input.placeholder = placeholder;
     if (required) input.required = true;
     
-    group.appendChild(input);
-    return group;
+    control.appendChild(input);
+    return control;
+  }
+
+  static createBadge(text, type = 'badge') {
+    return this.createElement('span', `badge ${type}`, text);
+  }
+
+  static createChip(text, removable = false) {
+    const chip = this.createElement('div', 'chip');
+    chip.appendChild(document.createTextNode(text));
+    
+    if (removable) {
+      chip.classList.add('chip-removable');
+      const removeBtn = this.createElement('button', 'chip-remove');
+      const icon = this.createElement('span', 'material-symbols-outlined', 'close');
+      removeBtn.appendChild(icon);
+      removeBtn.addEventListener('click', () => chip.remove());
+      chip.appendChild(removeBtn);
+    }
+    
+    return chip;
+  }
+
+  static createAlert(message, type = 'alert', dismissible = false) {
+    const alert = this.createElement('div', `alert ${type}`, message);
+    
+    if (dismissible) {
+      alert.classList.add('alert-dismissible');
+      const closeBtn = this.createElement('button', 'alert-close');
+      const icon = this.createElement('span', 'material-symbols-outlined', 'close');
+      closeBtn.appendChild(icon);
+      alert.appendChild(closeBtn);
+    }
+    
+    return alert;
+  }
+
+  static createProgressBar(progress = 0, animated = false) {
+    const container = this.createElement('div', 'progress');
+    const bar = this.createElement('div', 'progress-bar');
+    bar.setAttribute('data-progress', progress);
+    if (animated) bar.setAttribute('data-animate', 'true');
+    container.appendChild(bar);
+    return container;
+  }
+
+  static createSpinner(size = 'spinner') {
+    return this.createElement('div', size);
+  }
+
+  static createSkeleton(type = 'skeleton-text') {
+    return this.createElement('div', `skeleton ${type}`);
   }
 
   static createTimeline(items = []) {
@@ -190,14 +580,14 @@ class ThroneUI {
         timelineItem.appendChild(title);
       }
       
-      if (item.company) {
-        const company = this.createElement('div', 'timeline-company', item.company);
-        timelineItem.appendChild(company);
+      if (item.subtitle) {
+        const subtitle = this.createElement('div', 'timeline-subtitle', item.subtitle);
+        timelineItem.appendChild(subtitle);
       }
       
-      if (item.description) {
-        const description = this.createElement('p', 'timeline-description', item.description);
-        timelineItem.appendChild(description);
+      if (item.content) {
+        const content = this.createElement('p', 'timeline-content', item.content);
+        timelineItem.appendChild(content);
       }
       
       timeline.appendChild(timelineItem);
@@ -221,7 +611,95 @@ class ThroneUI {
     return grid;
   }
 
-  // Animation utilities
+  static createAvatar(src, alt = '', size = 'avatar-md', online = false) {
+    const avatar = this.createElement('div', `avatar ${size}`);
+    if (online) avatar.classList.add('avatar-online');
+    
+    const img = this.createElement('img');
+    img.src = src;
+    img.alt = alt;
+    avatar.appendChild(img);
+    
+    return avatar;
+  }
+
+  static createTable(headers = [], rows = [], options = {}) {
+    const table = this.createElement('table', 'table');
+    
+    if (options.hover) table.classList.add('table-hover');
+    if (options.striped) table.classList.add('table-striped');
+    if (options.bordered) table.classList.add('table-bordered');
+    if (options.small) table.classList.add('table-sm');
+    
+    // create header
+    if (headers.length > 0) {
+      const thead = this.createElement('thead');
+      const headerRow = this.createElement('tr');
+      
+      headers.forEach(header => {
+        const th = this.createElement('th', '', header);
+        headerRow.appendChild(th);
+      });
+      
+      thead.appendChild(headerRow);
+      table.appendChild(thead);
+    }
+    
+    // create body
+    if (rows.length > 0) {
+      const tbody = this.createElement('tbody');
+      
+      rows.forEach(row => {
+        const tr = this.createElement('tr');
+        
+        row.forEach(cell => {
+          const td = this.createElement('td', '', cell);
+          tr.appendChild(td);
+        });
+        
+        tbody.appendChild(tr);
+      });
+      
+      table.appendChild(tbody);
+    }
+    
+    return table;
+  }
+
+  static createPagination(currentPage = 1, totalPages = 5) {
+    const pagination = this.createElement('ul', 'pagination');
+    
+    // previous button
+    const prevItem = this.createElement('li', 'page-item');
+    if (currentPage === 1) prevItem.classList.add('disabled');
+    const prevLink = this.createElement('a', 'page-link');
+    const prevIcon = this.createElement('span', 'material-symbols-outlined', 'chevron_left');
+    prevLink.appendChild(prevIcon);
+    prevItem.appendChild(prevLink);
+    pagination.appendChild(prevItem);
+    
+    // page numbers
+    for (let i = 1; i <= totalPages; i++) {
+      const pageItem = this.createElement('li', 'page-item');
+      if (i === currentPage) pageItem.classList.add('active');
+      const pageLink = this.createElement('a', 'page-link', i.toString());
+      pageItem.appendChild(pageLink);
+      pagination.appendChild(pageItem);
+    }
+    
+    // next button
+    const nextItem = this.createElement('li', 'page-item');
+    if (currentPage === totalPages) nextItem.classList.add('disabled');
+    const nextLink = this.createElement('a', 'page-link');
+    const nextIcon = this.createElement('span', 'material-symbols-outlined', 'chevron_right');
+    nextLink.appendChild(nextIcon);
+    nextItem.appendChild(nextLink);
+    pagination.appendChild(nextItem);
+    
+    return pagination;
+  }
+
+  // animation utilities
   static fadeIn(element, duration = 300) {
     element.style.opacity = '0';
     element.style.transition = `opacity ${duration}ms ease`;
@@ -242,7 +720,51 @@ class ThroneUI {
     });
   }
 
-  // Scroll utilities
+  static slideDown(element, duration = 300) {
+    element.style.transform = 'translateY(-20px)';
+    element.style.opacity = '0';
+    element.style.transition = `transform ${duration}ms ease, opacity ${duration}ms ease`;
+    
+    requestAnimationFrame(() => {
+      element.style.transform = 'translateY(0)';
+      element.style.opacity = '1';
+    });
+  }
+
+  static slideLeft(element, duration = 300) {
+    element.style.transform = 'translateX(20px)';
+    element.style.opacity = '0';
+    element.style.transition = `transform ${duration}ms ease, opacity ${duration}ms ease`;
+    
+    requestAnimationFrame(() => {
+      element.style.transform = 'translateX(0)';
+      element.style.opacity = '1';
+    });
+  }
+
+  static slideRight(element, duration = 300) {
+    element.style.transform = 'translateX(-20px)';
+    element.style.opacity = '0';
+    element.style.transition = `transform ${duration}ms ease, opacity ${duration}ms ease`;
+    
+    requestAnimationFrame(() => {
+      element.style.transform = 'translateX(0)';
+      element.style.opacity = '1';
+    });
+  }
+
+  static scaleIn(element, duration = 300) {
+    element.style.transform = 'scale(0.9)';
+    element.style.opacity = '0';
+    element.style.transition = `transform ${duration}ms ease, opacity ${duration}ms ease`;
+    
+    requestAnimationFrame(() => {
+      element.style.transform = 'scale(1)';
+      element.style.opacity = '1';
+    });
+  }
+
+  // scroll utilities
   static smoothScrollTo(targetId) {
     const target = document.getElementById(targetId);
     if (target) {
@@ -252,14 +774,93 @@ class ThroneUI {
       });
     }
   }
+
+  static isInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    return (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+  }
+
+  // toast notifications
+  static showToast(message, duration = 3000) {
+    const toast = this.createElement('div', 'toast', message);
+    document.body.appendChild(toast);
+    
+    setTimeout(() => {
+      toast.classList.add('show');
+    }, 100);
+    
+    setTimeout(() => {
+      toast.classList.remove('show');
+      setTimeout(() => {
+        toast.remove();
+      }, 300);
+    }, duration);
+  }
+
+  // local storage utilities
+  static setStorage(key, value) {
+    try {
+      localStorage.setItem(key, JSON.stringify(value));
+    } catch (e) {
+      console.warn('failed to save to localStorage:', e);
+    }
+  }
+
+  static getStorage(key, defaultValue = null) {
+    try {
+      const item = localStorage.getItem(key);
+      return item ? JSON.parse(item) : defaultValue;
+    } catch (e) {
+      console.warn('failed to read from localStorage:', e);
+      return defaultValue;
+    }
+  }
+
+  static removeStorage(key) {
+    try {
+      localStorage.removeItem(key);
+    } catch (e) {
+      console.warn('failed to remove from localStorage:', e);
+    }
+  }
+
+  // debounce utility
+  static debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+      const later = () => {
+        clearTimeout(timeout);
+        func(...args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  }
+
+  // throttle utility
+  static throttle(func, limit) {
+    let inThrottle;
+    return function executedFunction(...args) {
+      if (!inThrottle) {
+        func.apply(this, args);
+        inThrottle = true;
+        setTimeout(() => inThrottle = false, limit);
+      }
+    };
+  }
 }
 
-// Initialize ThroneUI when DOM is loaded
+// initialize throne ui when dom is loaded
 document.addEventListener('DOMContentLoaded', () => {
   window.throneUI = new ThroneUI();
 });
 
-// Export for module use
+// export for module use
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = ThroneUI;
 }

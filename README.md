@@ -1,47 +1,60 @@
-# ThroneUi
+# throne ui
 
-Ultra-minimalist HTML UI library with strict 3-color design system. Built with vanilla HTML, CSS, and JavaScript.
+ultra-minimalist html ui library with strict 3-color design system. built with vanilla html, css, and javascript.
 
-## Design Philosophy
+**created by thekzbn, age 15**
 
-ThroneUi is built on the principle that **constraints breed creativity**. By limiting ourselves to just 3 colors and eliminating visual noise, we create interfaces that are both beautiful and purposeful.
+## design philosophy
 
-### Core Principles
+throne ui is built on the principle that **constraints breed creativity**. by limiting ourselves to just 3 colors and eliminating visual noise, we create interfaces that are both beautiful and purposeful.
 
-- **3 Colors Maximum**: Gold (#d6ad60), Black (#000), White (#fff)
-- **No Shadows**: Clean, flat design with no drop shadows or box shadows
-- **Strategic Borders**: Minimal 1px borders ONLY where absolutely necessary
-- **Vanilla-First**: Pure HTML, CSS, and JavaScript only
-- **Typography-Driven**: Visual hierarchy through scale, weight, and spacing
+### core principles
 
-## Quick Start
+- **3 colors maximum**: gold (#d6ad60), black (#000), white (#fff)
+- **no shadows**: clean, flat design with no drop shadows or box shadows
+- **strategic borders**: minimal 1px borders only where absolutely necessary
+- **vanilla-first**: pure html, css, and javascript only
+- **typography-driven**: visual hierarchy through scale, weight, and spacing
 
-### CDN (Recommended)
+## features
+
+- ✨ **75+ components** - comprehensive ui library
+- 🚀 **spa routing** - single page application with vanilla js
+- 🎨 **strict design system** - 3 colors, no shadows, minimal borders
+- 📱 **fully responsive** - mobile-first design
+- ♿ **accessible** - semantic html and proper aria labels
+- 🔧 **zero dependencies** - no frameworks, no build tools required
+- 🌙 **dark/light themes** - automatic theme switching
+- ⚡ **performant** - lightweight and fast
+
+## quick start
+
+### cdn (recommended)
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/yourusername/throne-ui@main/dist/throne-ui.min.css">
-<script src="https://cdn.jsdelivr.net/gh/yourusername/throne-ui@main/dist/throne-ui.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/thekzbn/throne-ui@main/dist/throne-ui.min.css">
+<script src="https://cdn.jsdelivr.net/gh/thekzbn/throne-ui@main/dist/throne-ui.min.js"></script>
 ```
 
-### Download
+### download
 
-1. Download the latest release
-2. Include the CSS and JS files in your project:
+1. download the latest release
+2. include the css and js files in your project:
 
 ```html
 <link rel="stylesheet" href="path/to/throne-ui.css">
 <script src="path/to/throne-ui.js"></script>
 ```
 
-### Local Development
+### local development
 
 ```bash
-git clone https://github.com/yourusername/throne-ui.git
+git clone https://github.com/thekzbn/throne-ui.git
 cd throne-ui
-npm start
+python3 -m http.server 8000
 ```
 
-## Color System
+## color system
 
 ```css
 :root {
@@ -49,256 +62,231 @@ npm start
   --white: #fff;
   --black: #000;
   
-  /* Light mode */
+  /* light mode */
   --bg-color: var(--white);
   --text-color: var(--black);
   --accent-color: var(--gold);
-  --text-secondary: #666;  /* Muted black only */
+  --text-secondary: #666;
 }
 
 [data-theme="dark"] {
   --bg-color: var(--black);
   --text-color: var(--white);
   --accent-color: var(--gold);
-  --text-secondary: #999;  /* Muted white only */
+  --text-secondary: #999;
 }
 ```
 
-## Components
+## component categories
 
-### Hero Section
+### layout & grid (12 components)
+- containers (sm, normal, fluid)
+- css grid systems (1-6 columns, auto-fit, masonry)
+- flexbox utilities
+- section layouts
 
-```html
-<section class="hero">
-  <h1 class="hero-title">Your Title</h1>
-  <p class="hero-subtitle">Accent subtitle</p>
-  <p class="hero-description">Description text</p>
-</section>
-```
+### buttons & actions (8 components)
+- button variants (primary, secondary, outline, ghost, link)
+- button sizes (sm, normal, lg, xl)
+- special buttons (circle, square, wide, block)
+- button groups (horizontal, vertical)
 
-### Buttons
+### forms & inputs (10 components)
+- input types (text, email, password, textarea, select)
+- checkboxes and radio buttons
+- input sizes and layouts
+- validation states
+- form groups and inline forms
 
-```html
-<!-- Primary button -->
-<button class="btn btn-primary">Primary Action</button>
+### cards & content (9 components)
+- card variants (basic, bordered, compact, side, image-top)
+- certification cards (with borders - exception)
+- timeline (vertical and horizontal)
+- avatars (5 sizes, online status, groups, square variant)
 
-<!-- Link button -->
-<button class="btn btn-link">Secondary Action</button>
+### navigation (7 components)
+- breadcrumbs
+- tabs (regular and pill style)
+- pagination
+- dropdown menus
+- menu lists
 
-<!-- Icon button -->
-<button class="btn btn-icon">
-  <span class="material-icons">favorite</span>
-  With Icon
-</button>
-```
+### feedback & overlays (11 components)
+- alerts (info, success, warning, error, dismissible)
+- modals with backdrop
+- drawers (left and right)
+- tooltips (4 positions)
+- accordion
+- toast notifications
 
-### Cards
+### data display (9 components)
+- badges and chips
+- progress bars (3 sizes)
+- spinners (3 sizes)
+- skeleton loaders
+- tables (hover, striped, bordered, responsive)
 
-```html
-<!-- Project card (no borders) -->
-<div class="card card-project">
-  <h3 class="card-title">Project Title</h3>
-  <div class="card-subtitle">Subtitle</div>
-  <p class="card-description">Description text</p>
-</div>
+### utilities (15+ utilities)
+- spacing (margins, padding)
+- typography (sizes, weights, alignment, colors)
+- display and position utilities
+- width, height, and opacity utilities
+- flexbox and grid utilities
 
-<!-- Certification card (with border - exception) -->
-<div class="card card-cert">
-  <h3 class="card-title">Certification</h3>
-  <div class="card-subtitle">Authority</div>
-  <p class="card-description">Details</p>
-</div>
-```
+## spa routing
 
-### Navigation
-
-```html
-<nav class="nav">
-  <a href="#" class="nav-brand">Brand</a>
-  <ul class="nav-links">
-    <li><a href="#" class="nav-link active">Home</a></li>
-    <li><a href="#" class="nav-link">About</a></li>
-  </ul>
-  <button class="theme-toggle">🌙</button>
-</nav>
-```
-
-### Forms (Borders Allowed - Exception)
-
-```html
-<form>
-  <div class="form-group">
-    <label class="form-label" for="input">Label</label>
-    <input type="text" id="input" class="form-input" placeholder="Placeholder">
-  </div>
-  <div class="form-group">
-    <label class="form-label" for="textarea">Message</label>
-    <textarea id="textarea" class="form-textarea"></textarea>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-```
-
-### Timeline
-
-```html
-<div class="timeline">
-  <div class="timeline-item">
-    <div class="timeline-date">2023 - Present</div>
-    <h3 class="timeline-title">Position</h3>
-    <div class="timeline-company">Company</div>
-    <p class="timeline-description">Description</p>
-  </div>
-</div>
-```
-
-### Grid System
-
-```html
-<!-- 2-column grid -->
-<div class="grid grid-2">
-  <div>Item 1</div>
-  <div>Item 2</div>
-</div>
-
-<!-- 3-column grid -->
-<div class="grid grid-3">
-  <div>Item 1</div>
-  <div>Item 2</div>
-  <div>Item 3</div>
-</div>
-```
-
-### Profile Images (Borders Allowed - Exception)
-
-```html
-<div class="profile-image">
-  <img src="avatar.jpg" alt="Profile" width="80" height="80">
-</div>
-```
-
-## JavaScript API
-
-### Theme Management
+throne ui includes a built-in spa routing system using vanilla javascript:
 
 ```javascript
-// Toggle theme
+// register routes
+throneUI.registerRoute('/', () => {
+  console.log('home page loaded');
+});
+
+// navigate programmatically
+throneUI.navigateTo('/about');
+
+// html structure
+<div class="route" data-route-path="/">
+  <h1>home page</h1>
+</div>
+
+<a href="#" data-route="/about">go to about</a>
+```
+
+### spa features
+- client-side routing with history api
+- smooth page transitions
+- deep linking support
+- browser back/forward button support
+- no page reloads
+
+## javascript api
+
+### theme management
+
+```javascript
+// toggle theme
 window.throneUI.toggleTheme();
 
-// Set specific theme
+// set specific theme
 window.throneUI.setTheme('dark'); // or 'light'
 ```
 
-### Component Creation
+### component creation
 
 ```javascript
-// Create button
-const button = ThroneUI.createButton('Click me', 'btn-primary', () => {
-  alert('Clicked!');
-});
-
-// Create card
-const card = ThroneUI.createCard('Title', 'Subtitle', 'Description', 'card-project');
-
-// Create form group
-const formGroup = ThroneUI.createFormGroup('Email', 'email', 'Enter email', true);
-
-// Create timeline
+// create components programmatically
+const button = ThroneUI.createButton('click me', 'btn-primary');
+const card = ThroneUI.createCard('title', 'subtitle', 'description');
+const avatar = ThroneUI.createAvatar('image.jpg', 'alt text', 'avatar-lg');
+const table = ThroneUI.createTable(['col1', 'col2'], [['data1', 'data2']]);
 const timeline = ThroneUI.createTimeline([
-  {
-    date: '2023 - Present',
-    title: 'Senior Developer',
-    company: 'TechCorp',
-    description: 'Leading development initiatives.'
-  }
+  { date: '2024', title: 'event', content: 'description' }
 ]);
-
-// Create grid
-const grid = ThroneUI.createGrid(['Item 1', 'Item 2', 'Item 3'], 3);
 ```
 
-### Animations
+### animations
 
 ```javascript
-// Fade in element
+// smooth animations
 ThroneUI.fadeIn(element, 300);
-
-// Slide up element
 ThroneUI.slideUp(element, 300);
-
-// Smooth scroll to element
-ThroneUI.smoothScrollTo('section-id');
+ThroneUI.slideDown(element, 300);
+ThroneUI.slideLeft(element, 300);
+ThroneUI.slideRight(element, 300);
+ThroneUI.scaleIn(element, 300);
 ```
 
-## Utility Classes
+### utilities
 
-### Spacing
+```javascript
+// storage utilities
+ThroneUI.setStorage('key', value);
+const value = ThroneUI.getStorage('key', defaultValue);
 
-- `mb-1`, `mb-2`, `mb-3`, `mb-4` - Margin bottom
-- `mt-1`, `mt-2`, `mt-3`, `mt-4` - Margin top
-- `p-1`, `p-2`, `p-3`, `p-4` - Padding
+// toast notifications
+ThroneUI.showToast('message', 3000);
 
-### Typography
+// scroll utilities
+ThroneUI.smoothScrollTo('element-id');
+const inView = ThroneUI.isInViewport(element);
 
-- `text-large`, `text-small`, `text-xs` - Text sizes
-- `text-secondary`, `text-accent` - Text colors
-- `text-center`, `text-left`, `text-right` - Text alignment
+// performance utilities
+const debouncedFn = ThroneUI.debounce(fn, 300);
+const throttledFn = ThroneUI.throttle(fn, 100);
+```
 
-### Layout
+## design constraints
 
-- `flex`, `flex-col` - Flexbox
-- `items-center`, `justify-center`, `justify-between` - Flex alignment
-- `gap-1`, `gap-2`, `gap-3`, `gap-4` - Gap spacing
-- `container` - Max-width container with padding
+### ✅ allowed
 
-## Design Constraints
+- 3 colors: gold (#d6ad60), black (#000), white (#fff)
+- muted variants: #666 (light mode), #999 (dark mode)
+- form input borders (exception)
+- avatar borders (exception - 3px solid gold)
+- certification card borders (exception - 1px solid muted)
+- color transitions
+- `translatey(-2px)` hover effects
+- typography hierarchy
+- generous spacing
 
-### ✅ Allowed
+### ❌ forbidden
 
-- 3 colors: Gold (#d6ad60), Black (#000), White (#fff)
-- Muted variants: #666 (light mode), #999 (dark mode)
-- Form input borders
-- Profile image borders (3px solid gold)
-- Certification card borders (1px solid muted)
-- Color transitions
-- `translateY(-2px)` hover effects
-- Typography hierarchy
-- Generous spacing
+- any shadows (box-shadow, text-shadow, drop-shadow)
+- additional colors beyond the 3-color system
+- borders on most elements (except the 3 exceptions)
+- gradients
+- complex animations
+- decorative elements
+- border separators between grid items
+- visual noise or unnecessary decoration
 
-### ❌ Forbidden
+## browser support
 
-- Any shadows (box-shadow, text-shadow, drop-shadow)
-- Additional colors beyond the 3-color system
-- Borders on most elements (except the 3 exceptions)
-- Gradients
-- Complex animations
-- Decorative elements
-- Border separators between grid items
-- Visual noise or unnecessary decoration
+- chrome 60+
+- firefox 55+
+- safari 12+
+- edge 79+
 
-## Browser Support
+## about thekzbn
 
-- Chrome 60+
-- Firefox 55+
-- Safari 12+
-- Edge 79+
+i'm a 15-year-old developer passionate about minimalist design and clean code. i started coding at 13 and believe that great design comes from what you leave out, not what you add.
 
-## Contributing
+throne ui represents my philosophy that constraints breed creativity. every component is intentionally limited to prove that you don't need complex frameworks or dozens of colors to create something beautiful and functional.
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes (following the design constraints)
-4. Test your changes
-5. Submit a pull request
+### my approach
+- focus on vanilla technologies because they're timeless
+- frameworks come and go, but html, css, and javascript are forever
+- prove that you don't need complex tooling to create great ui
+- show that limitations can lead to more creative solutions
 
-## License
+## philosophy
 
-MIT License. See [LICENSE](LICENSE) for details.
+> "perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away." - antoine de saint-exupéry
 
-## Philosophy
+throne ui embodies this philosophy by showing how powerful simplicity can be when executed with precision and intention. every element serves a clear purpose, every color choice is deliberate, and every constraint pushes us toward better design decisions.
 
-> "Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away." - Antoine de Saint-Exupéry
+the library proves that you don't need dozens of colors, complex shadows, or decorative elements to create beautiful, functional interfaces. sometimes, the most elegant solution is the simplest one.
 
-ThroneUi embodies this philosophy by showing how powerful simplicity can be when executed with precision and intention. Every element serves a clear purpose, every color choice is deliberate, and every constraint pushes us toward better design decisions.
+## contributing
 
-The library proves that you don't need dozens of colors, complex shadows, or decorative elements to create beautiful, functional interfaces. Sometimes, the most elegant solution is the simplest one.
+1. fork the repository
+2. create a feature branch
+3. make your changes (following the design constraints)
+4. test your changes
+5. submit a pull request
+
+please ensure all contributions follow the strict design constraints:
+- maintain the 3-color system
+- no shadows anywhere
+- borders only where explicitly allowed
+- keep the minimalist aesthetic
+
+## license
+
+mit license. see [license](license) for details.
+
+---
+
+**built with ❤️ by thekzbn at age 15**
